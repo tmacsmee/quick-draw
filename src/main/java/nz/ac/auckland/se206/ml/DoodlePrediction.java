@@ -22,9 +22,10 @@ import org.imgscalr.Scalr;
 
 /**
  * This class is responsible for querying the DL model to get the predictions. Code partially
- * adapted from https://github.com/deepjavalibrary/djl-demo.
+ * adapted from <a href="https://github.com/deepjavalibrary/djl-demo">...</a>.
  */
 public class DoodlePrediction {
+
   /**
    * Prints the top K predictions of a given image under test.
    *
@@ -41,8 +42,9 @@ public class DoodlePrediction {
               + " and the number of top K predictions to print.");
     }
 
-    printPredictions(
-        new DoodlePrediction().getPredictions(new File(args[0]), Integer.parseInt(args[1])));
+    System.out.println(
+        printPredictions(
+            new DoodlePrediction().getPredictions(new File(args[0]), Integer.parseInt(args[1]))));
   }
 
   /**
@@ -50,24 +52,25 @@ public class DoodlePrediction {
    *
    * @param predictions The list of predictions to print.
    */
-  public static void printPredictions(final List<Classifications.Classification> predictions) {
+  public static String printPredictions(final List<Classifications.Classification> predictions) {
+
     final StringBuilder sb = new StringBuilder();
 
     int i = 1;
 
-    for (final Classifications.Classification classification : predictions) {
-      sb.append("TOP ")
-          .append(i)
+    for (final Classifications.Classification classification :
+        predictions) { // String format "i : class name : confidence"
+      sb.append(i) // Index of prediction
           .append(" : ")
           .append(classification.getClassName())
           .append(" : ")
-          .append(String.format("%.2f%%", 100 * classification.getProbability()))
+          .append(
+              String.format("%.2f%%", 100 * classification.getProbability())) // Confidence level
           .append(System.lineSeparator());
-
       i++;
     }
 
-    System.out.println(sb);
+    return sb.toString();
   }
 
   private final ZooModel<Image, Classifications> model;

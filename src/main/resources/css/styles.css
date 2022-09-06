@@ -1,0 +1,67 @@
+.root {
+    -fx-background: #FF9E75;
+}
+
+Button {
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-font-size: 30;
+    -fx-text-fill: #CC7E5D;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
+    -fx-cursor: hand;
+}
+
+Button:hover {
+    -fx-background-color: #FF8E5E;
+    -fx-text-fill: white;
+}
+
+.menu-title {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 54;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
+}
+
+.canvas {
+    -fx-fill: black;
+}
+
+.timer {
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
+}
+
+.canvas-prompt {
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
+}
+
+.prediction-box {
+    -fx-background-color: #f2956e;
+}
+
+
+VBox {
+    -fx-padding: 10;
+}
+
+HBox {
+    -fx-padding: 10;
+}
+
+.results-button-box {
+    -fx-spacing: 28;
+}
+
+.menu-logo {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -4, 4);
+}
+
+.canvas-buttons {
+    -fx-spacing: 28;
+}

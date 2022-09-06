@@ -1,19 +1,35 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.HashMap;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * This is the entry point of the JavaFX application, while you can change this class, it should
- * remain as the class that runs the JavaFX application.
- */
+/** This is the entry point of the JavaFX application. */
 public class App extends Application {
+
+  private static final HashMap<String, Object> controllerMap = new HashMap<>();
+
+  /**
+   * Launches the JavaFX application.
+   *
+   * @param args should be left empty.
+   */
   public static void main(final String[] args) {
     launch();
+  }
+
+  /**
+   * Return the controller for the given fxml name.
+   *
+   * @param fxml the name of the fxml controller
+   * @return the controller for the given fxml name
+   */
+  public static Object getController(String fxml) {
+    return controllerMap.get(fxml);
   }
 
   /**
@@ -24,8 +40,11 @@ public class App extends Application {
    * @return The node of the input file.
    * @throws IOException If the file is not found.
    */
-  private static Parent loadFxml(final String fxml) throws IOException {
-    return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
+  private Parent loadFxml(final String fxml) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxml + ".fxml"));
+    Parent root = loader.load();
+    controllerMap.put(fxml, loader.getController()); // Store the controller instance in the map.
+    return root;
   }
 
   /**
@@ -36,8 +55,18 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    final Scene scene = new Scene(loadFxml("canvas"), 840, 680);
 
+    // Load each fxml and add to map.
+    SceneManager.addUi(SceneManager.AppUi.MENU, loadFxml("menu"));
+    SceneManager.addUi(SceneManager.AppUi.READY, loadFxml("ready"));
+    SceneManager.addUi(SceneManager.AppUi.CANVAS, loadFxml("canvas"));
+    SceneManager.addUi(SceneManager.AppUi.RESULTS, loadFxml("results"));
+
+    // Show the canvas scene.
+    Scene scene = new Scene(SceneManager.getUiRoot(SceneManager.AppUi.MENU), 800, 600);
+    scene
+        .getStylesheets()
+        .add(getClass().getResource("/css/styles.css").toExternalForm()); // Initialize css.
     stage.setScene(scene);
     stage.show();
   }

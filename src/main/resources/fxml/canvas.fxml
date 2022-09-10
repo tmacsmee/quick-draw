@@ -1,37 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/18"
-  xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.CanvasController"
-  style="-fx-background-color: white;">
-  <children>
-    <Label alignment="CENTER" layoutX="124.0" layoutY="14.0" prefHeight="23.0" prefWidth="355.0"
-      text="Quick, Draw! SE206  Edition" textAlignment="CENTER">
-      <font>
-        <Font size="18.0"/>
-      </font>
-    </Label>
-    <Canvas fx:id="canvas" height="243.0" layoutX="101.0" layoutY="65.0" width="400.0">
-      <cursor>
-        <Cursor fx:constant="HAND"/>
-      </cursor>
-    </Canvas>
-    <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="400.0">
-      <children>
-        <Button fx:id="predictButton" mnemonicParsing="false" onAction="#onPredict" text="Predict"/>
-        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#onClear" text="Clear"/>
-      </children>
-    </HBox>
 
-  </children>
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
-</VBox>
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CanvasController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="580.0" prefWidth="535.0">
+               <children>
+                  <HBox prefHeight="103.0" prefWidth="500.0">
+                     <children>
+                        <Label fx:id="promptLabel" prefHeight="45.0" prefWidth="614.0" styleClass="canvas-prompt" text="[prompt]" textAlignment="CENTER" textFill="WHITE" />
+                      <Label fx:id="timerLabel" alignment="CENTER" prefHeight="27.0" prefWidth="409.0" styleClass="timer" text="00:00" textAlignment="CENTER">
+                        <font>
+                          <Font size="18.0" />
+                        </font>
+                      </Label>
+                     </children>
+                  </HBox>
+                <Canvas fx:id="canvas" height="304.0" width="500.0">
+                  <cursor>
+                    <Cursor fx:constant="CROSSHAIR" />
+                  </cursor>
+                </Canvas>
+                <HBox alignment="BOTTOM_CENTER" prefHeight="138.0" prefWidth="500.0" styleClass="canvas-buttons">
+                  <children>
+                        <Button fx:id="brushButton" layoutX="157.0" layoutY="57.0" mnemonicParsing="false" onAction="#onSwitchToBrush" prefHeight="38.0" prefWidth="35.0">
+                           <graphic>
+                              <ImageView fitHeight="128.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/pencil.png" /> <!-- Pencil icon created by Freepik - Flaticon -->
+                                 </image>
+                                 <effect>
+                                    <DropShadow height="2.0" offsetX="-2.0" offsetY="2.0" radius="0.5" width="2.0">
+                                       <color>
+                                          <Color red="0.7368420958518982" green="0.7368420958518982" blue="0.7368420958518982" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="eraserButton" layoutX="104.0" layoutY="57.0" mnemonicParsing="false" onAction="#onSwitchToEraser" prefHeight="0.0" prefWidth="0.0">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/eraser.png" /> <!-- Eraser icon created by Pixel Buddha - Flaticon -->
+                                 </image>
+                                 <effect>
+                                    <DropShadow height="2.0" offsetX="-2.0" offsetY="2.0" radius="0.5" width="2.0">
+                                       <color>
+                                          <Color red="0.6973684430122375" green="0.6973684430122375" blue="0.6973684430122375" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </ImageView>
+                           </graphic></Button>
+                    <Button fx:id="clearButton" mnemonicParsing="false" onAction="#onClear" prefHeight="0.0" prefWidth="16.0">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/trash.png" /> <!-- Trash can icon created by Freepik - Flaticon -->
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                  </children>
+                </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="580.0" prefWidth="311.0" styleClass="prediction-box">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="214.0" text="Top 10 predictions:" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="predictionList" prefHeight="535.0" prefWidth="226.0" text="Prediction list">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color opacity="0.07999999821186066" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,19 @@
+{
+  "username1": {
+    "password": "123",
+    "age": "12",
+    "wordsEncountered": ["test1", "test2", "test3"],
+    "gamesWon": "20",
+    "gamesLost": "20",
+    "bestTime": "10"
+  },
+
+  "username2": {
+    "password": "456",
+    "age": "11",
+    "wordsEncountered": ["test1", "test2", "test3"],
+    "gamesWon": "30",
+    "gamesLost": "25",
+    "bestTime": "16"
+  }
+}

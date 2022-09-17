@@ -134,20 +134,13 @@ public class CanvasController {
    * @return The file of the saved image.
    * @throws IOException If the image cannot be saved.
    */
-  private File saveCurrentSnapshotOnFile() throws IOException {
-    // You can change the location as you see fit.
-    final File tmpFolder = new File("tmp");
-
-    if (!tmpFolder.exists()) {
-      tmpFolder.mkdir();
-    }
+  private File saveCurrentSnapshotOnFile(File file, BufferedImage image) throws IOException {
 
     // We save the image to a file in the tmp folder.
-    final File imageToClassify =
-        new File(tmpFolder.getName() + "/snapshot" + System.currentTimeMillis() + ".bmp");
+    final File imageToClassify = new File(file.getAbsolutePath() + ".bmp");
 
     // Save the image to a file.
-    ImageIO.write(getCurrentSnapshot(), "bmp", imageToClassify);
+    ImageIO.write(image, "bmp", imageToClassify);
 
     return imageToClassify;
   }

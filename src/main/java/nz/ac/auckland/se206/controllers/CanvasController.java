@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
-import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.util.TimeLimitTask;
@@ -194,16 +193,18 @@ public class CanvasController {
   /**
    * Save the current snapshot on a bitmap file.
    *
+   * @param image
+   * @return
    * @throws IOException If the image cannot be saved.
    */
-  public void saveCurrentSnapshotOnFile(File file) throws IOException {
-    File imageToClassify;
-    ResultsController resultsController = (ResultsController) App.getController("results");
+  public File saveCurrentSnapshotOnFile(File file, BufferedImage image) throws IOException {
 
-    // Select the image to save.
-    imageToClassify = new File(file + "/" + resultsController.getSketchName() + ".bmp");
+    // We save the image to a file in the tmp folder.
+    final File imageToClassify = new File(file.getAbsolutePath() + ".bmp");
 
     // Save the image to a file.
-    ImageIO.write(getCurrentSnapshot(), "bmp", imageToClassify);
+    ImageIO.write(image, "bmp", imageToClassify);
+
+    return imageToClassify;
   }
 }

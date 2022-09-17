@@ -35,4 +35,16 @@ public class MenuController {
     TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
     new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
   }
+
+  /**
+   * Switches to the login scene when the user clicks button to switch account.
+   *
+   * @param event the button click event.
+   */
+  @FXML
+  private void onSwitchAccount(ActionEvent event) {
+    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));
+  }
 }

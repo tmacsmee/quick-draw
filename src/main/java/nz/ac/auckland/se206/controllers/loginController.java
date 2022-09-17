@@ -17,6 +17,12 @@ public class loginController {
 
   @FXML private Button loginButton;
 
+  /** Initializes the login scene. */
+  @FXML
+  private void initialize() {
+    System.out.println("***************** Initialising Login Controller *****************");
+  }
+
   /**
    * Called when the user clicks the create button to create a new account.
    *

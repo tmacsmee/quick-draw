@@ -57,13 +57,16 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
 
     // Load each fxml and add to map.
+
+    SceneManager.addUi(SceneManager.AppUi.CREATEACCOUNT, loadFxml("createAccount"));
+    SceneManager.addUi(SceneManager.AppUi.LOGIN, loadFxml("login"));
     SceneManager.addUi(SceneManager.AppUi.MENU, loadFxml("menu"));
     SceneManager.addUi(SceneManager.AppUi.READY, loadFxml("ready"));
     SceneManager.addUi(SceneManager.AppUi.CANVAS, loadFxml("canvas"));
     SceneManager.addUi(SceneManager.AppUi.RESULTS, loadFxml("results"));
 
-    // Show the canvas scene.
-    Scene scene = new Scene(SceneManager.getUiRoot(SceneManager.AppUi.MENU), 800, 600);
+    // Show the login scene.
+    Scene scene = new Scene(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN), 800, 600);
     scene
         .getStylesheets()
         .add(getClass().getResource("/css/styles.css").toExternalForm()); // Initialize css.

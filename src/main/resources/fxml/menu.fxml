@@ -42,7 +42,7 @@
             </VBox>
             <HBox alignment="CENTER_RIGHT" layoutX="7.0" layoutY="484.0" prefHeight="100.0" prefWidth="794.0">
                <children>
-                  <Button fx:id="btnSwitchAccount" mnemonicParsing="false" text="Switch Account" />
+                  <Button fx:id="btnSwitchAccount" mnemonicParsing="false" onAction="#onSwitchAccount" text="Switch Account" />
                   <VBox prefHeight="79.0" prefWidth="57.0" />
                   <Button fx:id="btnHowToPlay" mnemonicParsing="false" text="How To Play?" />
                </children>

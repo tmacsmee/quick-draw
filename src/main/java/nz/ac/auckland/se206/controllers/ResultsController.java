@@ -1,14 +1,15 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.TextToSpeechTask;
@@ -19,7 +20,6 @@ public class ResultsController {
   @FXML private Button saveSketchButton;
   @FXML private Label resultLabel;
   @FXML private ImageView sketchImageView;
-  @FXML private TextField sketchTextField;
   private CanvasController canvasController;
 
   /** Initializes the ResultsController. */
@@ -53,20 +53,31 @@ public class ResultsController {
    */
   @FXML
   private void onSaveSketch() throws IOException {
-    File file = fileChooser();
-    canvasController.saveCurrentSnapshotOnFile(file);
+
+    // gets the current drawing by the user
+    BufferedImage image = canvasController.getCurrentSnapshot();
+
+    // using FileChooser, allow the user to select any file they wish on their machine
+    // and enter whatever name they want to save the file as
+    FileChooser saveFile = new FileChooser();
+    saveFile.setTitle("Choose where to save");
+    saveFile.getExtensionFilters().addAll(new ExtensionFilter("All Files", "*.*"));
+    File file = saveFile.showSaveDialog(null);
+
+    // save the image
+    canvasController.saveCurrentSnapshotOnFile(file, image);
   }
 
-  /**
-   * Runs file chooser to allow the user to select a file to save the sketch to.
-   *
-   * @return file the user selects.
-   */
-  @FXML
-  private File fileChooser() {
-    DirectoryChooser dc = new DirectoryChooser();
-    return dc.showDialog(null);
-  }
+  //  /**
+  //   * Runs file chooser to allow the user to select a file to save the sketch to.
+  //   *
+  //   * @return file the user selects.
+  //   */
+  //  @FXML
+  //  private File fileChooser() {
+  //    DirectoryChooser dc = new DirectoryChooser();
+  //    return dc.showDialog(null);
+  //  }
 
   public void setResultLabel(String result) {
     resultLabel.setText(result);
@@ -77,13 +88,13 @@ public class ResultsController {
    *
    * @return sketch name
    */
-  public String getSketchName() {
-    if (sketchTextField.getText().isEmpty()) {
-      return "sketch" + System.currentTimeMillis();
-    } else {
-      return sketchTextField.getText();
-    }
-  }
+  //  public String getSketchName() {
+  //    if (sketchTextField.getText().isEmpty()) {
+  //      return "sketch" + System.currentTimeMillis();
+  //    } else {
+  //      return sketchTextField.getText();
+  //    }
+  //  }
 
   public void setSketchImage() {
     Image sketchImage = canvasController.getCanvas().snapshot(null, null);

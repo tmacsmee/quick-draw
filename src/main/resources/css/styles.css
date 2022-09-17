@@ -4,6 +4,7 @@
 
 Button {
     -fx-background-color: white;
+        background-color: white;
     -fx-padding: 10;
     -fx-font-size: 30;
     -fx-text-fill: #CC7E5D;
@@ -21,7 +22,23 @@ Button:hover {
     -fx-font-weight: bold;
     -fx-font-style: italic;
     -fx-font-size: 54;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
+}
+
+.menu-slogan {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 40;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
+}
+
+.menu-screenText {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 25;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
 
 .canvas {

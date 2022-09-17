@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreateAccountController">
    <children>
       <VBox alignment="CENTER" layoutY="14.0" prefHeight="163.0" prefWidth="800.0">
          <children>
@@ -17,14 +17,14 @@
             <Label styleClass="menu-screenText" text="New Here? Create an Account Below" textFill="WHITE" />
          </children>
       </VBox>
-      <Button layoutX="347.0" layoutY="424.0" mnemonicParsing="false" text="Create" />
+      <Button fx:id="createButton" layoutX="347.0" layoutY="424.0" mnemonicParsing="false" onAction="#onCreate" text="Create" />
       <VBox alignment="CENTER" layoutX="563.0" layoutY="404.0" prefHeight="106.0" prefWidth="225.0">
          <children>
             <Label styleClass="menu-screenText" text="Already Have an" textFill="WHITE" />
             <Label styleClass="menu-screenText" text="Account?" textFill="WHITE" />
          </children>
       </VBox>
-      <Button layoutX="624.0" layoutY="500.0" mnemonicParsing="false" text="Log In" />
+      <Button fx:id="loginButton" layoutX="624.0" layoutY="500.0" mnemonicParsing="false" onAction="#onLogin" text="Log In" />
       <VBox alignment="CENTER_RIGHT" layoutX="93.0" layoutY="251.0" prefHeight="47.0" prefWidth="177.0">
          <children>
             <Label styleClass="menu-screenText" text="Username:" textFill="WHITE" />
@@ -42,17 +42,17 @@
       </VBox>
       <VBox layoutX="259.0" layoutY="253.0" prefHeight="47.0" prefWidth="283.0">
          <children>
-            <TextField promptText="Username" />
+            <TextField fx:id="usernameTextField" promptText="Username" />
          </children>
       </VBox>
       <VBox layoutX="259.0" layoutY="300.0" prefHeight="47.0" prefWidth="283.0">
          <children>
-            <PasswordField promptText="Password" />
+            <PasswordField fx:id="passwordPasswordField" promptText="Password" />
          </children>
       </VBox>
       <VBox layoutX="259.0" layoutY="346.0" prefHeight="47.0" prefWidth="283.0">
          <children>
-            <PasswordField promptText="Confirm Password" />
+            <PasswordField fx:id="confirmPasswordPasswordTextField" promptText="Confirm Password" />
          </children>
       </VBox>
    </children>

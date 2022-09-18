@@ -26,7 +26,12 @@ public class CreateAccountController {
         "***************** Initialising Create Account Controller *****************");
   }
 
-  /** Called when the user clicks the create button to create a new account. */
+  /**
+   * Creates a new account and changes to menu scene if details are successful, otherwise prints
+   * error.
+   *
+   * @param event
+   */
   @FXML
   private void onCreate(ActionEvent event) {
     // Add code to create a new account, and store password and username in json.
@@ -37,7 +42,11 @@ public class CreateAccountController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
   }
 
-  /** Called when the user clicks the login button to return to the login screen. */
+  /**
+   * Switches to the login scene when the button is clicked
+   *
+   * @param event the button click event.
+   */
   @FXML
   private void onLogin(ActionEvent event) {
     // Add your code to switch to the login screen here.

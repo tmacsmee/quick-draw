@@ -7,6 +7,7 @@ public class SceneManager {
   public enum AppUi {
     CREATEACCOUNT,
     LOGIN,
+    HOWTOPLAY,
     MENU,
     READY,
     CANVAS,

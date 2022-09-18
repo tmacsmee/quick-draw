@@ -44,7 +44,7 @@
                <children>
                   <Button fx:id="btnSwitchAccount" mnemonicParsing="false" onAction="#onSwitchAccount" text="Switch Account" />
                   <VBox prefHeight="79.0" prefWidth="57.0" />
-                  <Button fx:id="btnHowToPlay" mnemonicParsing="false" text="How To Play?" />
+                  <Button fx:id="btnHowToPlay" mnemonicParsing="false" onAction="#onHowToPlay" text="How To Play?" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="70.0" layoutY="173.0" prefHeight="66.0" prefWidth="339.0">

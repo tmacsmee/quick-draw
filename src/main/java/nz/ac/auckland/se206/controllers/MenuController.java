@@ -47,4 +47,16 @@ public class MenuController {
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));
   }
+
+  /**
+   * Switches to the how to play scene when the user clicks button.
+   *
+   * @param event the button click event.
+   */
+  @FXML
+  private void onHowToPlay(ActionEvent event) {
+    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.HOWTOPLAY));
+  }
 }

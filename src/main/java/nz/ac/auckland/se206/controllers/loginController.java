@@ -24,7 +24,7 @@ public class loginController {
   }
 
   /**
-   * Called when the user clicks the create button to create a new account.
+   * Switches to the create account scene when the button is clicked
    *
    * @param event the button click event.
    */
@@ -36,7 +36,7 @@ public class loginController {
   }
 
   /**
-   * Called when the user clicks the login button.
+   * Switches to the menu scene when the user logs in.
    *
    * @param event the button click event.
    */

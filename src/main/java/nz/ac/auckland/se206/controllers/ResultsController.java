@@ -3,7 +3,9 @@ package nz.ac.auckland.se206.controllers;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -28,6 +30,18 @@ public class ResultsController {
     System.out.println(
         "***************** Initialising Results Controller *****************" + this);
     canvasController = (CanvasController) App.getController("canvas");
+  }
+
+  /**
+   * Switches to the menu scene when the button is clicked
+   *
+   * @param event the button click event.
+   */
+  @FXML
+  private void onMainMenu(ActionEvent event) {
+    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
   }
 
   /**
@@ -57,7 +71,8 @@ public class ResultsController {
     // gets the current drawing by the user
     BufferedImage image = canvasController.getCurrentSnapshot();
 
-    // using FileChooser, allow the user to select any file they wish on their machine
+    // using FileChooser, allow the user to select any file they wish on their
+    // machine
     // and enter whatever name they want to save the file as
     FileChooser saveFile = new FileChooser();
     saveFile.setTitle("Choose where to save");
@@ -68,16 +83,16 @@ public class ResultsController {
     canvasController.saveCurrentSnapshotOnFile(file, image);
   }
 
-  //  /**
-  //   * Runs file chooser to allow the user to select a file to save the sketch to.
-  //   *
-  //   * @return file the user selects.
-  //   */
-  //  @FXML
-  //  private File fileChooser() {
-  //    DirectoryChooser dc = new DirectoryChooser();
-  //    return dc.showDialog(null);
-  //  }
+  // /**
+  // * Runs file chooser to allow the user to select a file to save the sketch to.
+  // *
+  // * @return file the user selects.
+  // */
+  // @FXML
+  // private File fileChooser() {
+  // DirectoryChooser dc = new DirectoryChooser();
+  // return dc.showDialog(null);
+  // }
 
   public void setResultLabel(String result) {
     resultLabel.setText(result);
@@ -88,13 +103,13 @@ public class ResultsController {
    *
    * @return sketch name
    */
-  //  public String getSketchName() {
-  //    if (sketchTextField.getText().isEmpty()) {
-  //      return "sketch" + System.currentTimeMillis();
-  //    } else {
-  //      return sketchTextField.getText();
-  //    }
-  //  }
+  // public String getSketchName() {
+  // if (sketchTextField.getText().isEmpty()) {
+  // return "sketch" + System.currentTimeMillis();
+  // } else {
+  // return sketchTextField.getText();
+  // }
+  // }
 
   public void setSketchImage() {
     Image sketchImage = canvasController.getCanvas().snapshot(null, null);

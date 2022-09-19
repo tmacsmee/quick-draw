@@ -83,34 +83,14 @@ public class ResultsController {
     canvasController.saveCurrentSnapshotOnFile(file, image);
   }
 
-  // /**
-  // * Runs file chooser to allow the user to select a file to save the sketch to.
-  // *
-  // * @return file the user selects.
-  // */
-  // @FXML
-  // private File fileChooser() {
-  // DirectoryChooser dc = new DirectoryChooser();
-  // return dc.showDialog(null);
-  // }
-
+  /*
+   * Sets the result label to the given string.
+   */
   public void setResultLabel(String result) {
     resultLabel.setText(result);
   }
 
-  /**
-   * Gets the name of the sketch from input field.
-   *
-   * @return sketch name
-   */
-  // public String getSketchName() {
-  // if (sketchTextField.getText().isEmpty()) {
-  // return "sketch" + System.currentTimeMillis();
-  // } else {
-  // return sketchTextField.getText();
-  // }
-  // }
-
+  /** Sets the sketch image to the current canvas snapshot. */
   public void setSketchImage() {
     Image sketchImage = canvasController.getCanvas().snapshot(null, null);
     sketchImageView.setImage(sketchImage);

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreateAccountController">
    <children>
@@ -17,7 +18,7 @@
             <Label styleClass="menu-screenText" text="New Here? Create an Account Below" textFill="WHITE" />
          </children>
       </VBox>
-      <Button fx:id="createButton" layoutX="347.0" layoutY="424.0" mnemonicParsing="false" onAction="#onCreate" text="Create" />
+      <Button fx:id="createButton" layoutX="348.0" layoutY="445.0" mnemonicParsing="false" onAction="#onCreate" text="Create" />
       <VBox alignment="CENTER" layoutX="563.0" layoutY="404.0" prefHeight="106.0" prefWidth="225.0">
          <children>
             <Label styleClass="menu-screenText" text="Already Have an" textFill="WHITE" />
@@ -52,7 +53,16 @@
       </VBox>
       <VBox layoutX="259.0" layoutY="346.0" prefHeight="47.0" prefWidth="283.0">
          <children>
-            <PasswordField fx:id="confirmPasswordPasswordTextField" promptText="Confirm Password" />
+            <PasswordField fx:id="confirmPasswordPasswordField" promptText="Confirm Password" />
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="269.0" layoutY="386.0" prefHeight="37.0" prefWidth="263.0">
+         <children>
+            <Label fx:id="errorMessageLabel">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>

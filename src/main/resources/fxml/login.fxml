@@ -11,66 +11,78 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LoginController">
    <children>
-      <VBox alignment="CENTER" layoutX="-2.0" layoutY="6.0" prefHeight="152.0" prefWidth="800.0">
+      <VBox prefHeight="600.0" prefWidth="800.0">
          <children>
-            <Label alignment="CENTER" styleClass="menu-title" text="Speedy Sketchers!" textFill="WHITE">
-               <font>
-                  <Font size="41.0" />
-               </font>
-            </Label>
-            <Label styleClass="menu-slogan" text="Excel the Artist in You!" textFill="#fffcfc">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <Label text="Login Below or Create an Account">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="-2.0" layoutY="170.0" prefHeight="59.0" prefWidth="800.0" />
-      <HBox layoutX="-2.0" layoutY="221.0" prefHeight="134.0" prefWidth="800.0">
-         <children>
-            <VBox alignment="TOP_RIGHT" prefHeight="114.0" prefWidth="194.0">
+            <VBox alignment="CENTER" prefHeight="152.0" prefWidth="800.0">
                <children>
-                  <Label text="My Username Is:">
+                  <Label alignment="CENTER" styleClass="menu-title" text="Speedy Sketchers!" textFill="WHITE">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="41.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="32.0" prefWidth="174.0" />
-                  <Label text="My Password Is:">
+                  <Label styleClass="menu-slogan" text="Excel the Artist in You!" textFill="#fffcfc">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <Label text="Login Below or Create an Account">
+                     <font>
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="114.0" prefWidth="394.0">
+            <HBox prefHeight="134.0" prefWidth="800.0">
                <children>
-                  <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="300.0" />
-                  <HBox prefHeight="30.0" prefWidth="374.0" />
-                  <PasswordField fx:id="passwordPasswordField" />
+                  <VBox alignment="TOP_RIGHT" prefHeight="114.0" prefWidth="194.0">
+                     <children>
+                        <Label text="My Username Is:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="32.0" prefWidth="174.0" />
+                        <Label text="My Password Is:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="114.0" prefWidth="394.0">
+                     <children>
+                        <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="300.0" />
+                        <HBox prefHeight="30.0" prefWidth="374.0" />
+                        <PasswordField fx:id="passwordPasswordField" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="errorMessageLabel">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="800.0">
+               <children>
+                  <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLogin" text="Login" />
                </children>
             </VBox>
-         </children>
-      </HBox>
-      <VBox alignment="CENTER" layoutX="-2.0" layoutY="355.0" prefHeight="92.0" prefWidth="800.0">
-         <children>
-            <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLogin" text="Login" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER_RIGHT" layoutX="-2.0" layoutY="452.0" prefHeight="134.0" prefWidth="800.0">
-         <children>
-            <Label text="New Here?">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" text="Create An Account" />
+            <VBox alignment="CENTER_RIGHT" prefHeight="134.0" prefWidth="800.0">
+               <children>
+                  <Label text="New Here?">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" text="Create An Account" />
+               </children>
+            </VBox>
          </children>
       </VBox>
    </children>

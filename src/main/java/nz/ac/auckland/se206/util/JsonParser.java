@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,28 +36,19 @@ public class JsonParser {
     ((List<String>) (allUserData.get(username).get("words"))).add(word);
   }
 
-  public void addUser(
-      String username,
-      String password,
-      String age,
-      List<String> wordsEncountered,
-      String gamesWon,
-      String gamesLost,
-      String bestTime) {
+  public void addUser(String username, String password) {
     Map<String, Object> userData =
         Map.of(
             "password",
             password,
-            "age",
-            age,
             "wordsEncountered",
-            wordsEncountered,
+            new ArrayList<String>(),
             "gamesWon",
-            gamesWon,
+            "0",
             "gamesLost",
-            gamesLost,
+            "0",
             "bestTime",
-            bestTime);
+            "No games played");
     allUserData.put(username, userData);
   }
 

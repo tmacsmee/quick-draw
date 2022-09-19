@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import nz.ac.auckland.se206.SceneManager;
@@ -17,6 +18,7 @@ public class LoginController {
   @FXML private Button createAccountButton;
 
   @FXML private Button loginButton;
+  @FXML private Label errorMessageLabel;
 
   /** Initializes the login scene. */
   @FXML
@@ -43,17 +45,21 @@ public class LoginController {
    */
   @FXML
   private void onLogin(ActionEvent event) {
-    // Add code to check if username and password are correct.
     JsonParser jsonParser = new JsonParser();
     String username = usernameTextField.getText();
     String password = passwordPasswordField.getText();
 
-    if (!jsonParser.isCorrectUsername(username)) {}
-
-    // If correct, change to menu scene.
-
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
+    // Check username exists and password is correct, otherwise display error message.
+    if (!jsonParser.isCorrectUsername(username)) {
+      errorMessageLabel.setText("Username does not exist");
+    } else if (!jsonParser.isCorrectPassword(username, password)) {
+      errorMessageLabel.setText("Password is incorrect");
+    } else {
+      // If correct, change to menu scene.
+      Button button =
+          (Button) event.getSource(); // Get the scene of the button and switch its root.
+      Scene buttonScene = button.getScene();
+      buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
+    }
   }
 }

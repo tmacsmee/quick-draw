@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.loginController">
    <children>
       <VBox alignment="CENTER" layoutX="-2.0" layoutY="6.0" prefHeight="152.0" prefWidth="800.0">
          <children>
@@ -52,16 +51,16 @@
             </VBox>
             <VBox prefHeight="114.0" prefWidth="394.0">
                <children>
-                  <TextField prefHeight="26.0" prefWidth="300.0" />
+                  <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="300.0" />
                   <HBox prefHeight="30.0" prefWidth="374.0" />
-                  <PasswordField />
+                  <PasswordField fx:id="passwordPasswordField" />
                </children>
             </VBox>
          </children>
       </HBox>
       <VBox alignment="CENTER" layoutX="-2.0" layoutY="355.0" prefHeight="92.0" prefWidth="800.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" text="Login" />
+            <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLogin" text="Login" />
          </children>
       </VBox>
       <VBox alignment="CENTER_RIGHT" layoutX="-2.0" layoutY="452.0" prefHeight="134.0" prefWidth="800.0">
@@ -71,7 +70,7 @@
                   <Font size="22.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" text="Create An Account" />
+            <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" text="Create An Account" />
          </children>
       </VBox>
    </children>

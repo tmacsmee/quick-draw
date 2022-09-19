@@ -7,8 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.JsonParser;
 
-public class loginController {
+public class LoginController {
   @FXML private TextField usernameTextField;
 
   @FXML private PasswordField passwordPasswordField;
@@ -43,6 +44,11 @@ public class loginController {
   @FXML
   private void onLogin(ActionEvent event) {
     // Add code to check if username and password are correct.
+    JsonParser jsonParser = new JsonParser();
+    String username = usernameTextField.getText();
+    String password = passwordPasswordField.getText();
+
+    if (!jsonParser.isCorrectUsername(username)) {}
 
     // If correct, change to menu scene.
 

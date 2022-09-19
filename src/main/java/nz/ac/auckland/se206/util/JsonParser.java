@@ -23,12 +23,21 @@ public class JsonParser {
     return allUserData.get(username).get(property);
   }
 
+  public boolean isCorrectPassword(String username, String password) {
+    return getProperty(username, "password").equals(password);
+  }
+
+  public boolean isCorrectUsername(String username) {
+    return allUserData.containsKey(username);
+  }
+
   public void addWordEncountered(String username, String word) {
     ((List<String>) (allUserData.get(username).get("words"))).add(word);
   }
 
   public void addUser(
       String username,
+      String password,
       String age,
       List<String> wordsEncountered,
       String gamesWon,
@@ -36,6 +45,8 @@ public class JsonParser {
       String bestTime) {
     Map<String, Object> userData =
         Map.of(
+            "password",
+            password,
             "age",
             age,
             "wordsEncountered",

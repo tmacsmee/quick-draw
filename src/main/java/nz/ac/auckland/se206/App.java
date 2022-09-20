@@ -3,13 +3,17 @@ package nz.ac.auckland.se206;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** This is the entry point of the JavaFX application. */
 public class App extends Application {
+
+  public static TextToSpeech voice = new TextToSpeech();
 
   private static final HashMap<String, Object> controllerMap = new HashMap<>();
 
@@ -73,5 +77,11 @@ public class App extends Application {
         .add(getClass().getResource("/css/styles.css").toExternalForm()); // Initialize css.
     stage.setScene(scene);
     stage.show();
+
+    stage.setOnCloseRequest(
+        e -> {
+          Platform.exit();
+          voice.terminate();
+        });
   }
 }

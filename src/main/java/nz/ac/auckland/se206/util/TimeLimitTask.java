@@ -41,7 +41,7 @@ public class TimeLimitTask extends TimerTask {
   public void run() {
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
     if (timeElapsed == 60) { // If time runs out, move to results scene.
-      this.cancel();
+      timer.cancel();
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
       canvasController.results();
@@ -59,7 +59,7 @@ public class TimeLimitTask extends TimerTask {
                           .getPredictions(canvasController.getCurrentSnapshot(), 10)));
               if (canvasController
                   .isCorrect()) { // Check if the prompt is in the top 3 predictions.
-                this.cancel();
+                timer.cancel();
                 resultsController.setResultLabel( // If so, move to results scene.
                     "Good job! You finished in " + timeElapsed + " seconds!");
                 resultsController.setSketchImage();

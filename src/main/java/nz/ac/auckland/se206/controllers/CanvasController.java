@@ -98,9 +98,14 @@ public class CanvasController {
         });
   }
 
-  /** Called when the "Clear" button is pressed, clears the canvas. */
+  /** Calls the method to clear the canvas when the "Clear" button is pressed, clears the canvas. */
   @FXML
-  void onClear() {
+  private void onClear() {
+    clear();
+  }
+
+  /** Clears the entire canvas when called. */
+  public void clear() {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
   }
 
@@ -153,7 +158,8 @@ public class CanvasController {
    */
   public boolean isCorrect() throws TranslateException {
     for (Classifications.Classification c :
-        model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3 predictions.
+        model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3
+      // predictions.
       if (promptLabel.getText().substring(6).equalsIgnoreCase(c.getClassName().replace("_", " "))) {
         return true; // If the prompt is in the top 3 predictions, return true.
       }

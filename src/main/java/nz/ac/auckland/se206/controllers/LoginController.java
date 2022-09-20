@@ -63,6 +63,8 @@ public class LoginController {
       menuController.setWordsEncounteredListView(
           (List<String>) jsonParser.getProperty(username, "wordsEncountered"));
 
+      App.setCurrentUser(username); // Set the current user
+
       // Change to menu screen
       Button button =
           (Button) event.getSource(); // Get the scene of the button and switch its root.

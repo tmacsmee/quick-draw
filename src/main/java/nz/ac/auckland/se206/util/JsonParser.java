@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,7 +16,13 @@ public class JsonParser {
 
   public JsonParser() {
     try {
-      allUserData = mapper.readValue(Paths.get("user_files/user_data.json").toFile(), Map.class);
+      if (!Paths.get(".user_files/user_data.json").toFile().exists()) {
+        File file = new File(".user_files/user_data.json");
+        ObjectNode node = mapper.createObjectNode();
+        mapper.writeValue(file, node);
+      }
+      allUserData = mapper.readValue(Paths.get(".user_files/user_data.json").toFile(), Map.class);
+
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -33,7 +41,10 @@ public class JsonParser {
   }
 
   public void addWordEncountered(String username, String word) {
-    ((List<String>) (allUserData.get(username).get("words"))).add(word);
+    if (!((List<String>) (getProperty(username, "wordsEncountered"))).contains(word)) {
+      ((List<String>) (getProperty(username, "wordsEncountered"))).add(word);
+      mapToJson();
+    }
   }
 
   public void addUser(String username, String password) {
@@ -54,7 +65,7 @@ public class JsonParser {
 
   public void mapToJson() {
     try {
-      mapper.writeValue(Paths.get("user_files/user_data.json").toFile(), allUserData);
+      mapper.writeValue(Paths.get(".user_files/user_data.json").toFile(), allUserData);
     } catch (IOException e) {
       e.printStackTrace();
     }

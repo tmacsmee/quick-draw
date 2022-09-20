@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 
   private static final HashMap<String, Object> controllerMap = new HashMap<>();
+  private static String currentUser;
 
   /**
    * Launches the JavaFX application.
@@ -73,5 +74,13 @@ public class App extends Application {
         .add(getClass().getResource("/css/styles.css").toExternalForm()); // Initialize css.
     stage.setScene(scene);
     stage.show();
+  }
+
+  public static void setCurrentUser(String username) {
+    currentUser = username;
+  }
+
+  public static String getCurrentUser() {
+    return currentUser;
   }
 }

@@ -8,7 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import nz.ac.auckland.se206.SceneManager;
 
-public class loginController {
+public class LoginController {
   @FXML private TextField usernameTextField;
 
   @FXML private PasswordField passwordPasswordField;

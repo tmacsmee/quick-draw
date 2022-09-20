@@ -62,7 +62,7 @@ public class DoodlePrediction {
         predictions) { // String format "i : class name : confidence"
       sb.append(i) // Index of prediction
           .append(" : ")
-          .append(classification.getClassName())
+          .append(classification.getClassName().replace("_", " "))
           .append(" : ")
           .append(
               String.format("%.2f%%", 100 * classification.getProbability())) // Confidence level

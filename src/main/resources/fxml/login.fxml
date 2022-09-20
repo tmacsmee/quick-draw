@@ -24,7 +24,7 @@
                </font>
             </Label>
             <VBox prefHeight="200.0" prefWidth="100.0" />
-            <Label text="Login Below or Create an Account">
+            <Label styleClass="menu-screenText" text="Login Below or Create an Account" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -36,13 +36,13 @@
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="114.0" prefWidth="194.0">
                <children>
-                  <Label text="My Username Is:">
+                  <Label styleClass="menu-screenText" text="Username:" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="32.0" prefWidth="174.0" />
-                  <Label text="My Password Is:">
+                  <Label styleClass="menu-screenText" text="Password:" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -65,7 +65,7 @@
       </VBox>
       <VBox alignment="CENTER_RIGHT" layoutX="-2.0" layoutY="452.0" prefHeight="134.0" prefWidth="800.0">
          <children>
-            <Label text="New Here?">
+            <Label styleClass="menu-screenText" text="New Here?" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>

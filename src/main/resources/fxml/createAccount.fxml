@@ -16,65 +16,46 @@
             <VBox alignment="BOTTOM_CENTER" maxHeight="160.0" maxWidth="780.0" minHeight="160.0" minWidth="780.0" prefHeight="160.0" prefWidth="780.0">
                <children>
                   <Label styleClass="menu-title" text="Speedy Sketchers!" textFill="WHITE" />
-                  <Label styleClass="heading" text="Excel the Artist in you!" textFill="WHITE" />
+                  <Label styleClass="header" text="Excel the Artist in you!" textFill="WHITE" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="333.0" prefWidth="780.0">
                <children>
-                  <Label prefHeight="55.0" prefWidth="421.0" styleClass="heading" text="New Here? Create an Account Below" textFill="WHITE" />
+                  <Label prefHeight="55.0" prefWidth="421.0" styleClass="header" text="New Here? Create an Account Below" textFill="WHITE" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="200.0" styleClass="form-vbox">
+                        <VBox alignment="CENTER_LEFT" prefHeight="145.0" prefWidth="366.0" styleClass="form-vbox">
                            <children>
-                              <Label text="Username:">
+                              <TextField fx:id="usernameTextField" promptText="Username">
                                  <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Password:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Confirm Password:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="145.0" prefWidth="335.0" styleClass="form-vbox">
-                           <children>
-                              <TextField fx:id="usernameTextField">
-                                 <font>
-                                    <Font size="16.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </TextField>
-                              <PasswordField fx:id="passwordPasswordField">
+                              <PasswordField fx:id="passwordPasswordField" promptText="Password">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </PasswordField>
-                              <PasswordField fx:id="confirmPasswordPasswordField">
+                              <PasswordField fx:id="confirmPasswordPasswordField" promptText="Confirm password">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </PasswordField>
+                              <Label fx:id="errorMessageLabel" alignment="TOP_CENTER" prefHeight="24.0" prefWidth="314.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Label fx:id="errorMessageLabel" alignment="TOP_CENTER" prefHeight="24.0" prefWidth="314.0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                   <Button fx:id="createButton" mnemonicParsing="false" onAction="#onCreate" prefHeight="65.0" prefWidth="164.0" text="Create" />
                </children>
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="780.0">
                <children>
-                  <Label prefHeight="49.0" prefWidth="240.0" text="Already have an account?">
+                  <Label prefHeight="49.0" prefWidth="314.0" styleClass="header" text="Already have an account?" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>

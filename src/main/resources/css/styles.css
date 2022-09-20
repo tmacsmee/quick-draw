@@ -24,11 +24,11 @@ Button:hover {
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
 
-.heading {
+.header {
     -fx-font-family: "Arial";
     -fx-font-weight: bold;
     -fx-font-size: 24;
-    -fx-color: white;
+    -fx-color: #FFFFFF;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
 
@@ -38,6 +38,10 @@ Button:hover {
     -fx-font-style: italic;
     -fx-font-size: 25;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
+}
+
+TextField, TextField:focused, PasswordField, PasswordField:focused {
+    -fx-prompt-text-fill: darkgrey;
 }
 
 .canvas {

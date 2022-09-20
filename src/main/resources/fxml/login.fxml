@@ -20,7 +20,7 @@
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="271.0" styleClass="heading" text="Excel the artist in you!" textFill="#fffcfc">
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="271.0" styleClass="header" text="Excel the artist in you!" textFill="#fffcfc">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -29,39 +29,25 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="500.0" prefWidth="780.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="526.0" styleClass="heading" text="Login below or create an account" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="526.0" styleClass="header" text="Login below or create an account" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="188.0" prefWidth="760.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="99.0" prefWidth="740.0">
                            <children>
-                              <VBox alignment="CENTER_RIGHT" prefHeight="138.0" prefWidth="171.0" styleClass="form-vbox">
+                              <VBox alignment="CENTER_LEFT" prefHeight="108.0" prefWidth="361.0" styleClass="form-vbox">
                                  <children>
-                                    <Label prefHeight="25.0" prefWidth="210.0" text="My username is:">
+                                    <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="277.0" promptText="Username">
                                        <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="25.0" prefWidth="188.0" text="My password is:">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="CENTER_LEFT" prefHeight="138.0" prefWidth="322.0" styleClass="form-vbox">
-                                 <children>
-                                    <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="277.0">
-                                       <font>
-                                          <Font size="16.0" />
+                                          <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <PasswordField fx:id="passwordPasswordField" prefHeight="25.0" prefWidth="277.0">
+                                    <PasswordField fx:id="passwordPasswordField" prefHeight="25.0" prefWidth="277.0" promptText="Password">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font size="18.0" />
                                        </font>
                                     </PasswordField>
                                  </children>
@@ -80,7 +66,7 @@
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="780.0">
                <children>
-                  <Label prefHeight="47.0" prefWidth="108.0" text="New here?">
+                  <Label prefHeight="47.0" prefWidth="136.0" styleClass="header" text="New here?" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>

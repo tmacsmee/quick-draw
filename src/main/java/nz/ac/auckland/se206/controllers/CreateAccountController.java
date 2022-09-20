@@ -70,6 +70,9 @@ public class CreateAccountController {
           (List<String>) jsonParser.getProperty(username, "wordsEncountered"));
 
       App.setCurrentUser(username);
+      ReadyController readyController = (ReadyController) App.getController("ready");
+      readyController.createDifficultyArrays(); // Get an array of each difficulty
+      readyController.getPrompt("E");
 
       // Switch to menu scene
       Button button =

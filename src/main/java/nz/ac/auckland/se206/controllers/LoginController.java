@@ -64,6 +64,9 @@ public class LoginController {
           (List<String>) jsonParser.getProperty(username, "wordsEncountered"));
 
       App.setCurrentUser(username); // Set the current user
+      ReadyController readyController = (ReadyController) App.getController("ready");
+      readyController.createDifficultyArrays(); // Get an array of each difficulty
+      readyController.getPrompt("E");
 
       // Change to menu screen
       Button button =

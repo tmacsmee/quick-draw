@@ -25,8 +25,6 @@ public class ReadyController {
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising Ready Controller *****************" + this);
-    createDifficultyArrays(); // Get an array of each difficulty
-    getPrompt("E");
   }
 
   /*
@@ -51,7 +49,7 @@ public class ReadyController {
   }
 
   /** Generates an array of each difficulty from the csv file. */
-  private void createDifficultyArrays() {
+  public void createDifficultyArrays() {
     easy = new ArrayList<>();
     medium = new ArrayList<>();
     hard = new ArrayList<>();
@@ -101,7 +99,7 @@ public class ReadyController {
    *
    * @param difficulty The difficulty of the prompt.
    */
-  private void getPrompt(String difficulty) {
+  public void getPrompt(String difficulty) {
     switch (difficulty) { // Get a random word from the correct array
       case "E": // Generate easy prompt
         promptLabel.setText(easy.get((int) (Math.random() * easy.size())));

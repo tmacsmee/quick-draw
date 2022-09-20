@@ -13,6 +13,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 /** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
+  // initialise voice in app so that it can be terminated when app is closed
   public static TextToSpeech voice = new TextToSpeech();
 
   private static final HashMap<String, Object> controllerMap = new HashMap<>();
@@ -78,6 +79,7 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
 
+    // terminates textToSpeech on closing the app
     stage.setOnCloseRequest(
         e -> {
           Platform.exit();

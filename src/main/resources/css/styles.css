@@ -4,7 +4,6 @@
 
 Button {
     -fx-background-color: white;
-        background-color: white;
     -fx-padding: 10;
     -fx-font-size: 30;
     -fx-text-fill: #CC7E5D;
@@ -25,11 +24,11 @@ Button:hover {
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
 
-.menu-slogan {
+.heading {
     -fx-font-family: "Arial";
     -fx-font-weight: bold;
-    -fx-font-style: italic;
-    -fx-font-size: 40;
+    -fx-font-size: 24;
+    -fx-color: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
 
@@ -62,6 +61,9 @@ Button:hover {
     -fx-background-color: #f2956e;
 }
 
+.form-vbox {
+    -fx-spacing: 10;
+}
 
 VBox {
     -fx-padding: 10;
@@ -77,6 +79,10 @@ HBox {
 
 .menu-logo {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -4, 4);
+}
+
+.create-account-button {
+    -fx-font-size: 22;
 }
 
 .canvas-buttons {

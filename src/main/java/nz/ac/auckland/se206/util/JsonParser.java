@@ -47,7 +47,7 @@ public class JsonParser {
             "0",
             "gamesLost",
             "0",
-            "bestTime",
+            "fastestTime",
             "No games played");
     allUserData.put(username, userData);
   }

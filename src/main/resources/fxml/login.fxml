@@ -11,78 +11,83 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LoginController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="800.0">
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="152.0" prefWidth="800.0">
+            <VBox alignment="BOTTOM_CENTER" maxHeight="160.0" maxWidth="780.0" minHeight="160.0" minWidth="780.0" prefHeight="160.0" prefWidth="780.0">
                <children>
                   <Label alignment="CENTER" styleClass="menu-title" text="Speedy Sketchers!" textFill="WHITE">
                      <font>
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <Label styleClass="menu-slogan" text="Excel the Artist in You!" textFill="#fffcfc">
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="271.0" styleClass="heading" text="Excel the artist in you!" textFill="#fffcfc">
                      <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
-                  <Label text="Login Below or Create an Account">
-                     <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <HBox prefHeight="134.0" prefWidth="800.0">
+            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="780.0">
                <children>
-                  <VBox alignment="TOP_RIGHT" prefHeight="114.0" prefWidth="194.0">
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="526.0" styleClass="heading" text="Login below or create an account" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label text="My Username Is:">
+                        <HBox alignment="CENTER" prefHeight="99.0" prefWidth="740.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="138.0" prefWidth="171.0" styleClass="form-vbox">
+                                 <children>
+                                    <Label prefHeight="25.0" prefWidth="210.0" text="My username is:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="25.0" prefWidth="188.0" text="My password is:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER_LEFT" prefHeight="138.0" prefWidth="322.0" styleClass="form-vbox">
+                                 <children>
+                                    <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="277.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <PasswordField fx:id="passwordPasswordField" prefHeight="25.0" prefWidth="277.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="38.0" prefWidth="395.0">
                            <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <HBox prefHeight="32.0" prefWidth="174.0" />
-                        <Label text="My Password Is:">
-                           <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <VBox prefHeight="114.0" prefWidth="394.0">
-                     <children>
-                        <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="300.0" />
-                        <HBox prefHeight="30.0" prefWidth="374.0" />
-                        <PasswordField fx:id="passwordPasswordField" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="errorMessageLabel">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="800.0">
-               <children>
-                  <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLogin" text="Login" />
+                  <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLogin" prefHeight="53.0" prefWidth="178.0" text="Login" />
                </children>
             </VBox>
-            <VBox alignment="CENTER_RIGHT" prefHeight="134.0" prefWidth="800.0">
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="780.0">
                <children>
-                  <Label text="New Here?">
+                  <Label prefHeight="47.0" prefWidth="108.0" text="New here?">
                      <font>
-                        <Font size="22.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" text="Create An Account" />
+                  <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" prefHeight="52.0" prefWidth="210.0" styleClass="create-account-button" text="Create an account" />
                </children>
-            </VBox>
+            </HBox>
          </children>
       </VBox>
    </children>

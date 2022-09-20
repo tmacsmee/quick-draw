@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -7,16 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
 public class LoginController {
   @FXML private TextField usernameTextField;
-
   @FXML private PasswordField passwordPasswordField;
-
   @FXML private Button createAccountButton;
-
   @FXML private Button loginButton;
   @FXML private Label errorMessageLabel;
 
@@ -55,7 +54,16 @@ public class LoginController {
     } else if (!jsonParser.isCorrectPassword(username, password)) {
       errorMessageLabel.setText("Password is incorrect");
     } else {
-      // If correct, change to menu scene.
+      // Set user stats labels
+      MenuController menuController = (MenuController) App.getController("menu");
+      menuController.setWelcomeLabel(username);
+      menuController.setNumWinsLabel((String) jsonParser.getProperty(username, "gamesWon"));
+      menuController.setNumLossesLabel((String) jsonParser.getProperty(username, "gamesLost"));
+      menuController.setFastestTimeLabel((String) jsonParser.getProperty(username, "fastestTime"));
+      menuController.setWordsEncounteredListView(
+          (List<String>) jsonParser.getProperty(username, "wordsEncountered"));
+
+      // Change to menu screen
       Button button =
           (Button) event.getSource(); // Get the scene of the button and switch its root.
       Scene buttonScene = button.getScene();

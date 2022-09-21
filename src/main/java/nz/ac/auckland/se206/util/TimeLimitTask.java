@@ -46,7 +46,7 @@ public class TimeLimitTask extends TimerTask {
       this.cancel();
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
-      jsonParser.incrementLosses(App.getCurrentUser());
+      Platform.runLater(() -> jsonParser.incrementLosses(App.getCurrentUser()));
       canvasController.results();
 
     } else if (timeElapsed
@@ -66,7 +66,7 @@ public class TimeLimitTask extends TimerTask {
                 resultsController.setResultLabel( // If so, move to results scene.
                     "Good job! You finished in " + timeElapsed + " seconds!");
                 resultsController.setSketchImage();
-                jsonParser.incrementWins(App.getCurrentUser());
+                Platform.runLater(() -> jsonParser.incrementWins(App.getCurrentUser()));
                 canvasController.results();
               }
             } catch (TranslateException e) {

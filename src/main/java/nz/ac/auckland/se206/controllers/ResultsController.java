@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +42,9 @@ public class ResultsController {
   private void onMainMenu(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.reset(); // Reset the canvas.
+
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateStats();
 
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();

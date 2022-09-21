@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -55,15 +54,11 @@ public class LoginController {
       errorMessageLabel.setText("Password is incorrect");
     } else {
       // Set user stats labels
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.setWelcomeLabel(username);
-      menuController.setNumWinsLabel((String) jsonParser.getProperty(username, "gamesWon"));
-      menuController.setNumLossesLabel((String) jsonParser.getProperty(username, "gamesLost"));
-      menuController.setFastestTimeLabel((String) jsonParser.getProperty(username, "fastestTime"));
-      menuController.setWordsEncounteredListView(
-          (List<String>) jsonParser.getProperty(username, "wordsEncountered"));
-
       App.setCurrentUser(username); // Set the current user
+
+      MenuController menuController = (MenuController) App.getController("menu");
+      menuController.updateStats();
+
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty
       readyController.getPrompt("E");

@@ -1,7 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.util.List;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.JsonParser;
 import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 /** The controller of the menu scene. */
@@ -67,24 +67,17 @@ public class MenuController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.HOWTOPLAY));
   }
 
-  public void setWelcomeLabel(String username) {
-    welcomeLabel.setText("Welcome back " + username + "!");
+  public void updateStats() {
+    JsonParser jsonParser = new JsonParser();
+
+    welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
+    numWinsLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesWon").toString());
+    numLossesLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesLost").toString());
+    fastestTimeLabel.setText(
+        jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString());
   }
 
-  public void setNumWinsLabel(String numWins) {
-    numWinsLabel.setText(numWins);
-  }
-
-  public void setNumLossesLabel(String numLosses) {
-    numLossesLabel.setText(numLosses);
-  }
-
-  public void setFastestTimeLabel(String fastestTime) {
-    fastestTimeLabel.setText(fastestTime);
-  }
-
-  public void setWordsEncounteredListView(List<String> wordsEncountered) {
-    ObservableList<String> wordsList = FXCollections.observableArrayList(wordsEncountered);
-    wordsEncounteredListView.setItems(wordsList);
+  public void setWordsEncounteredListView(ObservableList<String> words) {
+    wordsEncounteredListView.setItems(words);
   }
 }

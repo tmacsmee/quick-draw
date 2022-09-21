@@ -17,6 +17,7 @@ public class JsonParser {
   public JsonParser() {
     try {
       if (!Paths.get(".user_files/user_data.json").toFile().exists()) {
+        Paths.get(".user_files").toFile().mkdir();
         File file = new File(".user_files/user_data.json");
         ObjectNode node = mapper.createObjectNode();
         mapper.writeValue(file, node);
@@ -61,6 +62,18 @@ public class JsonParser {
             "fastestTime",
             "No games played");
     allUserData.put(username, userData);
+  }
+
+  public void incrementWins(String username) {
+    int wins = Integer.parseInt((String) getProperty(username, "gamesWon"));
+    allUserData.get(username).put("gamesWon", Integer.toString(wins + 1));
+    mapToJson();
+  }
+
+  public void incrementLosses(String username) {
+    int losses = Integer.parseInt((String) getProperty(username, "gamesLost"));
+    allUserData.get(username).put("gamesLost", Integer.toString(losses + 1));
+    mapToJson();
   }
 
   public void mapToJson() {

@@ -29,7 +29,7 @@
             <Label styleClass="menu-screenText" text=" much more!" textFill="WHITE" />
          </children>
       </VBox>
-      <Button fx:id="mainMenuButton" layoutX="44.0" layoutY="509.0" mnemonicParsing="false" onAction="#onMainMenu" text="Main Menu" />
+      <Button fx:id="mainMenuButton" layoutX="44.0" layoutY="509.0" mnemonicParsing="false" onAction="#onSwitchToMenu" text="Main Menu" />
       <Button fx:id="playButton" layoutX="643.0" layoutY="509.0" mnemonicParsing="false" onAction="#onPlay" text="Play!" />
    </children>
 </Pane>

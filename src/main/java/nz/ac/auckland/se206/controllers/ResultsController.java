@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class ResultsController {
    * @param event the button click event.
    */
   @FXML
-  private void onMainMenu(ActionEvent event) {
+  private void onSwitchToMenu(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.reset(); // Reset the canvas.
 

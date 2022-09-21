@@ -3,14 +3,19 @@ package nz.ac.auckland.se206;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.util.JsonParser;
 
 /** This is the entry point of the JavaFX application. */
 public class App extends Application {
+
+  // initialise voice in app so that it can be terminated when app is closed
+  public static TextToSpeech voice = new TextToSpeech();
 
   private static final HashMap<String, Object> controllerMap = new HashMap<>();
   private static String currentUser;
@@ -78,6 +83,13 @@ public class App extends Application {
         .add(getClass().getResource("/css/styles.css").toExternalForm()); // Initialize css.
     stage.setScene(scene);
     stage.show();
+
+    // terminates textToSpeech on closing the app
+    stage.setOnCloseRequest(
+        e -> {
+          Platform.exit();
+          voice.terminate();
+        });
   }
 
   public static void setCurrentUser(String username) {

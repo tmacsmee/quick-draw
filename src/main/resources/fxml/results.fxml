@@ -31,7 +31,7 @@
             </Pane>
             <HBox alignment="CENTER" prefHeight="136.0" prefWidth="701.0" styleClass="results-button-box">
                <children>
-                  <Button fx:id="btnBackToMain" mnemonicParsing="false" onAction="#onMainMenu" text="Main Menu" />
+                  <Button fx:id="btnBackToMain" mnemonicParsing="false" onAction="#onSwitchToMenu" text="Main Menu" />
                   <Button fx:id="playAgainButton" mnemonicParsing="false" onAction="#onPlayAgain" prefHeight="65.0" prefWidth="195.0" text="Play Again?" />
                   <Button fx:id="saveSketchButton" mnemonicParsing="false" onAction="#onSaveSketch" prefHeight="65.0" prefWidth="192.0" text="Save Sketch" />
                </children>

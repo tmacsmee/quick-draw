@@ -28,7 +28,8 @@ public class ReadyController {
   }
 
   /*
-   * Runs when ready button is pressed. Takes user to the canvas scene and starts timer.
+   * Runs when ready button is pressed. Takes user to the canvas scene and starts
+   * timer.
    */
   @FXML
   private void onReady(ActionEvent event) {
@@ -36,7 +37,7 @@ public class ReadyController {
 
     CanvasController canvasController = (CanvasController) App.getController("canvas");
     canvasController.setPrompt(prompt); // Set the prompt on the canvas controller
-    canvasController.onClear();
+    canvasController.clear();
 
     canvasController.startTimer();
 

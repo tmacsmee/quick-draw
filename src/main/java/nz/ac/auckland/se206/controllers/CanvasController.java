@@ -36,6 +36,9 @@ public class CanvasController {
   @FXML private Button brushButton;
   @FXML private Button eraserButton;
 
+  // boolean used to check if the canvas is empty or not
+  private boolean isCanvasNotEmpty = false;
+
   /**
    * Initializes the drawing canvas, mouse input, and machine learning model
    *
@@ -72,6 +75,9 @@ public class CanvasController {
           double thisX = e.getX(); // Get coordinates of mouse on drag.
           double thisY = e.getY();
 
+          // canvas declared as not empty when user starts drawing
+          isCanvasNotEmpty = true;
+
           graphic.setLineWidth(brushSize);
           graphic.setStroke(Color.BLACK);
           graphic.strokeLine(
@@ -98,10 +104,20 @@ public class CanvasController {
         });
   }
 
-  /** Called when the "Clear" button is pressed, clears the canvas. */
+  /** Calls the method to clear the canvas when the "Clear" button is pressed, clears the canvas. */
   @FXML
-  void onClear() {
+  private void onClear() {
+    clear();
+  }
+
+  /** Clears the entire canvas when called. */
+  public void clear() {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+    // when canvas is cleared, canvas declared as empty and predictionList no longer displays
+    // anything
+    isCanvasNotEmpty = false;
+    predictionList.setText("");
   }
 
   /** Creates and starts the task that manages the time limit. */
@@ -125,7 +141,11 @@ public class CanvasController {
    * @param predictions list of predictions
    */
   public void setPredictionList(String predictions) {
-    predictionList.setText(predictions);
+
+    // only display predictions if canvas is not empty
+    if (isCanvasNotEmpty) {
+      predictionList.setText(predictions);
+    }
   }
 
   /**
@@ -152,10 +172,17 @@ public class CanvasController {
    * @throws TranslateException If there is an error in translating the prompt to a classification.
    */
   public boolean isCorrect() throws TranslateException {
-    for (Classifications.Classification c :
-        model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3 predictions.
-      if (promptLabel.getText().substring(6).equalsIgnoreCase(c.getClassName().replace("_", " "))) {
-        return true; // If the prompt is in the top 3 predictions, return true.
+
+    // only predict if canvas is not empty
+    if (isCanvasNotEmpty) {
+      for (Classifications.Classification c :
+          model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3 predictions.
+        if (promptLabel
+            .getText()
+            .substring(6)
+            .equalsIgnoreCase(c.getClassName().replace("_", " "))) {
+          return true; // If the prompt is in the top 3 predictions, return true.
+        }
       }
     }
     return false;
@@ -163,6 +190,7 @@ public class CanvasController {
 
   /** Switches to the 'results' scene. */
   public void results() {
+    predictionList.setText("");
     Scene thisScene = clearButton.getScene();
     thisScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.RESULTS)));
   }
@@ -193,8 +221,8 @@ public class CanvasController {
   /**
    * Save the current snapshot on a bitmap file.
    *
-   * @param image
-   * @return
+   * @param image the image to save
+   * @return the file where the image was saved
    * @throws IOException If the image cannot be saved.
    */
   public File saveCurrentSnapshotOnFile(File file, BufferedImage image) throws IOException {

@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,7 +70,7 @@ public class MenuController {
   }
 
   public void updateStats() {
-    JsonParser jsonParser = new JsonParser();
+    JsonParser jsonParser = App.getJsonParser();
 
     welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
     numWinsLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesWon").toString());
@@ -77,7 +79,11 @@ public class MenuController {
         jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString());
   }
 
-  public void setWordsEncounteredListView(ObservableList<String> words) {
-    wordsEncounteredListView.setItems(words);
+  public void setWordsEncounteredListView() {
+    JsonParser jsonParser = App.getJsonParser();
+    List<String> wordsEncountered =
+        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "wordsEncountered");
+    ObservableList<String> wordsList = FXCollections.observableArrayList(wordsEncountered);
+    wordsEncounteredListView.setItems(wordsList);
   }
 }

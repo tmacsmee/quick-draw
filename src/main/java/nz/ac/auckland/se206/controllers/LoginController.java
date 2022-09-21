@@ -43,7 +43,7 @@ public class LoginController {
    */
   @FXML
   private void onLogin(ActionEvent event) {
-    JsonParser jsonParser = new JsonParser();
+    JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
     String password = passwordPasswordField.getText();
 
@@ -58,6 +58,7 @@ public class LoginController {
 
       MenuController menuController = (MenuController) App.getController("menu");
       menuController.updateStats();
+      menuController.setWordsEncounteredListView();
 
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty

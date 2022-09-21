@@ -39,7 +39,7 @@ public class CreateAccountController {
    */
   @FXML
   private void onCreate(ActionEvent event) {
-    JsonParser jsonParser = new JsonParser();
+    JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
     String password = passwordPasswordField.getText();
 

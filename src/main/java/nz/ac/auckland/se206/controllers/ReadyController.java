@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -42,8 +40,11 @@ public class ReadyController {
 
     canvasController.startTimer();
 
-    JsonParser jsonParser = new JsonParser(); // Add word to json file
+    JsonParser jsonParser = App.getJsonParser(); // Add word to json file
     jsonParser.addWordEncountered(App.getCurrentUser(), prompt);
+
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.setWordsEncounteredListView();
 
     Button button = (Button) event.getSource(); // Get button scene and change its root.
     Scene buttonScene = button.getScene();
@@ -56,12 +57,9 @@ public class ReadyController {
     medium = new ArrayList<>();
     hard = new ArrayList<>();
 
-    JsonParser jsonParser = new JsonParser();
+    JsonParser jsonParser = App.getJsonParser();
     List<String> wordsEncountered =
         (List<String>) jsonParser.getProperty(App.getCurrentUser(), "wordsEncountered");
-    ObservableList<String> wordsList = FXCollections.observableArrayList(wordsEncountered);
-    MenuController menuController = (MenuController) App.getController("menu");
-    menuController.setWordsEncounteredListView(wordsList);
 
     try (Scanner scanner = new Scanner(new File("src/main/resources/category_difficulty.csv"))) {
       while (scanner.hasNextLine()) { // Iterate through each line in the csv file

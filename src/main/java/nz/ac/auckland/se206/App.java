@@ -7,12 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.util.JsonParser;
 
 /** This is the entry point of the JavaFX application. */
 public class App extends Application {
 
   private static final HashMap<String, Object> controllerMap = new HashMap<>();
   private static String currentUser;
+  private static JsonParser jsonParser;
 
   /**
    * Launches the JavaFX application.
@@ -67,6 +69,8 @@ public class App extends Application {
     SceneManager.addUi(SceneManager.AppUi.CANVAS, loadFxml("canvas"));
     SceneManager.addUi(SceneManager.AppUi.RESULTS, loadFxml("results"));
 
+    jsonParser = new JsonParser();
+
     // Show the login scene.
     Scene scene = new Scene(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN), 800, 600);
     scene
@@ -82,5 +86,9 @@ public class App extends Application {
 
   public static String getCurrentUser() {
     return currentUser;
+  }
+
+  public static JsonParser getJsonParser() {
+    return jsonParser;
   }
 }

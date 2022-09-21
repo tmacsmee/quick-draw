@@ -28,7 +28,7 @@ public class TimeLimitTask extends TimerTask {
     this.canvasController = canvasController;
     startTime = System.currentTimeMillis(); // Get the current time in milliseconds.
     resultsController = (ResultsController) App.getController("results");
-    jsonParser = new JsonParser();
+    jsonParser = App.getJsonParser();
     timer = new Timer();
   }
 

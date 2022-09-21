@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.JsonParser;
 
 public class ReadyController {
 
@@ -24,8 +25,6 @@ public class ReadyController {
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising Ready Controller *****************" + this);
-    createDifficultyArrays(); // Get an array of each difficulty
-    getPrompt("E");
   }
 
   /*
@@ -42,16 +41,26 @@ public class ReadyController {
 
     canvasController.startTimer();
 
+    JsonParser jsonParser = App.getJsonParser(); // Add word to json file
+    jsonParser.addWordEncountered(App.getCurrentUser(), prompt);
+
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.setWordsEncounteredListView();
+
     Button button = (Button) event.getSource(); // Get button scene and change its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.CANVAS)));
   }
 
   /** Generates an array of each difficulty from the csv file. */
-  private void createDifficultyArrays() {
+  public void createDifficultyArrays() {
     easy = new ArrayList<>();
     medium = new ArrayList<>();
     hard = new ArrayList<>();
+
+    JsonParser jsonParser = App.getJsonParser();
+    List<String> wordsEncountered =
+        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "wordsEncountered");
 
     try (Scanner scanner = new Scanner(new File("src/main/resources/category_difficulty.csv"))) {
       while (scanner.hasNextLine()) { // Iterate through each line in the csv file
@@ -59,13 +68,19 @@ public class ReadyController {
         String[] split = line.split(","); // Separate word and difficulty
         switch (split[1]) {
           case ("E"): // If difficulty is easy, add to easy array
-            easy.add(split[0]);
+            if (!wordsEncountered.contains(split[0])) {
+              easy.add(split[0]);
+            }
             break;
           case "M": // If difficulty is medium, add to medium array
-            medium.add(split[0]);
+            if (!wordsEncountered.contains(split[0])) {
+              medium.add(split[0]);
+            }
             break;
           case "H": // If difficulty is hard, add to hard array
-            hard.add(split[0]);
+            if (!wordsEncountered.contains(split[0])) {
+              hard.add(split[0]);
+            }
             break;
         }
       }
@@ -88,7 +103,7 @@ public class ReadyController {
    *
    * @param difficulty The difficulty of the prompt.
    */
-  private void getPrompt(String difficulty) {
+  public void getPrompt(String difficulty) {
     switch (difficulty) { // Get a random word from the correct array
       case "E": // Generate easy prompt
         promptLabel.setText(easy.get((int) (Math.random() * easy.size())));

@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.util;
 
-
 import javafx.concurrent.Task;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.controllers.ReadyController;

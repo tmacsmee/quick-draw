@@ -4,11 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.JsonParser;
 
 public class CreateAccountController {
+  private String currentUser;
   @FXML private TextField usernameTextField;
 
   @FXML private PasswordField passwordPasswordField;
@@ -18,6 +22,7 @@ public class CreateAccountController {
   @FXML private Button createButton;
 
   @FXML private Button loginButton;
+  @FXML private Label errorMessageLabel;
 
   /** Initializes the createAccount scene. */
   @FXML
@@ -30,16 +35,46 @@ public class CreateAccountController {
    * Creates a new account and changes to menu scene if details are successful, otherwise prints
    * error.
    *
-   * @param event
+   * @param event button click event
    */
   @FXML
   private void onCreate(ActionEvent event) {
-    // Add code to create a new account, and store password and username in json.
+    JsonParser jsonParser = App.getJsonParser();
+    String username = usernameTextField.getText();
+    String password = passwordPasswordField.getText();
 
-    // If successful, change to menu scene.
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
+    // Checks if username and password fields are populated
+    if (username.equals("")) {
+      errorMessageLabel.setText("Username cannot be empty");
+    } else if (password.equals("") || confirmPasswordPasswordField.getText().equals("")) {
+      errorMessageLabel.setText("Password cannot be empty");
+    } else if (!password.equals(confirmPasswordPasswordField.getText())) {
+      // Checks if password and confirm password fields match
+      errorMessageLabel.setText("Passwords do not match");
+    } else if (jsonParser.isCorrectUsername(username)) {
+      // Checks if username is already taken
+      errorMessageLabel.setText("Username already exists");
+    } else {
+      // Add account to json file
+      jsonParser.addUser(username, password);
+      jsonParser.mapToJson();
+
+      // Set user stats labels
+      App.setCurrentUser(username);
+
+      MenuController menuController = (MenuController) App.getController("menu");
+      menuController.updateStats();
+
+      ReadyController readyController = (ReadyController) App.getController("ready");
+      readyController.createDifficultyArrays(); // Get an array of each difficulty
+      readyController.getPrompt("E");
+
+      // Switch to menu scene
+      Button button =
+          (Button) event.getSource(); // Get the scene of the button and switch its root.
+      Scene buttonScene = button.getScene();
+      buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
+    }
   }
 
   /**
@@ -49,8 +84,6 @@ public class CreateAccountController {
    */
   @FXML
   private void onLogin(ActionEvent event) {
-    // Add your code to switch to the login screen here.
-
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));

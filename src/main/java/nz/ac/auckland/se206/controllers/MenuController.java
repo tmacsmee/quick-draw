@@ -1,19 +1,28 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.JsonParser;
 import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 /** The controller of the menu scene. */
 public class MenuController {
 
   @FXML private Button startButton;
-  @FXML private Button statsButton;
-  @FXML private Label startLabel;
+  @FXML private Label welcomeLabel;
+  @FXML private Label numWinsLabel;
+  @FXML private Label numLossesLabel;
+  @FXML private Label fastestTimeLabel;
+  @FXML private ListView<String> wordsEncounteredListView;
 
   /** Initializes the menu scene. */
   @FXML
@@ -58,5 +67,23 @@ public class MenuController {
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.HOWTOPLAY));
+  }
+
+  public void updateStats() {
+    JsonParser jsonParser = App.getJsonParser();
+
+    welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
+    numWinsLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesWon").toString());
+    numLossesLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesLost").toString());
+    fastestTimeLabel.setText(
+        jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString());
+  }
+
+  public void setWordsEncounteredListView() {
+    JsonParser jsonParser = App.getJsonParser();
+    List<String> wordsEncountered =
+        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "wordsEncountered");
+    ObservableList<String> wordsList = FXCollections.observableArrayList(wordsEncountered);
+    wordsEncounteredListView.setItems(wordsList);
   }
 }

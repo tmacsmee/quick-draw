@@ -221,8 +221,8 @@ public class CanvasController {
   /**
    * Save the current snapshot on a bitmap file.
    *
-   * @param image
-   * @return
+   * @param image the image to save
+   * @return the file where the image was saved
    * @throws IOException If the image cannot be saved.
    */
   public File saveCurrentSnapshotOnFile(File file, BufferedImage image) throws IOException {

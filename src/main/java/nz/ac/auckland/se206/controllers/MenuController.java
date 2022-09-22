@@ -75,8 +75,13 @@ public class MenuController {
     welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
     numWinsLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesWon").toString());
     numLossesLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesLost").toString());
-    fastestTimeLabel.setText(
-        jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString());
+
+    if (jsonParser.getProperty(App.getCurrentUser(), "fastestTime") == "0") {
+      fastestTimeLabel.setText("No wins yet");
+    } else {
+      fastestTimeLabel.setText(
+          jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString() + " seconds");
+    }
   }
 
   public void setWordsEncounteredListView() {

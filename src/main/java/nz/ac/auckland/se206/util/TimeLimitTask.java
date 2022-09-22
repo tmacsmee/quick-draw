@@ -39,6 +39,8 @@ public class TimeLimitTask extends TimerTask {
 
   /**
    * Handles the time limit functionality. If the time limit is reached, the program will terminate.
+   *
+   * <p>TODO: implement fastest time
    */
   public void run() {
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
@@ -46,7 +48,7 @@ public class TimeLimitTask extends TimerTask {
       timer.cancel();
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
-      Platform.runLater(() -> jsonParser.incrementLosses(App.getCurrentUser()));
+      jsonParser.incrementLosses(App.getCurrentUser());
       canvasController.results();
 
     } else if (timeElapsed
@@ -66,7 +68,8 @@ public class TimeLimitTask extends TimerTask {
                 resultsController.setResultLabel( // If so, move to results scene.
                     "Good job! You finished in " + timeElapsed + " seconds!");
                 resultsController.setSketchImage();
-                Platform.runLater(() -> jsonParser.incrementWins(App.getCurrentUser()));
+                jsonParser.incrementWins(App.getCurrentUser());
+                jsonParser.setFastestTime(App.getCurrentUser(), Long.toString(timeElapsed));
                 canvasController.results();
               }
             } catch (TranslateException e) {

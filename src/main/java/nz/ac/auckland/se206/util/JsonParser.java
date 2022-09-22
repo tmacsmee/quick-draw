@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -90,17 +91,18 @@ public class JsonParser {
   public void addUser(String username, String password) {
     // Create a new blank user
     Map<String, Object> userData =
-        Map.of(
-            "password",
-            password,
-            "wordsEncountered",
-            new ArrayList<String>(),
-            "gamesWon",
-            "0",
-            "gamesLost",
-            "0",
-            "fastestTime",
-            "No games played");
+        new HashMap<>(
+            Map.of(
+                "password",
+                password,
+                "wordsEncountered",
+                new ArrayList<String>(),
+                "gamesWon",
+                "0",
+                "gamesLost",
+                "0",
+                "fastestTime",
+                "0"));
     allUserData.put(username, userData);
     mapToJson();
   }
@@ -113,7 +115,7 @@ public class JsonParser {
   public void incrementWins(String username) {
     int wins =
         Integer.parseInt((String) getProperty(username, "gamesWon")); // Get the number of wins
-    allUserData.get(username).put("gamesWon", Integer.toString(wins + 1));
+    allUserData.get(username).replace("gamesWon", Integer.toString(wins + 1));
     mapToJson();
   }
 
@@ -125,7 +127,7 @@ public class JsonParser {
   public void incrementLosses(String username) {
     int losses =
         Integer.parseInt((String) getProperty(username, "gamesLost")); // Get the number of losses
-    allUserData.get(username).put("gamesLost", Integer.toString(losses + 1));
+    allUserData.get(username).replace("gamesLost", Integer.toString(losses + 1));
     mapToJson();
   }
 
@@ -137,6 +139,17 @@ public class JsonParser {
           allUserData); // Write the map to the JSON file
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  public void setFastestTime(String username, String time) {
+    if (getProperty(username, "fastestTime").equals("0")) {
+      allUserData.get(username).replace("fastestTime", time);
+    } else {
+      String fastestTime = (String) getProperty(username, "fastestTime");
+      if (Integer.parseInt(time) < Integer.parseInt(fastestTime)) {
+        allUserData.get(username).replace("fastestTime", time);
+      }
     }
   }
 }

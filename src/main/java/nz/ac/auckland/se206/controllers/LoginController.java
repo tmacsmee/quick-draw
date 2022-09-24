@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
-public class loginController {
+public class LoginController {
   @FXML private TextField usernameTextField;
 
   @FXML private PasswordField passwordPasswordField;

@@ -103,7 +103,9 @@ public class JsonParser {
                 "0",
                 "fastestTime",
                 "0"));
+    // Update the map with user data
     allUserData.put(username, userData);
+    // Write the map to the JSON file
     mapToJson();
   }
 

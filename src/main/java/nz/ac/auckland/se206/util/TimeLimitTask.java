@@ -39,8 +39,6 @@ public class TimeLimitTask extends TimerTask {
 
   /**
    * Handles the time limit functionality. If the time limit is reached, the program will terminate.
-   *
-   * <p>TODO: implement fastest time
    */
   public void run() {
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
@@ -57,15 +55,17 @@ public class TimeLimitTask extends TimerTask {
           () -> {
             canvasController.setTimerLabel(String.valueOf((59L - timeElapsed) % 60));
             try {
-              canvasController.setPredictionList( // Set the prediction list
+              // Set the prediction list
+              canvasController.setPredictionList(
                   printPredictions(
                       canvasController
                           .getModel()
                           .getPredictions(canvasController.getCurrentSnapshot(), 10)));
-              if (canvasController
-                  .isCorrect()) { // Check if the prompt is in the top 3 predictions.
+              // Check if the prompt is in the top 3 predictions.
+              if (canvasController.isCorrect()) {
                 timer.cancel();
-                resultsController.setResultLabel( // If so, move to results scene.
+                // If so, move to results scene.
+                resultsController.setResultLabel(
                     "Good job! You finished in " + timeElapsed + " seconds!");
                 resultsController.setSketchImage();
                 jsonParser.incrementWins(App.getCurrentUser());

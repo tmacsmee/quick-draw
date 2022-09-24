@@ -12,12 +12,10 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
 public class LoginController {
+
   @FXML private TextField usernameTextField;
-
   @FXML private PasswordField passwordPasswordField;
-
   @FXML private Button createAccountButton;
-
   @FXML private Button loginButton;
   @FXML private Label errorMessageLabel;
 

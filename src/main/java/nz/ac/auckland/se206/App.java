@@ -40,6 +40,18 @@ public class App extends Application {
     return controllerMap.get(fxml);
   }
 
+  public static void setCurrentUser(String username) {
+    currentUser = username;
+  }
+
+  public static String getCurrentUser() {
+    return currentUser;
+  }
+
+  public static JsonParser getJsonParser() {
+    return jsonParser;
+  }
+
   /**
    * Returns the node associated to the input file. The method expects that the file is located in
    * "src/main/resources/fxml".
@@ -90,17 +102,5 @@ public class App extends Application {
           Platform.exit();
           voice.terminate();
         });
-  }
-
-  public static void setCurrentUser(String username) {
-    currentUser = username;
-  }
-
-  public static String getCurrentUser() {
-    return currentUser;
-  }
-
-  public static JsonParser getJsonParser() {
-    return jsonParser;
   }
 }

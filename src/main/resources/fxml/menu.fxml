@@ -36,11 +36,11 @@
                                           <Label styleClass="menu-screenText" text="Fastest Time:" />
                                        </children>
                                     </VBox>
-                                    <VBox prefHeight="112.0" prefWidth="182.0">
+                                    <VBox prefHeight="100.0" prefWidth="186.0">
                                        <children>
                                           <Label fx:id="numWinsLabel" styleClass="menu-screenText" text="0" />
                                           <Label fx:id="numLossesLabel" styleClass="menu-screenText" text="0" />
-                                          <Label fx:id="fastestTimeLabel" styleClass="menu-screenText" text="30 Seconds" />
+                                          <Label fx:id="fastestTimeLabel" styleClass="menu-screenText" text="No games played" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -59,7 +59,7 @@
                            <graphic>
                               <ImageView fitHeight="125.0" fitWidth="125.0">
                                  <image>
-                                    <Image url="@../images/pencil%20-%20Copy.png" /> <!-- "https://www.flaticon.com/free-icons/pencil" title="pencil icons">Pencil icons created by Freepik - Flaticon -->
+                                    <Image url="@../images/playIcon.png" />
                                  </image>
                               </ImageView>
                            </graphic>

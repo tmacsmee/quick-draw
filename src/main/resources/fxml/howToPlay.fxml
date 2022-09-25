@@ -7,29 +7,29 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.HowToPlayController">
    <children>
-      <VBox alignment="CENTER" prefHeight="157.0" prefWidth="800.0">
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="35.0" prefHeight="122.0" prefWidth="700.0" styleClass="coloured-box">
          <children>
-            <Label styleClass="menu-title" text="Speedy Sketchers!" textFill="WHITE" />
-            <Label styleClass="menu-slogan" text="Excel the Artist in You!" textFill="WHITE" />
+            <Label styleClass="menu-title" text="Speedy Sketchers!" />
+            <Label styleClass="header" text="Excel the Artist in You!" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="29.0" layoutY="140.0" prefHeight="192.0" prefWidth="752.0">
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="174.0" prefHeight="154.0" prefWidth="700.0" styleClass="coloured-box">
          <children>
-            <Label styleClass="menu-slogan" text="How To Play" textFill="WHITE" />
-            <Label styleClass="menu-screenText" text="Press play and you will be given a random word. Your goal" textFill="WHITE" />
+            <Label styleClass="header" text="How To Play" textFill="WHITE" />
+            <Label styleClass="menu-screenText" text="Press play and you will be given a random word. Your goal" />
             <Label styleClass="menu-screenText" text="is to draw the word as quickly as possible! If we can guess" textFill="WHITE" />
             <Label styleClass="menu-screenText" text="what you are drawing in 60 seconds, then you win!" textFill="WHITE" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="29.0" layoutY="309.0" prefHeight="200.0" prefWidth="752.0">
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="345.0" prefHeight="140.0" prefWidth="700.0" styleClass="coloured-box">
          <children>
-            <Label styleClass="menu-slogan" text="Why Play?" textFill="WHITE" />
+            <Label styleClass="header" text="Why Play?" textFill="WHITE" />
             <Label styleClass="menu-screenText" text="The faster you're drawing the less you are thinking, this" textFill="WHITE" />
             <Label styleClass="menu-screenText" text="helps boost your creativity, focus, drawing ability and so" textFill="WHITE" />
             <Label styleClass="menu-screenText" text=" much more!" textFill="WHITE" />
          </children>
       </VBox>
-      <Button fx:id="mainMenuButton" layoutX="44.0" layoutY="509.0" mnemonicParsing="false" onAction="#onSwitchToMenu" text="Main Menu" />
-      <Button fx:id="playButton" layoutX="643.0" layoutY="509.0" mnemonicParsing="false" onAction="#onPlay" text="Play!" />
+      <Button fx:id="mainMenuButton" layoutX="50.0" layoutY="509.0" mnemonicParsing="false" onAction="#onSwitchToMenu" prefHeight="57.0" prefWidth="187.0" styleClass="rounded-corners" text="Main Menu" />
+      <Button fx:id="playButton" layoutX="617.0" layoutY="509.0" mnemonicParsing="false" onAction="#onPlay" prefHeight="66.0" prefWidth="133.0" styleClass="rounded-corners" text="Play!" />
    </children>
 </Pane>

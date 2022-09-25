@@ -1,10 +1,13 @@
 .root {
-    -fx-background: #FF9E75;
+    -fx-background: #fab260;
 }
 
 Button {
     -fx-background-color: white;
     -fx-padding: 10;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
     -fx-font-size: 30;
     -fx-text-fill: #CC7E5D;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
@@ -20,14 +23,15 @@ Button:hover {
     -fx-font-family: "Arial";
     -fx-font-weight: bold;
     -fx-font-style: italic;
-    -fx-font-size: 54;
+    -fx-font-size: 48;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
 
 .header {
     -fx-font-family: "Arial";
     -fx-font-weight: bold;
-    -fx-font-size: 24;
+    -fx-font-style: italic;
+    -fx-font-size: 35;
     -fx-color: #FFFFFF;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
@@ -36,7 +40,7 @@ Button:hover {
     -fx-font-family: "Arial";
     -fx-font-weight: bold;
     -fx-font-style: italic;
-    -fx-font-size: 25;
+    -fx-font-size: 22;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
 
@@ -50,13 +54,13 @@ TextField, TextField:focused, PasswordField, PasswordField:focused {
 
 .timer {
     -fx-font-size: 30;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
 }
 
 .canvas-prompt {
     -fx-font-size: 30;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-weight: bold;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
 }
@@ -77,8 +81,18 @@ HBox {
     -fx-padding: 10;
 }
 
+.coloured-box{
+    -fx-background-color: #f8d872;
+    -fx-background-radius: 35;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
+}
+
+.rounded-corners{
+    -fx-background-radius: 35;
+}
+
 .results-button-box {
-    -fx-spacing: 28;
+    -fx-spacing: 23;
 }
 
 .menu-logo {
@@ -86,9 +100,26 @@ HBox {
 }
 
 .create-account-button {
-    -fx-font-size: 22;
+    -fx-font-size: 20;
 }
 
 .canvas-buttons {
     -fx-spacing: 28;
+}
+
+.list-cell {
+    -fx-control-inner-background: #f8d872;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 20;
+    }
+
+.button-play{
+    -fx-backgroud-image: url(../images/play.png);
+}
+
+.user-fields{
+    -fx-background-color: #fab260;
+    -fx-background-radius: 35;
 }

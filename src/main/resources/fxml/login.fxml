@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -13,23 +14,24 @@
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
          <children>
-            <VBox alignment="BOTTOM_CENTER" maxHeight="160.0" maxWidth="780.0" minHeight="160.0" minWidth="780.0" prefHeight="160.0" prefWidth="780.0">
+            <VBox alignment="CENTER" maxHeight="160.0" maxWidth="700.0" minHeight="130.0" minWidth="728.0" prefHeight="130.0" prefWidth="728.0" styleClass="coloured-box">
                <children>
-                  <Label alignment="CENTER" styleClass="menu-title" text="Speedy Sketchers!" textFill="WHITE">
+                  <Label alignment="CENTER" styleClass="menu-title" text="Speedy Sketchers!">
                      <font>
                         <Font size="41.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="271.0" styleClass="header" text="Excel the artist in you!" textFill="#fffcfc">
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="390.0" styleClass="header" text="Excel the artist in you!">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="780.0">
+            <VBox prefHeight="27.0" prefWidth="779.0" />
+            <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="263.0" prefWidth="526.0" styleClass="coloured-box">
                <children>
-                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="526.0" styleClass="header" text="Login below or create an account" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="526.0" styleClass="menu-screenText" text="Login below or create an account">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -40,12 +42,12 @@
                            <children>
                               <VBox alignment="CENTER_LEFT" prefHeight="108.0" prefWidth="361.0" styleClass="form-vbox">
                                  <children>
-                                    <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="277.0" promptText="Username">
+                                    <TextField fx:id="usernameTextField" prefHeight="26.0" prefWidth="277.0" promptText="Username" styleClass="user-fields">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <PasswordField fx:id="passwordPasswordField" prefHeight="25.0" prefWidth="277.0" promptText="Password">
+                                    <PasswordField fx:id="passwordPasswordField" prefHeight="25.0" prefWidth="277.0" promptText="Password" styleClass="user-fields">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -54,24 +56,29 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="38.0" prefWidth="395.0">
+                        <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="38.0" prefWidth="395.0" styleClass="menu-screenText" textFill="#d12937">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLogin" prefHeight="53.0" prefWidth="178.0" text="Login" />
                </children>
             </VBox>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="780.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="780.0">
                <children>
-                  <Label prefHeight="47.0" prefWidth="136.0" styleClass="header" text="New here?" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" prefHeight="52.0" prefWidth="210.0" styleClass="create-account-button" text="Create an account" />
+                  <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#onLogin" prefHeight="53.0" prefWidth="178.0" styleClass="rounded-corners" text="Login" />
+                  <VBox prefHeight="100.0" prefWidth="53.0" />
+                  <VBox alignment="CENTER" prefHeight="79.0" prefWidth="228.0">
+                     <children>
+                        <Label styleClass="menu-screenText" text="New Here?" textFill="WHITE" />
+                        <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" prefHeight="54.0" prefWidth="207.0" text="Create an account">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass></Button>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>

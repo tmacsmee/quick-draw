@@ -72,14 +72,15 @@ public class CanvasController {
     canvas.setOnMouseDragged(
         e -> {
           double brushSize = 6.25;
-          double thisX = e.getX(); // Get coordinates of mouse on drag.
-          double thisY = e.getY();
 
           // canvas declared as not empty when user starts drawing
           isCanvasNotEmpty = true;
 
           graphic.setLineWidth(brushSize);
           graphic.setStroke(Color.BLACK);
+
+          double thisX = e.getX(); // Get coordinates of mouse on drag.
+          double thisY = e.getY();
           graphic.strokeLine(
               lastX, lastY, thisX,
               thisY); // Create a line between the last and current mouse coordinates.

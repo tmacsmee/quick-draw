@@ -46,7 +46,7 @@ public class TimeLimitTask extends TimerTask {
       timer.cancel();
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
-      Platform.runLater(() -> jsonParser.incrementLosses(App.getCurrentUser()));
+      jsonParser.incrementLosses(App.getCurrentUser());
       canvasController.results();
 
     } else if (timeElapsed
@@ -55,18 +55,21 @@ public class TimeLimitTask extends TimerTask {
           () -> {
             canvasController.setTimerLabel(String.valueOf((59L - timeElapsed) % 60));
             try {
-              canvasController.setPredictionList( // Set the prediction list
+              // Set the prediction list
+              canvasController.setPredictionList(
                   printPredictions(
                       canvasController
                           .getModel()
                           .getPredictions(canvasController.getCurrentSnapshot(), 10)));
-              if (canvasController
-                  .isCorrect()) { // Check if the prompt is in the top 3 predictions.
+              // Check if the prompt is in the top 3 predictions.
+              if (canvasController.isCorrect()) {
                 timer.cancel();
-                resultsController.setResultLabel( // If so, move to results scene.
+                // If so, move to results scene.
+                resultsController.setResultLabel(
                     "Good job! You finished in " + timeElapsed + " seconds!");
                 resultsController.setSketchImage();
-                Platform.runLater(() -> jsonParser.incrementWins(App.getCurrentUser()));
+                jsonParser.incrementWins(App.getCurrentUser());
+                jsonParser.setFastestTime(App.getCurrentUser(), Long.toString(timeElapsed));
                 canvasController.results();
               }
             } catch (TranslateException e) {

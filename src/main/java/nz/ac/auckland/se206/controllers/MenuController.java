@@ -69,16 +69,25 @@ public class MenuController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.HOWTOPLAY));
   }
 
+  /** Updates the menu scene with the user's stats */
   public void updateStats() {
     JsonParser jsonParser = App.getJsonParser();
 
+    // Set welcome and stats labels
     welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
     numWinsLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesWon").toString());
     numLossesLabel.setText(jsonParser.getProperty(App.getCurrentUser(), "gamesLost").toString());
-    fastestTimeLabel.setText(
-        jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString());
+
+    // Set fastest time label (if games have been played)
+    if (jsonParser.getProperty(App.getCurrentUser(), "fastestTime") == "0") {
+      fastestTimeLabel.setText("No wins yet");
+    } else {
+      fastestTimeLabel.setText(
+          jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString() + " seconds");
+    }
   }
 
+  /** Updates the list of words encountered on the menu scene */
   public void setWordsEncounteredListView() {
     JsonParser jsonParser = App.getJsonParser();
     List<String> wordsEncountered =

@@ -23,6 +23,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="83.0" prefWidth="500.0" styleClass="coloured-box">
                      <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
                         <Label fx:id="promptLabel" prefHeight="45.0" prefWidth="614.0" styleClass="canvas-prompt" text="[prompt]" textAlignment="CENTER" />
                       <Label fx:id="timerLabel" alignment="CENTER" prefHeight="27.0" prefWidth="409.0" styleClass="timer" text="00:00" textAlignment="CENTER">
                         <font>

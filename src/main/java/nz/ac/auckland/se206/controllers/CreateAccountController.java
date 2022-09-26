@@ -46,6 +46,8 @@ public class CreateAccountController {
     // Checks if username and password fields are populated
     if (username.equals("")) {
       errorMessageLabel.setText("Username cannot be empty");
+    } else if (username.length() > 12) {
+      errorMessageLabel.setText("Username is too long");
     } else if (password.equals("") || confirmPasswordPasswordField.getText().equals("")) {
       errorMessageLabel.setText("Password cannot be empty");
     } else if (!password.equals(confirmPasswordPasswordField.getText())) {
@@ -64,6 +66,7 @@ public class CreateAccountController {
 
       MenuController menuController = (MenuController) App.getController("menu");
       menuController.updateStats();
+      menuController.setWordsEncounteredListView();
 
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty

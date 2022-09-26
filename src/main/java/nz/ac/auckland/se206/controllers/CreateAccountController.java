@@ -12,7 +12,6 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
 public class CreateAccountController {
-  private String currentUser;
   @FXML private TextField usernameTextField;
 
   @FXML private PasswordField passwordPasswordField;
@@ -22,6 +21,7 @@ public class CreateAccountController {
   @FXML private Button createButton;
 
   @FXML private Button loginButton;
+
   @FXML private Label errorMessageLabel;
 
   /** Initializes the createAccount scene. */

@@ -10,23 +10,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="806.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreateAccountController">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CreateAccountController">
    <children>
       <VBox alignment="CENTER" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0">
          <children>
-            <VBox alignment="CENTER" maxHeight="160.0" maxWidth="700.0" minHeight="118.0" minWidth="597.0" prefHeight="118.0" prefWidth="700.0" styleClass="coloured-box">
+            <VBox alignment="CENTER" maxHeight="130.0" maxWidth="728.0" minHeight="130.0" minWidth="728.0" prefHeight="130.0" prefWidth="728.0" styleClass="coloured-box">
                <children>
                   <Label styleClass="menu-title" text="Speedy Sketchers!" />
-                  <Label styleClass="header" text="Excel the Artist in you!" />
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="390.0" styleClass="header" text="Excel the artist in you!" />
                </children>
             </VBox>
-            <VBox prefHeight="19.0" prefWidth="779.0" />
-            <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="278.0" prefWidth="526.0" styleClass="coloured-box">
+            <VBox maxHeight="30.0" maxWidth="780.0" minHeight="30.0" minWidth="780.0" prefHeight="30.0" prefWidth="780.0" />
+            <VBox alignment="CENTER" maxHeight="260.0" maxWidth="520.0" minHeight="260.0" minWidth="520.0" prefHeight="260.0" prefWidth="520.0" styleClass="coloured-box">
                <children>
-                  <Label alignment="CENTER" prefHeight="39.0" prefWidth="439.0" styleClass="menu-screenText" text="New Here? Create an Account Below" />
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="230.0" prefWidth="506.0">
+                  <Label alignment="CENTER" minWidth="500.0" prefHeight="39.0" prefWidth="439.0" styleClass="menu-screenText" text="New Here? Create an Account Below" />
+                  <HBox alignment="BOTTOM_CENTER" maxHeight="200.0" maxWidth="500.0" minHeight="200.0" minWidth="500.0" prefHeight="200.0" prefWidth="500.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="161.0" prefWidth="366.0" styleClass="form-vbox">
+                        <VBox alignment="CENTER" maxHeight="180.0" maxWidth="360.0" minHeight="180.0" minWidth="360.0" prefHeight="180.0" prefWidth="360.0" styleClass="form-vbox">
                            <children>
                               <TextField fx:id="usernameTextField" promptText="Username" styleClass="user-fields">
                                  <font>
@@ -54,14 +54,15 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="114.0" prefWidth="779.0">
+            <VBox prefHeight="20.0" prefWidth="780.0" />
+            <HBox alignment="BOTTOM_RIGHT" maxHeight="100.0" maxWidth="780.0" minHeight="100.0" minWidth="780.0" prefHeight="100.0" prefWidth="780.0">
                <children>
-                  <Button fx:id="createButton" mnemonicParsing="false" onAction="#onCreate" prefHeight="65.0" prefWidth="164.0" styleClass="rounded-corners" text="Create" />
+                  <Button fx:id="createButton" maxHeight="65.0" maxWidth="160.0" minHeight="65.0" minWidth="160.0" mnemonicParsing="false" onAction="#onCreate" prefHeight="65.0" prefWidth="160.0" styleClass="rounded-corners" text="Create" />
                   <VBox prefHeight="127.0" prefWidth="50.0" />
-                  <VBox alignment="CENTER" prefHeight="79.0" prefWidth="226.0">
+                  <VBox alignment="CENTER" maxHeight="90.0" maxWidth="230.0" minHeight="90.0" minWidth="230.0" prefHeight="90.0" prefWidth="422.0">
                      <children>
-                        <Label styleClass="menu-screenText" text="Already Have" textFill="WHITE" />
-                        <Label styleClass="menu-screenText" text="An Account?" textFill="WHITE" />
+                        <Label styleClass="menu-screenText" text="Already have" textFill="WHITE" />
+                        <Label styleClass="menu-screenText" text="an account?" textFill="WHITE" />
                         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLogin" prefHeight="52.0" prefWidth="127.0" text="Log In">
                            <styleClass>
                               <String fx:value="create-account-button" />

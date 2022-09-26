@@ -75,7 +75,7 @@
                   <VBox alignment="CENTER" prefHeight="182.0" prefWidth="517.0" styleClass="coloured-box">
                      <children>
                         <Label styleClass="header" text="Words Encountered:" />
-                        <ListView fx:id="wordsEncounteredListView" prefHeight="130.0" prefWidth="397.0" styleClass="list-cell" />
+                        <ListView fx:id="wordsEncounteredListView" focusTraversable="false" prefHeight="130.0" prefWidth="397.0" styleClass="list-cell" />
                      </children>
                   </VBox>
                   <HBox alignment="CENTER" prefHeight="182.0" prefWidth="422.0">

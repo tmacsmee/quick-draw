@@ -69,7 +69,8 @@ public class TimeLimitTask extends TimerTask {
                     "Good job! You finished in " + timeElapsed + " seconds!");
                 resultsController.setSketchImage();
                 jsonParser.incrementWins(App.getCurrentUser());
-                jsonParser.setFastestTime(App.getCurrentUser(), Long.toString(timeElapsed));
+                final long time = timeElapsed;
+                jsonParser.setFastestTime(App.getCurrentUser(), Long.toString(time));
                 canvasController.results();
               }
             } catch (TranslateException e) {

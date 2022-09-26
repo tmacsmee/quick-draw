@@ -64,6 +64,7 @@ public class CreateAccountController {
 
       MenuController menuController = (MenuController) App.getController("menu");
       menuController.updateStats();
+      menuController.setWordsEncounteredListView();
 
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty

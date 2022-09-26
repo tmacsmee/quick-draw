@@ -144,6 +144,12 @@ public class JsonParser {
     }
   }
 
+  /**
+   * Sets the fastest time of the user if the inputted time is faster than the current fastest time
+   *
+   * @param username the username of the user
+   * @param time the time to set as the fastest time
+   */
   public void setFastestTime(String username, String time) {
     if (getProperty(username, "fastestTime").equals("0")) {
       allUserData.get(username).replace("fastestTime", time);

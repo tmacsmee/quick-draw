@@ -19,7 +19,6 @@ import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
-import nz.ac.auckland.se206.util.TimeLimitTask;
 
 /** The controller of the canvas scene. */
 public class CanvasController {
@@ -114,12 +113,6 @@ public class CanvasController {
     // anything
     isCanvasNotEmpty = false;
     predictionList.setText("");
-  }
-
-  /** Creates and starts the task that manages the time limit. */
-  public void startTimer() {
-    TimeLimitTask task = new TimeLimitTask(this);
-    task.scheduleTask();
   }
 
   /**

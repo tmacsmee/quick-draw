@@ -10,7 +10,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="112.0" layoutY="147.0" prefHeight="280.0" prefWidth="574.0" styleClass="coloured-box">
          <children>
-            <Label alignment="CENTER" prefHeight="35.0" prefWidth="559.0" styleClass="header" text="You have 1 minute to draw: ">
+            <Label fx:id="drawLabel" alignment="CENTER" prefHeight="35.0" prefWidth="559.0" styleClass="header" text="You have 1 minute to draw: ">
                <font>
                   <Font size="24.0" />
                </font></Label>

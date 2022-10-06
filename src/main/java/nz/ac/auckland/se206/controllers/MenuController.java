@@ -17,7 +17,6 @@ import nz.ac.auckland.se206.util.TextToSpeechTask;
 /** The controller of the menu scene. */
 public class MenuController {
 
-  @FXML private Button startButton;
   @FXML private Label welcomeLabel;
   @FXML private Label numWinsLabel;
   @FXML private Label numLossesLabel;

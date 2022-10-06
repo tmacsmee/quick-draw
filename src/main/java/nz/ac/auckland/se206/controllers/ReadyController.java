@@ -18,7 +18,6 @@ public class ReadyController {
   private List<String> easy;
   private List<String> medium;
   private List<String> hard;
-  @FXML private Button readyButton;
   @FXML private Label promptLabel;
 
   /** Initializes the controller class, creates difficulty arrays and generates prompt. */

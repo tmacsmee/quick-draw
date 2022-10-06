@@ -48,17 +48,6 @@ public class JsonParser {
   }
 
   /**
-   * Checks if the inputted password matches the password stored in the JSON file
-   *
-   * @param username the username of the user
-   * @param password the password to check
-   * @return true if the password matches, false otherwise
-   */
-  public boolean isCorrectPassword(String username, String password) {
-    return getProperty(username, "password").equals(password);
-  }
-
-  /**
    * Checks if the inputted username is already in use
    *
    * @param username the username to check
@@ -86,15 +75,12 @@ public class JsonParser {
    * Adds a user to the JSON file on signup
    *
    * @param username the username of the user
-   * @param password the password of the user
    */
-  public void addUser(String username, String password) {
+  public void addUser(String username) {
     // Create a new blank user
     Map<String, Object> userData =
         new HashMap<>(
             Map.of(
-                "password",
-                password,
                 "wordsEncountered",
                 new ArrayList<String>(),
                 "gamesWon",

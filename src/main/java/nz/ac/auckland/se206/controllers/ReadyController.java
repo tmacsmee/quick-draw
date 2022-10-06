@@ -37,7 +37,7 @@ public class ReadyController {
 
     CanvasController canvasController = (CanvasController) App.getController("canvas");
     canvasController.setPrompt(prompt); // Set the prompt on the canvas controller
-    canvasController.clear();
+    canvasController.onClear();
 
     canvasController.startTimer();
 

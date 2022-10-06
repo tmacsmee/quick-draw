@@ -9,6 +9,7 @@ public class SceneManager {
     LOGIN,
     HOWTOPLAY,
     MENU,
+    GAMEMODE,
     READY,
     CANVAS,
     RESULTS

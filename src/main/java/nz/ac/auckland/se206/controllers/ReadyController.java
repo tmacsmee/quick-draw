@@ -20,8 +20,6 @@ public class ReadyController {
   private List<String> easy;
   private List<String> medium;
   private List<String> hard;
-  private CanvasController canvasController;
-  private MenuController menuController;
   @FXML private Label promptLabel;
   @FXML private Label drawLabel;
 
@@ -51,21 +49,20 @@ public class ReadyController {
   private void onReady(ActionEvent event) {
     String prompt = promptLabel.getText();
 
-    canvasController = (CanvasController) App.getController("canvas");
+    CanvasController canvasController = (CanvasController) App.getController("canvas");
     canvasController.setPrompt(prompt); // Set the prompt on the canvas controller
     canvasController.onClear();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
     jsonParser.addWordEncountered(App.getCurrentUser(), prompt);
 
-    menuController = (MenuController) App.getController("menu");
-    menuController.setWordsEncounteredListView();
-
-    if (drawLabel.getText().equals("normal")) {
+    GameModeController gameModeController = (GameModeController) App.getController("gameMode");
+    String gameMode = gameModeController.getGameMode();
+    if (gameMode.equals("normal")) {
       normalReady();
-    } else if (drawLabel.getText().equals("zen")) {
+    } else if (gameMode.equals("zen")) {
       zenReady();
-    } else if (drawLabel.getText().equals("hidden")) {
+    } else if (gameMode.equals("hidden")) {
       hiddenReady();
     }
 

@@ -80,6 +80,7 @@ public class MenuController {
       fastestTimeLabel.setText(
           jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString() + " seconds");
     }
+    setWordsEncounteredListView();
   }
 
   /** Updates the list of words encountered on the menu scene */

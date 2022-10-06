@@ -11,6 +11,7 @@ import nz.ac.auckland.se206.util.TextToSpeechTask;
 public class GameModeController {
 
   private ReadyController readyController;
+  private String gameMode;
 
   /** Initializes the createAccount scene. */
   @FXML
@@ -25,24 +26,32 @@ public class GameModeController {
    */
   @FXML
   private void onPlayNormal(ActionEvent event) {
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+    gameMode = "normal";
 
     TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
     new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
+
+    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
   }
 
   @FXML
   private void onPlayZen(ActionEvent event) {
-    Button button = (Button) event.getSource();
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+    gameMode = "zen";
 
     readyController = (ReadyController) App.getController("ready");
     readyController.setDrawLabel("zen");
+
+    Button button = (Button) event.getSource();
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
   }
 
   @FXML
   private void onPlayHidden(ActionEvent event) {}
+
+  public String getGameMode() {
+    return gameMode;
+  }
 }

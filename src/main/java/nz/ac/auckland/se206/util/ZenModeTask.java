@@ -20,6 +20,7 @@ public class ZenModeTask extends TimerTask {
 
   public void scheduleTask() {
     timer.schedule(this, 0, 1000);
+    canvasController.setTimerLabel("");
   }
 
   public void run() {

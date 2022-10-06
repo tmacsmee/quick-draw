@@ -48,7 +48,6 @@ public class CreateAccountController {
     } else {
       // Add account to json file
       jsonParser.addUser(username);
-      jsonParser.mapToJson();
 
       // Set user stats labels
       App.setCurrentUser(username);

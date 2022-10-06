@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
@@ -13,10 +12,6 @@ import nz.ac.auckland.se206.util.JsonParser;
 
 public class CreateAccountController {
   @FXML private TextField usernameTextField;
-
-  @FXML private PasswordField passwordPasswordField;
-
-  @FXML private PasswordField confirmPasswordPasswordField;
 
   @FXML private Button createButton;
 
@@ -41,24 +36,18 @@ public class CreateAccountController {
   private void onCreate(ActionEvent event) {
     JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
-    String password = passwordPasswordField.getText();
 
-    // Checks if username and password fields are populated
+    // Checks if username is populated
     if (username.equals("")) {
       errorMessageLabel.setText("Username cannot be empty");
     } else if (username.length() > 12) {
       errorMessageLabel.setText("Username is too long");
-    } else if (password.equals("") || confirmPasswordPasswordField.getText().equals("")) {
-      errorMessageLabel.setText("Password cannot be empty");
-    } else if (!password.equals(confirmPasswordPasswordField.getText())) {
-      // Checks if password and confirm password fields match
-      errorMessageLabel.setText("Passwords do not match");
     } else if (jsonParser.isCorrectUsername(username)) {
       // Checks if username is already taken
       errorMessageLabel.setText("Username already exists");
     } else {
       // Add account to json file
-      jsonParser.addUser(username, password);
+      jsonParser.addUser(username);
       jsonParser.mapToJson();
 
       // Set user stats labels

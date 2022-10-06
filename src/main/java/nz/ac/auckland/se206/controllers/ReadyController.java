@@ -18,7 +18,6 @@ public class ReadyController {
   private List<String> easy;
   private List<String> medium;
   private List<String> hard;
-  @FXML private Button readyButton;
   @FXML private Label promptLabel;
 
   /** Initializes the controller class, creates difficulty arrays and generates prompt. */
@@ -37,7 +36,7 @@ public class ReadyController {
 
     CanvasController canvasController = (CanvasController) App.getController("canvas");
     canvasController.setPrompt(prompt); // Set the prompt on the canvas controller
-    canvasController.clear();
+    canvasController.onClear();
 
     canvasController.startTimer();
 

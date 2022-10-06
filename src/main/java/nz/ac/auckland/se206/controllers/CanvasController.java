@@ -105,14 +105,9 @@ public class CanvasController {
         });
   }
 
-  /** Calls the method to clear the canvas when the "Clear" button is pressed, clears the canvas. */
-  @FXML
-  private void onClear() {
-    clear();
-  }
-
   /** Clears the entire canvas when called. */
-  public void clear() {
+  @FXML
+  public void onClear() {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
     // when canvas is cleared, canvas declared as empty and predictionList no longer displays

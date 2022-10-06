@@ -145,5 +145,6 @@ public class JsonParser {
         allUserData.get(username).replace("fastestTime", time);
       }
     }
+    mapToJson();
   }
 }

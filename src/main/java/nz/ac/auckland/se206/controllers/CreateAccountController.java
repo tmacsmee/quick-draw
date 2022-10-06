@@ -13,8 +13,6 @@ import nz.ac.auckland.se206.util.JsonParser;
 public class CreateAccountController {
   @FXML private TextField usernameTextField;
 
-  @FXML private Button createButton;
-
   @FXML private Button loginButton;
 
   @FXML private Label errorMessageLabel;
@@ -48,7 +46,6 @@ public class CreateAccountController {
     } else {
       // Add account to json file
       jsonParser.addUser(username);
-      jsonParser.mapToJson();
 
       // Set user stats labels
       App.setCurrentUser(username);

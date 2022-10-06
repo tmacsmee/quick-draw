@@ -18,32 +18,9 @@ class JsonParserTest {
   }
 
   @Test
-  void testIsCorrectPassword() {
-    parser = new JsonParser();
-    assertTrue(parser.isCorrectPassword("username1", "password1"));
-    assertFalse(parser.isCorrectPassword("username1", "password2"));
-  }
-
-  @Test
   void testIsCorrectUsername() {
     parser = new JsonParser();
     assertTrue(parser.isCorrectUsername("username1"));
     assertFalse(parser.isCorrectUsername("username3"));
-  }
-
-  @Test
-  void testAddUser() {
-    parser = new JsonParser();
-    parser.addUser("username3", "password3");
-    assertEquals("password3", parser.getProperty("username3", "password"));
-  }
-
-  @Test
-  void testMapToJson() {
-    parser = new JsonParser();
-    parser.addUser("username4", "password4");
-    parser.mapToJson();
-    parser = new JsonParser();
-    assertEquals("password4", parser.getProperty("username4", "password"));
   }
 }

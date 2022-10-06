@@ -18,8 +18,6 @@ import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 public class ResultsController {
 
-  @FXML private Button playAgainButton;
-  @FXML private Button saveSketchButton;
   @FXML private Label resultLabel;
   @FXML private ImageView sketchImageView;
   private CanvasController canvasController;
@@ -54,13 +52,14 @@ public class ResultsController {
    * Runs when the play again button is pressed. Resets the canvas and returns to the 'ready' scene.
    */
   @FXML
-  private void onPlayAgain() {
+  private void onPlayAgain(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.reset(); // Reset the canvas.
 
-    playAgainButton
-        .getScene()
-        .setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY)); // Switch to the 'ready' scene.
+    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+
     TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
     new Thread(textToSpeechTask).start(); // Run text to speech task on new thread.
   }

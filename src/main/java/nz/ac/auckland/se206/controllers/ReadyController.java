@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,9 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.util.JsonParser;
-import nz.ac.auckland.se206.util.NormalModeTask;
-import nz.ac.auckland.se206.util.ZenModeTask;
+import nz.ac.auckland.se206.util.*;
 
 public class ReadyController {
 
@@ -22,6 +21,8 @@ public class ReadyController {
   private List<String> hard;
   @FXML private Label promptLabel;
   @FXML private Label drawLabel;
+  private CanvasController canvasController;
+  String prompt;
 
   /** Initializes the controller class, creates difficulty arrays and generates prompt. */
   @FXML
@@ -30,27 +31,32 @@ public class ReadyController {
   }
 
   private void normalReady() {
+    canvasController.setPrompt(prompt);
     NormalModeTask normalModeTask = new NormalModeTask();
     normalModeTask.scheduleTask();
   }
 
   private void zenReady() {
+    canvasController.setPrompt(prompt);
     ZenModeTask zenModeTask = new ZenModeTask();
     zenModeTask.scheduleTask();
   }
 
-  private void hiddenReady() {}
+  private void hiddenReady() throws IOException {
+    DictionaryLookup dictionary = new DictionaryLookup();
+    canvasController.setPrompt(dictionary.getDefinition(prompt));
+    HiddenModeTask hiddenModeTask = new HiddenModeTask();
+    hiddenModeTask.scheduleTask();
+  }
 
   /*
    * Runs when ready button is pressed. Takes user to the canvas scene and starts
    * timer.
    */
   @FXML
-  private void onReady(ActionEvent event) {
-    String prompt = promptLabel.getText();
-
-    CanvasController canvasController = (CanvasController) App.getController("canvas");
-    canvasController.setPrompt(prompt); // Set the prompt on the canvas controller
+  private void onReady(ActionEvent event) throws IOException {
+    // Set the prompt on the canvas controller
+    canvasController = (CanvasController) App.getController("canvas");
     canvasController.onClear();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
@@ -120,13 +126,13 @@ public class ReadyController {
   public void setDrawLabel(String gameMode) {
     switch (gameMode) {
       case "normal":
-        drawLabel.setText("You have 1 minute to draw this word:");
+        drawLabel.setText("You have 1 minute to draw:");
         break;
       case "zen":
         drawLabel.setText("Draw:");
         break;
       case "hidden":
-        drawLabel.setText("A hidden word has been chosen for you to draw:");
+        drawLabel.setText("The word's definition is:");
         break;
     }
   }
@@ -139,14 +145,15 @@ public class ReadyController {
   public void getPrompt(String difficulty) {
     switch (difficulty) { // Get a random word from the correct array
       case "E": // Generate easy prompt
-        promptLabel.setText(easy.get((int) (Math.random() * easy.size())));
+        prompt = easy.get((int) (Math.random() * easy.size()));
         break;
       case "M": // Generate medium prompt
-        promptLabel.setText(medium.get((int) (Math.random() * medium.size())));
+        prompt = medium.get((int) (Math.random() * medium.size()));
         break;
       case "H": // Generate hard prompt
-        promptLabel.setText(hard.get((int) (Math.random() * hard.size())));
+        prompt = hard.get((int) (Math.random() * hard.size()));
         break;
     }
+    promptLabel.setText(prompt);
   }
 }

@@ -49,7 +49,16 @@ public class GameModeController {
   }
 
   @FXML
-  private void onPlayHidden(ActionEvent event) {}
+  private void onPlayHidden(ActionEvent event) {
+    gameMode = "hidden";
+
+    readyController = (ReadyController) App.getController("ready");
+    readyController.setDrawLabel("hidden");
+
+    Button button = (Button) event.getSource();
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+  }
 
   public String getGameMode() {
     return gameMode;

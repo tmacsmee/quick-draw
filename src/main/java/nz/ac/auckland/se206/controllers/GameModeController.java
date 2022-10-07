@@ -1,11 +1,13 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.DictionaryLookup;
 import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 public class GameModeController {
@@ -28,6 +30,12 @@ public class GameModeController {
   private void onPlayNormal(ActionEvent event) {
     gameMode = "normal";
 
+    readyController = (ReadyController) App.getController("ready");
+    String prompt = readyController.getPrompt();
+    readyController.setPrompt(prompt);
+
+    readyController.setDrawLabel("normal");
+
     TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
     new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
@@ -41,6 +49,9 @@ public class GameModeController {
     gameMode = "zen";
 
     readyController = (ReadyController) App.getController("ready");
+    String prompt = readyController.getPrompt();
+    readyController.setPrompt(prompt);
+
     readyController.setDrawLabel("zen");
 
     Button button = (Button) event.getSource();
@@ -49,10 +60,14 @@ public class GameModeController {
   }
 
   @FXML
-  private void onPlayHidden(ActionEvent event) {
+  private void onPlayHidden(ActionEvent event) throws IOException {
     gameMode = "hidden";
 
     readyController = (ReadyController) App.getController("ready");
+    DictionaryLookup dictionary = new DictionaryLookup();
+    String definition = dictionary.getDefinition(readyController.getPrompt());
+    readyController.setPromptLabel(definition);
+
     readyController.setDrawLabel("hidden");
 
     Button button = (Button) event.getSource();

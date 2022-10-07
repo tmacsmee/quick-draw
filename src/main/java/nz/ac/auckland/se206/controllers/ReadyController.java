@@ -44,7 +44,9 @@ public class ReadyController {
 
   private void hiddenReady() throws IOException {
     DictionaryLookup dictionary = new DictionaryLookup();
-    canvasController.setPrompt(dictionary.getDefinition(prompt));
+    String definition = dictionary.getDefinition(prompt);
+    canvasController.setPrompt(definition);
+
     HiddenModeTask hiddenModeTask = new HiddenModeTask();
     hiddenModeTask.scheduleTask();
   }
@@ -116,11 +118,19 @@ public class ReadyController {
 
   /** Generates a new random prompt. */
   public void reset() {
-    getPrompt("E");
+    setPrompt("E");
   }
 
   public String getPromptLabel() {
     return promptLabel.getText();
+  }
+
+  public String getPrompt() {
+    return prompt;
+  }
+
+  public void setPromptLabel(String prompt) {
+    promptLabel.setText(prompt);
   }
 
   public void setDrawLabel(String gameMode) {
@@ -142,7 +152,7 @@ public class ReadyController {
    *
    * @param difficulty The difficulty of the prompt.
    */
-  public void getPrompt(String difficulty) {
+  public void setPrompt(String difficulty) {
     switch (difficulty) { // Get a random word from the correct array
       case "E": // Generate easy prompt
         prompt = easy.get((int) (Math.random() * easy.size()));
@@ -154,6 +164,5 @@ public class ReadyController {
         prompt = hard.get((int) (Math.random() * hard.size()));
         break;
     }
-    promptLabel.setText(prompt);
   }
 }

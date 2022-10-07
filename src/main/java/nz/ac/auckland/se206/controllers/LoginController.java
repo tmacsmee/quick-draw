@@ -52,7 +52,7 @@ public class LoginController {
 
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.createDifficultyArrays(); // Get an array of each difficulty
-    readyController.getPrompt("E");
+    readyController.setPrompt("E");
 
     // Change to menu screen
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.

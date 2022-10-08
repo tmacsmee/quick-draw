@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.awt.*;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +33,7 @@ public class GameModeController {
 
     readyController = (ReadyController) App.getController("ready");
     String prompt = readyController.getPrompt();
-    readyController.setPrompt(prompt);
+    readyController.setPromptLabel(prompt);
 
     readyController.setDrawLabel("normal");
 
@@ -50,7 +51,7 @@ public class GameModeController {
 
     readyController = (ReadyController) App.getController("ready");
     String prompt = readyController.getPrompt();
-    readyController.setPrompt(prompt);
+    readyController.setPromptLabel(prompt);
 
     readyController.setDrawLabel("zen");
 
@@ -64,9 +65,12 @@ public class GameModeController {
     gameMode = "hidden";
 
     readyController = (ReadyController) App.getController("ready");
+    CanvasController canvasController = (CanvasController) App.getController("canvas");
     DictionaryLookup dictionary = new DictionaryLookup();
     String definition = dictionary.getDefinition(readyController.getPrompt());
+    System.out.println(readyController.getPrompt());
     readyController.setPromptLabel(definition);
+    canvasController.setPromptLabel(definition);
 
     readyController.setDrawLabel("hidden");
 

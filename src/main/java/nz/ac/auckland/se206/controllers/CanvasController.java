@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 
@@ -142,7 +143,7 @@ public class CanvasController {
    *
    * @param prompt randomly generated prompt
    */
-  public void setPrompt(String prompt) {
+  public void setPromptLabel(String prompt) {
     promptLabel.setText("Draw: " + prompt);
   }
 
@@ -161,15 +162,12 @@ public class CanvasController {
    * @throws TranslateException If there is an error in translating the prompt to a classification.
    */
   public boolean isCorrect() throws TranslateException {
-
+    ReadyController readyController = (ReadyController) App.getController("ready");
     // only predict if canvas is not empty
     if (isCanvasNotEmpty) {
       for (Classifications.Classification c :
           model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3 predictions.
-        if (promptLabel
-            .getText()
-            .substring(6)
-            .equalsIgnoreCase(c.getClassName().replace("_", " "))) {
+        if (readyController.getPrompt().equalsIgnoreCase(c.getClassName().replace("_", " "))) {
           return true; // If the prompt is in the top 3 predictions, return true.
         }
       }

@@ -19,34 +19,30 @@ public class ReadyController {
   private List<String> easy;
   private List<String> medium;
   private List<String> hard;
-  @FXML private Label promptLabel;
-  @FXML private Label drawLabel;
   private CanvasController canvasController;
   String prompt;
+  @FXML private Label promptLabel;
+  @FXML private Label drawLabel;
 
   /** Initializes the controller class, creates difficulty arrays and generates prompt. */
   @FXML
   private void initialize() {
-    System.out.println("***************** Initialising Ready Controller *****************" + this);
+    System.out.println("***************** Initialising Ready Controller *****************");
   }
 
   private void normalReady() {
-    canvasController.setPrompt(prompt);
+    canvasController.setPromptLabel(prompt);
     NormalModeTask normalModeTask = new NormalModeTask();
     normalModeTask.scheduleTask();
   }
 
   private void zenReady() {
-    canvasController.setPrompt(prompt);
+    canvasController.setPromptLabel(prompt);
     ZenModeTask zenModeTask = new ZenModeTask();
     zenModeTask.scheduleTask();
   }
 
-  private void hiddenReady() throws IOException {
-    DictionaryLookup dictionary = new DictionaryLookup();
-    String definition = dictionary.getDefinition(prompt);
-    canvasController.setPrompt(definition);
-
+  private void hiddenReady() {
     HiddenModeTask hiddenModeTask = new HiddenModeTask();
     hiddenModeTask.scheduleTask();
   }

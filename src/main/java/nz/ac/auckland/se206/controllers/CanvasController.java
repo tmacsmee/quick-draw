@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
 import nz.ac.auckland.se206.util.TimeLimitTask;
@@ -172,7 +173,12 @@ public class CanvasController {
     // only predict if canvas is not empty
     if (isCanvasNotEmpty) {
       for (Classifications.Classification c :
-          model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3 predictions.
+          model.getPredictions(
+              getCurrentSnapshot(),
+              Integer.parseInt(
+                  App.getJsonParser()
+                      .getDifficulty(
+                          App.getCurrentUser(), "topGuess")))) { // Get the top prediction(s).
         if (promptLabel
             .getText()
             .substring(6)

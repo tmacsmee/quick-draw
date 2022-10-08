@@ -89,14 +89,14 @@ public class JsonParser {
                 "0",
                 "fastestTime",
                 "0",
-                "accuracy",
+                "topGuess",
+                "3",
+                "level",
                 "easy",
-                "words",
-                "easy",
-                "time",
-                "easy",
+                "timeAllowed",
+                "60",
                 "confidence",
-                "easy"));
+                "1"));
     // Update the map with user data
     allUserData.put(username, userData);
     // Write the map to the JSON file
@@ -166,5 +166,9 @@ public class JsonParser {
   public void setDifficulty(String username, String type, String difficulty) {
     allUserData.get(username).replace(type, difficulty);
     mapToJson();
+  }
+
+  public String getDifficulty(String username, String type) {
+    return (String) getProperty(username, type);
   }
 }

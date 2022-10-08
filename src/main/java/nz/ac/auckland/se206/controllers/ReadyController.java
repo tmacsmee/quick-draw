@@ -121,6 +121,10 @@ public class ReadyController {
     return promptLabel.getText();
   }
 
+  public void changePromptLabelSize() {
+    promptLabel.setStyle("-fx-font-size: 20px;");
+  }
+
   public String getPrompt() {
     return prompt;
   }

@@ -144,7 +144,11 @@ public class CanvasController {
    * @param prompt randomly generated prompt
    */
   public void setPromptLabel(String prompt) {
-    promptLabel.setText("Draw: " + prompt);
+    promptLabel.setText(prompt);
+  }
+
+  public void changePromptLabelSize() {
+    promptLabel.setStyle("-fx-font-size: 20px;");
   }
 
   public DoodlePrediction getModel() {

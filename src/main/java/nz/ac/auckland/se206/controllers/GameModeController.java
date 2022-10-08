@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.awt.*;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,6 +70,9 @@ public class GameModeController {
     System.out.println(readyController.getPrompt());
     readyController.setPromptLabel(definition);
     canvasController.setPromptLabel(definition);
+
+    readyController.changePromptLabelSize();
+    canvasController.changePromptLabelSize();
 
     readyController.setDrawLabel("hidden");
 

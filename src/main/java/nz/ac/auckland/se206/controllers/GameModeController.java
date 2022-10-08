@@ -71,8 +71,8 @@ public class GameModeController {
     readyController.setPromptLabel(definition);
     canvasController.setPromptLabel(definition);
 
-    readyController.changePromptLabelSize();
-    canvasController.changePromptLabelSize();
+    readyController.decreasePromptLabelSize();
+    canvasController.decreasePromptLabelSize();
 
     readyController.setDrawLabel("hidden");
 

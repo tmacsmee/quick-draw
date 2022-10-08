@@ -147,8 +147,12 @@ public class CanvasController {
     promptLabel.setText(prompt);
   }
 
-  public void changePromptLabelSize() {
+  public void decreasePromptLabelSize() {
     promptLabel.setStyle("-fx-font-size: 20px;");
+  }
+
+  public void resetPromptLabelSize() {
+    promptLabel.setStyle("-fx-font-size: 30px;");
   }
 
   public DoodlePrediction getModel() {

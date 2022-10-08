@@ -14,7 +14,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 public class ResultsController {
 
@@ -52,16 +51,20 @@ public class ResultsController {
    * Runs when the play again button is pressed. Resets the canvas and returns to the 'ready' scene.
    */
   @FXML
-  private void onPlayAgain(ActionEvent event) {
+  private void onPlayAgain(ActionEvent event) throws IOException {
     ReadyController readyController = (ReadyController) App.getController("ready");
-    readyController.reset(); // Reset the canvas.
+    readyController.setPrompt("E");
 
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+    GameModeController gameModeController = (GameModeController) App.getController("gameMode");
+    String gameMode = gameModeController.getGameMode();
 
-    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
-    new Thread(textToSpeechTask).start(); // Run text to speech task on new thread.
+    if (gameMode.equals("normal")) {
+      gameModeController.onPlayNormal(event);
+    } else if (gameMode.equals("zen")) {
+      gameModeController.onPlayZen(event);
+    } else if (gameMode.equals("hidden")) {
+      gameModeController.onPlayHidden(event);
+    }
   }
 
   /**

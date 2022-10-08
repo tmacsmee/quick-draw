@@ -28,7 +28,7 @@ public class GameModeController {
    * @param event the button click event.
    */
   @FXML
-  private void onPlayNormal(ActionEvent event) {
+  public void onPlayNormal(ActionEvent event) {
     gameMode = "normal";
 
     readyController = (ReadyController) App.getController("ready");
@@ -46,7 +46,7 @@ public class GameModeController {
   }
 
   @FXML
-  private void onPlayZen(ActionEvent event) {
+  public void onPlayZen(ActionEvent event) {
     gameMode = "zen";
 
     readyController = (ReadyController) App.getController("ready");
@@ -61,7 +61,7 @@ public class GameModeController {
   }
 
   @FXML
-  private void onPlayHidden(ActionEvent event) throws IOException {
+  public void onPlayHidden(ActionEvent event) throws IOException {
     gameMode = "hidden";
 
     readyController = (ReadyController) App.getController("ready");

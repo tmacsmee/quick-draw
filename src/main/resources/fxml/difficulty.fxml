@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.DifficultyController">
    <children>
       <VBox alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="122.0" prefWidth="700.0" styleClass="coloured-box">
          <children>
@@ -16,39 +16,38 @@
             <Label styleClass="header" text="Excel the Artist in You!" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="50.0" layoutY="164.0" prefHeight="334.0" prefWidth="700.0" spacing="10.0" styleClass="coloured-box">
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="146.0" prefHeight="342.0" prefWidth="700.0" spacing="10.0" styleClass="coloured-box">
          <children>
             <Label styleClass="header" text="Difficulty Selector" />
-            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="679.0">
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="679.0">
                <children>
                   <Label styleClass="menu-screenText" text="My drawing must be in the top " />
-                  <ChoiceBox prefHeight="26.0" prefWidth="85.0" />
+                  <ChoiceBox fx:id="cbTopGuess" prefHeight="36.0" prefWidth="60.0" styleClass="choiceBox-custom" />
                   <Label styleClass="menu-screenText" text=" guesses" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="679.0">
+            <HBox alignment="CENTER" prefHeight="38.0" prefWidth="679.0">
                <children>
                   <Label styleClass="menu-screenText" text="I want to play on level " />
-                  <ChoiceBox prefHeight="26.0" prefWidth="85.0" />
+                  <ChoiceBox fx:id="cbLevel" prefHeight="36.0" prefWidth="153.0" styleClass="choiceBox-custom" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="679.0">
                <children>
                   <Label styleClass="menu-screenText" text="I only want " />
-                  <ChoiceBox prefHeight="26.0" prefWidth="85.0" />
+                  <ChoiceBox fx:id="cbTimeAllowed" prefHeight="36.0" prefWidth="70.0" styleClass="choiceBox-custom" />
                   <Label styleClass="menu-screenText" text=" seconds to draw" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="679.0">
                <children>
                   <Label styleClass="menu-screenText" text="The computer must be " />
-                  <ChoiceBox prefHeight="26.0" prefWidth="85.0" />
+                  <ChoiceBox fx:id="cbHowConfident" prefHeight="36.0" prefWidth="70.0" styleClass="choiceBox-custom" />
                   <Label styleClass="menu-screenText" text="\% sure of what my drawing is" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="50.0" layoutY="520.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="234.0" text="Main Menu" />
-      <Button layoutX="504.0" layoutY="520.0" mnemonicParsing="false" text="Switch Account" />
+      <Button fx:id="btnSwitchToMenu" layoutX="283.0" layoutY="529.0" mnemonicParsing="false" onAction="#onSwitchToMenu" prefHeight="57.0" prefWidth="234.0" text="Main Menu" />
    </children>
 </Pane>

@@ -116,7 +116,7 @@ HBox {
     }
 
 .button-play{
-    -fx-backgroud-image: url(../images/play.png);
+    -fx-background-image: url(../images/play.png);
 }
 
 .user-fields{

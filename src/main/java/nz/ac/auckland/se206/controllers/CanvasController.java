@@ -149,7 +149,7 @@ public class CanvasController {
   }
 
   public void decreasePromptLabelSize() {
-    promptLabel.setStyle("-fx-font-size: 20px;");
+    promptLabel.setStyle("-fx-font-size: 14px;");
   }
 
   public void resetPromptLabelSize() {

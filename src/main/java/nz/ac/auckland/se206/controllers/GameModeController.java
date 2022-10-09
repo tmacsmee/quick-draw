@@ -66,19 +66,25 @@ public class GameModeController {
     readyController = (ReadyController) App.getController("ready");
     CanvasController canvasController = (CanvasController) App.getController("canvas");
     DictionaryLookup dictionary = new DictionaryLookup();
-    String definition = dictionary.getDefinition(readyController.getPrompt());
-    System.out.println(readyController.getPrompt());
-    readyController.setPromptLabel(definition);
-    canvasController.setPromptLabel(definition);
 
-    readyController.decreasePromptLabelSize();
-    canvasController.decreasePromptLabelSize();
+    try {
+      String definition = dictionary.getDefinition(readyController.getPrompt());
+      readyController.setPromptLabel(definition);
+      canvasController.setPromptLabel(definition);
 
-    readyController.setDrawLabel("hidden");
+      readyController.decreasePromptLabelSize();
+      canvasController.decreasePromptLabelSize();
 
-    Button button = (Button) event.getSource();
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+      readyController.setDrawLabel("hidden");
+
+      Button button = (Button) event.getSource();
+      Scene buttonScene = button.getScene();
+      buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+
+    } catch (Exception e) {
+      readyController.setPrompt("E");
+      onPlayHidden(event);
+    }
   }
 
   public String getGameMode() {

@@ -123,3 +123,11 @@ HBox {
     -fx-background-color: #fab260;
     -fx-background-radius: 35;
 }
+
+.exit-button {
+    -fx-background-color: white;
+    -fx-padding: 0;
+    -fx-font-size: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
+    -fx-cursor: hand;
+}

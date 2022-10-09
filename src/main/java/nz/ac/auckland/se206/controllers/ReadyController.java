@@ -20,6 +20,9 @@ public class ReadyController {
   private List<String> medium;
   private List<String> hard;
   private CanvasController canvasController;
+  private HiddenModeTask hiddenModeTask;
+  private NormalModeTask normalModeTask;
+  private ZenModeTask zenModeTask;
   String prompt;
   @FXML private Label promptLabel;
   @FXML private Label drawLabel;
@@ -32,18 +35,18 @@ public class ReadyController {
 
   private void normalReady() {
     canvasController.setPromptLabel(prompt);
-    NormalModeTask normalModeTask = new NormalModeTask();
+    normalModeTask = new NormalModeTask();
     normalModeTask.scheduleTask();
   }
 
   private void zenReady() {
     canvasController.setPromptLabel(prompt);
-    ZenModeTask zenModeTask = new ZenModeTask();
+    zenModeTask = new ZenModeTask();
     zenModeTask.scheduleTask();
   }
 
   private void hiddenReady() {
-    HiddenModeTask hiddenModeTask = new HiddenModeTask();
+    hiddenModeTask = new HiddenModeTask();
     hiddenModeTask.scheduleTask();
   }
 
@@ -168,5 +171,17 @@ public class ReadyController {
         prompt = hard.get((int) (Math.random() * hard.size()));
         break;
     }
+  }
+
+  public NormalModeTask getNormalModeTask() {
+    return normalModeTask;
+  }
+
+  public HiddenModeTask getHiddenModeTask() {
+    return hiddenModeTask;
+  }
+
+  public ZenModeTask getZenModeTask() {
+    return zenModeTask;
   }
 }

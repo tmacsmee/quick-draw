@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -229,5 +230,29 @@ public class CanvasController {
     ImageIO.write(image, "bmp", imageToClassify);
 
     return imageToClassify;
+  }
+
+  public void onExit(ActionEvent event) {
+    GameModeController gameModeController = (GameModeController) App.getController("gameMode");
+    ResultsController resultsController = (ResultsController) App.getController("results");
+    ReadyController readyController = (ReadyController) App.getController("ready");
+
+    Button button = (Button) event.getSource(); // Get button scene and change its root.
+    Scene buttonScene = button.getScene();
+
+    String gameMode = gameModeController.getGameMode();
+
+    if (gameMode.equals("zen")) {
+      readyController.getZenModeTask().cancel();
+      resultsController.setResultLabel("Here's your drawing:");
+      resultsController.setSketchImage();
+      buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.RESULTS)));
+    } else if (gameMode.equals("hidden")) {
+      readyController.getHiddenModeTask().cancel();
+      buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
+    } else if (gameMode.equals("normal")) {
+      readyController.getNormalModeTask().cancel();
+      buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
+    }
   }
 }

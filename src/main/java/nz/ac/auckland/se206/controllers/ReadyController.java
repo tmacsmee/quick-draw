@@ -123,7 +123,7 @@ public class ReadyController {
 
   /** Generates a new random prompt. */
   public void reset() {
-    setPrompt("E");
+    setPrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
   }
 
   public String getPromptLabel() {
@@ -167,14 +167,24 @@ public class ReadyController {
    */
   public void setPrompt(String difficulty) {
     switch (difficulty) { // Get a random word from the correct array
-      case "E": // Generate easy prompt
-        prompt = easy.get((int) (Math.random() * easy.size()));
+      case "easy": // Generate easy prompt - easy
+        promptLabel.setText(easy.get((int) (Math.random() * easy.size())));
         break;
-      case "M": // Generate medium prompt
-        prompt = medium.get((int) (Math.random() * medium.size()));
+      case "medium": // Generate medium prompt - easy/medium
+        List<String> easyAndMedium = new ArrayList<>();
+        easyAndMedium.addAll(easy);
+        easyAndMedium.addAll(medium);
+        promptLabel.setText(easyAndMedium.get((int) (Math.random() * easyAndMedium.size())));
         break;
-      case "H": // Generate hard prompt
-        prompt = hard.get((int) (Math.random() * hard.size()));
+      case "hard": // Generate hard prompt - easy/medium/hard
+        List<String> all = new ArrayList<>();
+        all.addAll(easy);
+        all.addAll(medium);
+        all.addAll(hard);
+        promptLabel.setText(all.get((int) (Math.random() * all.size())));
+        break;
+      case "master": // Generate master prompt - hard
+        promptLabel.setText(hard.get((int) (Math.random() * hard.size())));
         break;
     }
   }

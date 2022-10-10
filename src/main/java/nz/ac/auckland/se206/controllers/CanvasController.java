@@ -165,9 +165,9 @@ public class CanvasController {
   }
 
   /**
-   * Checks if the prompt is within the top 3 predictions.
+   * Checks if the prompt is within the top 1, 2, or 3 predictions.
    *
-   * @return true if the prompt is within the top 3 predictions, false otherwise
+   * @return true if the prompt is within the top 1, 2, or 3 predictions, false otherwise
    * @throws TranslateException If there is an error in translating the prompt to a classification.
    */
   public boolean isCorrect() throws TranslateException {
@@ -175,9 +175,21 @@ public class CanvasController {
     // only predict if canvas is not empty
     if (isCanvasNotEmpty) {
       for (Classifications.Classification c :
-          model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3 predictions.
+          model.getPredictions(
+              getCurrentSnapshot(),
+              Integer.parseInt(
+                  App.getJsonParser()
+                      .getDifficulty(
+                          App.getCurrentUser(),
+                          "topGuess")))) { // Get the top 1, 2, or 3 prediction(s).
+        // If the prompt equals one of the top x predictions.
         if (readyController.getPrompt().equalsIgnoreCase(c.getClassName().replace("_", " "))) {
-          return true; // If the prompt is in the top 3 predictions, return true.
+          // If the prompt also has at least confidence percentage specified in the difficulties.
+          if (c.getProbability() * 100
+              >= Integer.parseInt(
+                  App.getJsonParser().getDifficulty(App.getCurrentUser(), "confidence"))) {
+            return true;
+          }
         }
       }
     }

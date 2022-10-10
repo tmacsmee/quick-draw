@@ -91,6 +91,10 @@ HBox {
     -fx-background-radius: 35;
 }
 
+.round-button{
+    -fx-background-radius: 100;
+}
+
 .results-button-box {
     -fx-spacing: 23;
 }
@@ -108,12 +112,28 @@ HBox {
 }
 
 .list-cell {
-    -fx-control-inner-background: #f8d872;
+    -fx-control-inner-background: #fab260;
     -fx-font-family: "Arial";
     -fx-font-weight: bold;
     -fx-font-style: italic;
     -fx-font-size: 20;
+}
+    -fx-font-size: 17;
     }
+
+.list-box{
+    -fx-background-color: #fab260;
+    -fx-background-radius: 35;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
+}
+
+.choiceBox-custom {
+    -fx-control-inner-background: #fab260;
+    -fx-background-color: #fab260;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 25;
 
 .user-fields{
     -fx-background-color: #fab260;
@@ -129,4 +149,12 @@ HBox {
 
 .exit-button:hover {
     -fx-background-color: #FF8E5E;
+}
+
+.listText {
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }

@@ -53,7 +53,8 @@ public class CreateAccountController {
 
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty
-      readyController.setPrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+      readyController.generatePrompt(
+          App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
 
       // Switch to menu scene
       Button button =

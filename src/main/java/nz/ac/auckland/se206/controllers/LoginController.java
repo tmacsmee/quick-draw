@@ -56,7 +56,8 @@ public class LoginController {
 
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty
-      readyController.setPrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+      readyController.generatePrompt(
+          App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
 
       // Change to menu screen
       Button button =

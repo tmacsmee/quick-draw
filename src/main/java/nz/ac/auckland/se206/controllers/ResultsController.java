@@ -56,7 +56,8 @@ public class ResultsController {
   @FXML
   private void onPlayAgain(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
-    readyController.setPrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+    readyController.generatePrompt(
+        App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
 
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
 

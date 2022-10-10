@@ -95,7 +95,8 @@ public class GameModeController {
       buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
 
     } catch (Exception e) { // Try a new word if the definition is not found
-      readyController.setPrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+      readyController.generatePrompt(
+          App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
       onPlayHidden(event);
     }
   }

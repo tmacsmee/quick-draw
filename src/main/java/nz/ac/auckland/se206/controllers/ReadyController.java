@@ -123,7 +123,7 @@ public class ReadyController {
 
   /** Generates a new random prompt. */
   public void reset() {
-    setPrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+    generatePrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
   }
 
   public String getPromptLabel() {
@@ -165,7 +165,7 @@ public class ReadyController {
    *
    * @param difficulty The difficulty of the prompt.
    */
-  public void setPrompt(String difficulty) {
+  public void generatePrompt(String difficulty) {
     switch (difficulty) { // Get a random word from the correct array
       case "easy": // Generate easy prompt - easy
         prompt = easy.get((int) (Math.random() * easy.size()));

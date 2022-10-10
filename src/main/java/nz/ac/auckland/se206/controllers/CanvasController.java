@@ -148,10 +148,12 @@ public class CanvasController {
     promptLabel.setText(prompt);
   }
 
+  /** Reduces prompt label to allow definition to fit */
   public void decreasePromptLabelSize() {
     promptLabel.setStyle("-fx-font-size: 14px;");
   }
 
+  /** Resets prompt label to default value */
   public void resetPromptLabelSize() {
     promptLabel.setStyle("-fx-font-size: 30px;");
   }
@@ -261,6 +263,10 @@ public class CanvasController {
 
     String gameMode = gameModeController.getGameMode();
 
+    // Generate new prompt
+    readyController.generatePrompt(
+        App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+
     // Cancel the task of the game mode that was being played
     switch (gameMode) {
       case "zen" -> { // Cancel zen mode task and take user to results screen
@@ -270,6 +276,8 @@ public class CanvasController {
         buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.RESULTS)));
       }
       case "hidden" -> { // Cancel hidden mode task
+        resetPromptLabelSize(); // Reset labels to original size
+        readyController.resetPromptLabelSize();
         readyController.getHiddenModeTask().cancel();
         buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
       }

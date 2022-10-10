@@ -34,7 +34,7 @@
                   </HBox>
                 <Canvas fx:id="canvas" height="304.0" width="500.0">
                   <cursor>
-                    <Cursor fx:constant="CROSSHAIR" />
+                    <Cursor fx:constant="DEFAULT" />
                   </cursor>
                 </Canvas>
                 <HBox alignment="CENTER" prefHeight="115.0" prefWidth="500.0" styleClass="canvas-buttons">

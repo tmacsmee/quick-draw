@@ -24,8 +24,8 @@
                   <HBox alignment="CENTER" prefHeight="83.0" prefWidth="500.0" styleClass="coloured-box">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <Label fx:id="promptLabel" prefHeight="45.0" prefWidth="614.0" styleClass="canvas-prompt" text="[prompt]" textAlignment="CENTER" />
-                      <Label fx:id="timerLabel" alignment="CENTER" prefHeight="27.0" prefWidth="409.0" styleClass="timer" text="00:00" textAlignment="CENTER">
+                        <Label fx:id="promptLabel" prefHeight="63.0" prefWidth="696.0" styleClass="canvas-prompt" text="[prompt]" textAlignment="CENTER" wrapText="true" />
+                      <Label fx:id="timerLabel" alignment="CENTER" prefHeight="27.0" prefWidth="409.0" styleClass="timer" textAlignment="CENTER">
                         <font>
                           <Font size="18.0" />
                         </font>
@@ -81,30 +81,47 @@
                 </HBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="505.0" prefWidth="259.0">
+            <VBox alignment="TOP_RIGHT">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="234.0" styleClass="menu-screenText" text="Top 10 Predictions:" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#onExit" prefHeight="30.0" prefWidth="30.0" styleClass="exit-button">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font size="4.0" />
                      </font>
-                  </Label>
-                  <Label fx:id="predictionList" lineSpacing="8.0" prefHeight="535.0" prefWidth="226.0" text="Prediction list">
-                     <font>
-                        <Font name="Arial Bold Italic" size="18.0" />
-                     </font>
-                  </Label>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <VBox prefHeight="4.0" prefWidth="240.0" />
+                  <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="505.0" prefWidth="259.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="234.0" styleClass="menu-screenText" text="Top 10 Predictions:" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="predictionList" lineSpacing="8.0" prefHeight="535.0" prefWidth="226.0" text="Prediction list">
+                           <font>
+                              <Font name="Arial Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color opacity="0.07999999821186066" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                     <styleClass>
+                        <String fx:value="coloured-box" />
+                        <String fx:value="rounded-corners" />
+                     </styleClass>
+                  </VBox>
                </children>
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color opacity="0.07999999821186066" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-               <styleClass>
-                  <String fx:value="coloured-box" />
-                  <String fx:value="rounded-corners" />
-               </styleClass>
             </VBox>
          </children>
       </HBox>

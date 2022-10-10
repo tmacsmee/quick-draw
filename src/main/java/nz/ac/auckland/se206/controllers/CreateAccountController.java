@@ -12,9 +12,6 @@ import nz.ac.auckland.se206.util.JsonParser;
 
 public class CreateAccountController {
   @FXML private TextField usernameTextField;
-
-  @FXML private Button loginButton;
-
   @FXML private Label errorMessageLabel;
 
   /** Initializes the createAccount scene. */
@@ -56,7 +53,8 @@ public class CreateAccountController {
 
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty
-      readyController.getPrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+      readyController.generatePrompt(
+          App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
 
       // Switch to menu scene
       Button button =

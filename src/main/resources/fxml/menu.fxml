@@ -51,7 +51,7 @@
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="209.0" prefWidth="471.0">
                      <children>
-                        <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onStart" prefHeight="144.0" prefWidth="163.0">
+                        <Button fx:id="playButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPlay" prefHeight="144.0" prefWidth="163.0">
                            <styleClass>
                               <String fx:value="rounded-corners" />
                               <String fx:value="button-play" />

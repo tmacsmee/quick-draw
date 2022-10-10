@@ -82,6 +82,7 @@ public class App extends Application {
     SceneManager.addUi(SceneManager.AppUi.LOGIN, loadFxml("login"));
     SceneManager.addUi(SceneManager.AppUi.HOWTOPLAY, loadFxml("howToPlay"));
     SceneManager.addUi(SceneManager.AppUi.MENU, loadFxml("menu"));
+    SceneManager.addUi(SceneManager.AppUi.GAMEMODE, loadFxml("gameMode"));
     SceneManager.addUi(SceneManager.AppUi.READY, loadFxml("ready"));
     SceneManager.addUi(SceneManager.AppUi.CANVAS, loadFxml("canvas"));
     SceneManager.addUi(SceneManager.AppUi.RESULTS, loadFxml("results"));

@@ -12,7 +12,6 @@ import javafx.scene.control.ListView;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
-import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 /** The controller of the menu scene. */
 public class MenuController {
@@ -30,18 +29,15 @@ public class MenuController {
   }
 
   /**
-   * Switches to the drawing scene when the start button is clicked.
+   * Switches to the game mode select scene when the start button is clicked.
    *
    * @param event the button click event.
    */
   @FXML
-  private void onStart(ActionEvent event) {
+  private void onPlay(ActionEvent event) {
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
-
-    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
-    new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.GAMEMODE));
   }
 
   /**
@@ -105,6 +101,7 @@ public class MenuController {
       fastestTimeLabel.setText(
           jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString() + " seconds");
     }
+    setWordsEncounteredListView();
   }
 
   /** Updates the list of words encountered on the menu scene */

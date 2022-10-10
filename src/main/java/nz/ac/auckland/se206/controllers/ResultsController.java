@@ -40,8 +40,8 @@ public class ResultsController {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.reset(); // Reset the canvas.
 
-    MenuController menuController = (MenuController) App.getController("menu");
-    menuController.updateStats();
+    statsController statsController = (statsController) App.getController("stats");
+    statsController.updateStats();
 
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();

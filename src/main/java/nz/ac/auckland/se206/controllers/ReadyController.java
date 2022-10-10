@@ -43,8 +43,8 @@ public class ReadyController {
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
     jsonParser.addWordEncountered(App.getCurrentUser(), prompt);
 
-    MenuController menuController = (MenuController) App.getController("menu");
-    menuController.setWordsEncounteredListView();
+    WordsController wordsController = (WordsController) App.getController("wordsEncountered");
+    wordsController.setWordsEncounteredListView();
 
     Button button = (Button) event.getSource(); // Get button scene and change its root.
     Scene buttonScene = button.getScene();

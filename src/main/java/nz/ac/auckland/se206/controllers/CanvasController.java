@@ -182,8 +182,10 @@ public class CanvasController {
                       .getDifficulty(
                           App.getCurrentUser(),
                           "topGuess")))) { // Get the top 1, 2, or 3 prediction(s).
+
         // If the prompt equals one of the top x predictions.
         if (readyController.getPrompt().equalsIgnoreCase(c.getClassName().replace("_", " "))) {
+
           // If the prompt also has at least confidence percentage specified in the difficulties.
           if (c.getProbability() * 100
               >= Integer.parseInt(

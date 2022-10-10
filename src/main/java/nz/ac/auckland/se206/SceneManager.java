@@ -12,7 +12,10 @@ public class SceneManager {
     GAMEMODE,
     READY,
     CANVAS,
-    RESULTS
+    RESULTS,
+    DIFFICULTY,
+    STATS,
+    WORDS
   }
 
   private static final HashMap<AppUi, Parent> sceneMap = new HashMap<>();

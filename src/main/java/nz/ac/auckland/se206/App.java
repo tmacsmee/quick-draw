@@ -86,6 +86,9 @@ public class App extends Application {
     SceneManager.addUi(SceneManager.AppUi.READY, loadFxml("ready"));
     SceneManager.addUi(SceneManager.AppUi.CANVAS, loadFxml("canvas"));
     SceneManager.addUi(SceneManager.AppUi.RESULTS, loadFxml("results"));
+    SceneManager.addUi(SceneManager.AppUi.DIFFICULTY, loadFxml("difficulty"));
+    SceneManager.addUi(SceneManager.AppUi.STATS, loadFxml("stats"));
+    SceneManager.addUi(SceneManager.AppUi.WORDS, loadFxml("wordsEncountered"));
 
     jsonParser = new JsonParser();
 

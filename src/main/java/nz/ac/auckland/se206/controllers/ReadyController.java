@@ -12,7 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.util.*;
+import nz.ac.auckland.se206.util.HiddenModeTask;
+import nz.ac.auckland.se206.util.JsonParser;
+import nz.ac.auckland.se206.util.NormalModeTask;
+import nz.ac.auckland.se206.util.ZenModeTask;
 
 public class ReadyController {
 

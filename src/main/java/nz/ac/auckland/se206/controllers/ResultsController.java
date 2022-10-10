@@ -61,13 +61,7 @@ public class ResultsController {
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
     String gameMode = gameModeController.getGameMode();
 
-    if (gameMode.equals("normal")) {
-      gameModeController.onPlayNormal(event);
-    } else if (gameMode.equals("zen")) {
-      gameModeController.onPlayZen(event);
-    } else if (gameMode.equals("hidden")) {
-      gameModeController.onPlayHidden(event);
-    }
+    gameModeController.playAgainHandler(gameMode, event);
   }
 
   /**

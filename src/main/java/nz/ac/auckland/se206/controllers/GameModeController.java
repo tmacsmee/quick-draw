@@ -27,7 +27,7 @@ public class GameModeController {
    * @param event the button click event.
    */
   @FXML
-  public void onPlayNormal(ActionEvent event) {
+  private void onPlayNormal(ActionEvent event) {
     gameMode = "normal";
 
     readyController = (ReadyController) App.getController("ready");
@@ -45,7 +45,7 @@ public class GameModeController {
   }
 
   @FXML
-  public void onPlayZen(ActionEvent event) {
+  private void onPlayZen(ActionEvent event) {
     gameMode = "zen";
 
     readyController = (ReadyController) App.getController("ready");
@@ -84,6 +84,24 @@ public class GameModeController {
     } catch (Exception e) {
       readyController.setPrompt("E");
       onPlayHidden(event);
+    }
+  }
+
+  public void playAgainHandler(String gameMode, ActionEvent event) {
+    switch (gameMode) {
+      case "normal":
+        onPlayNormal(event);
+        break;
+      case "zen":
+        onPlayZen(event);
+        break;
+      case "hidden":
+        try {
+          onPlayHidden(event);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+        break;
     }
   }
 

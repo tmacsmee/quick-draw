@@ -115,10 +115,6 @@ HBox {
     -fx-font-size: 20;
     }
 
-.button-play{
-    -fx-background-image: url(../images/play.png);
-}
-
 .user-fields{
     -fx-background-color: #fab260;
     -fx-background-radius: 35;

@@ -9,10 +9,6 @@ import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 public class HowToPlayController {
 
-  @FXML private Button playButton;
-
-  @FXML private Button mainMenuButton;
-
   /** Initializes the login scene. */
   @FXML
   private void initialize() {

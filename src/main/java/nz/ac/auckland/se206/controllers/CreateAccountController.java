@@ -12,9 +12,6 @@ import nz.ac.auckland.se206.util.JsonParser;
 
 public class CreateAccountController {
   @FXML private TextField usernameTextField;
-
-  @FXML private Button loginButton;
-
   @FXML private Label errorMessageLabel;
 
   /** Initializes the createAccount scene. */

@@ -36,18 +36,21 @@ public class ReadyController {
     System.out.println("***************** Initialising Ready Controller *****************");
   }
 
+  /** Prepares the ready screen for normal mode */
   private void normalReady() {
     canvasController.setPromptLabel(prompt);
     normalModeTask = new NormalModeTask();
     normalModeTask.scheduleTask();
   }
 
+  /** Prepares the ready screen for zen mode */
   private void zenReady() {
     canvasController.setPromptLabel(prompt);
     zenModeTask = new ZenModeTask();
     zenModeTask.scheduleTask();
   }
 
+  /** Prepares the ready screen for hidden mode */
   private void hiddenReady() {
     hiddenModeTask = new HiddenModeTask();
     hiddenModeTask.scheduleTask();

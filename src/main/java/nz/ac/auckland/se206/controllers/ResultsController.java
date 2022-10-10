@@ -54,14 +54,13 @@ public class ResultsController {
    * Runs when the play again button is pressed. Resets the canvas and returns to the 'ready' scene.
    */
   @FXML
-  private void onPlayAgain(ActionEvent event) throws IOException {
+  private void onPlayAgain(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.setPrompt("E");
 
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
-    String gameMode = gameModeController.getGameMode();
 
-    gameModeController.playAgainHandler(gameMode, event);
+    gameModeController.playAgainHandler(event);
   }
 
   /**

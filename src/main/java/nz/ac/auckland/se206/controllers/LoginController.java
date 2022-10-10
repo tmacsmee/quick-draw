@@ -12,8 +12,6 @@ import nz.ac.auckland.se206.SceneManager;
 public class LoginController {
 
   @FXML private TextField usernameTextField;
-  @FXML private Button createAccountButton;
-  @FXML private Button loginButton;
   @FXML private Label errorMessageLabel;
 
   /** Initializes the login scene. */

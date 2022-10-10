@@ -44,21 +44,32 @@ public class GameModeController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
   }
 
+  /**
+   * Launches the canvas in zen mode
+   *
+   * @param event the button click event.
+   */
   @FXML
   private void onPlayZen(ActionEvent event) {
     gameMode = "zen";
 
+    // Set prompt labels to reflect the game mode
     readyController = (ReadyController) App.getController("ready");
     String prompt = readyController.getPrompt();
     readyController.setPromptLabel(prompt);
-
     readyController.setDrawLabel("zen");
 
+    // Switch to ready scene
     Button button = (Button) event.getSource();
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
   }
 
+  /**
+   * Launches the canvas in zen mode
+   *
+   * @param event the button click event.
+   */
   @FXML
   public void onPlayHidden(ActionEvent event) throws IOException {
     gameMode = "hidden";
@@ -67,34 +78,46 @@ public class GameModeController {
     CanvasController canvasController = (CanvasController) App.getController("canvas");
     DictionaryLookup dictionary = new DictionaryLookup();
 
+    // Get the prompt definition
     try {
       String definition = dictionary.getDefinition(readyController.getPrompt());
-      readyController.setPromptLabel(definition);
+      readyController.setPromptLabel(definition); // Set the prompt label to the definition
       canvasController.setPromptLabel(definition);
 
-      readyController.decreasePromptLabelSize();
+      readyController.decreasePromptLabelSize(); // Make definition fit on screen
       canvasController.decreasePromptLabelSize();
 
       readyController.setDrawLabel("hidden");
 
+      // Switch to ready scene
       Button button = (Button) event.getSource();
       Scene buttonScene = button.getScene();
       buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
 
-    } catch (Exception e) {
+    } catch (Exception e) { // Try a new word if the definition is not found
       readyController.setPrompt("E");
       onPlayHidden(event);
     }
   }
 
-  public void playAgainHandler(String gameMode, ActionEvent event) {
+  /**
+   * Handles which mode is started when play again is clicked
+   *
+   * @param event the button click event.
+   */
+  public void playAgainHandler(ActionEvent event) {
     switch (gameMode) {
+        // Play in normal mode
       case "normal":
         onPlayNormal(event);
         break;
+
+        // Play in zen mode
       case "zen":
         onPlayZen(event);
         break;
+
+        // Play in hidden mode
       case "hidden":
         try {
           onPlayHidden(event);

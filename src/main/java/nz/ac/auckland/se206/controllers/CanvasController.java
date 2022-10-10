@@ -232,27 +232,37 @@ public class CanvasController {
     return imageToClassify;
   }
 
+  /**
+   * Returns the player to the main menu
+   *
+   * @param event the button click event
+   */
   public void onExit(ActionEvent event) {
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
     ResultsController resultsController = (ResultsController) App.getController("results");
     ReadyController readyController = (ReadyController) App.getController("ready");
 
-    Button button = (Button) event.getSource(); // Get button scene and change its root.
+    Button button = (Button) event.getSource(); // Get the button that was clicked.
     Scene buttonScene = button.getScene();
 
     String gameMode = gameModeController.getGameMode();
 
-    if (gameMode.equals("zen")) {
-      readyController.getZenModeTask().cancel();
-      resultsController.setResultLabel("Here's your drawing:");
-      resultsController.setSketchImage();
-      buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.RESULTS)));
-    } else if (gameMode.equals("hidden")) {
-      readyController.getHiddenModeTask().cancel();
-      buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
-    } else if (gameMode.equals("normal")) {
-      readyController.getNormalModeTask().cancel();
-      buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
+    // Cancel the task of the game mode that was being played
+    switch (gameMode) {
+      case "zen" -> { // Cancel zen mode task and take user to results screen
+        readyController.getZenModeTask().cancel();
+        resultsController.setResultLabel("Here's your drawing:"); // Present drawing to user
+        resultsController.setSketchImage();
+        buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.RESULTS)));
+      }
+      case "hidden" -> { // Cancel hidden mode task
+        readyController.getHiddenModeTask().cancel();
+        buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
+      }
+      case "normal" -> { // Cancel normal mode task
+        readyController.getNormalModeTask().cancel();
+        buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
+      }
     }
   }
 }

@@ -18,12 +18,16 @@ public class ZenModeTask extends TimerTask {
     canvasController = (CanvasController) App.getController("canvas");
   }
 
+  /** Sets the update rate for the prediction list */
   public void scheduleTask() {
     timer.schedule(this, 0, 1000);
     canvasController.setTimerLabel("");
   }
 
+  /** Runs on each tick of the timer. */
+  @Override
   public void run() {
+    // Run asynchronously
     Platform.runLater(
         () -> {
           try {

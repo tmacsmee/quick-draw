@@ -149,7 +149,10 @@ public class ReadyController {
   public void setDrawLabel(String gameMode) {
     switch (gameMode) {
       case "normal":
-        drawLabel.setText("You have 1 minute to draw:");
+        drawLabel.setText(
+            "You have "
+                + App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed")
+                + " seconds to draw:");
         break;
       case "zen":
         drawLabel.setText("Draw:");

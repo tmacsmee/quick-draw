@@ -181,9 +181,8 @@ public class CanvasController {
               getCurrentSnapshot(),
               Integer.parseInt(
                   App.getJsonParser()
-                      .getDifficulty(
-                          App.getCurrentUser(),
-                          "topGuess")))) { // Get the top 1, 2, or 3 prediction(s).
+                      .getProperty(App.getCurrentUser(), "topGuess")
+                      .toString()))) { // Get the top 1, 2, or 3 prediction(s).
 
         // If the prompt equals one of the top x predictions.
         if (readyController.getPrompt().equalsIgnoreCase(c.getClassName().replace("_", " "))) {
@@ -191,7 +190,7 @@ public class CanvasController {
           // If the prompt also has at least confidence percentage specified in the difficulties.
           if (c.getProbability() * 100
               >= Integer.parseInt(
-                  App.getJsonParser().getDifficulty(App.getCurrentUser(), "confidence"))) {
+                  App.getJsonParser().getProperty(App.getCurrentUser(), "confidence").toString())) {
             return true;
           }
         }
@@ -265,7 +264,7 @@ public class CanvasController {
 
     // Generate new prompt
     readyController.generatePrompt(
-        App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
     // Cancel the task of the game mode that was being played
     switch (gameMode) {

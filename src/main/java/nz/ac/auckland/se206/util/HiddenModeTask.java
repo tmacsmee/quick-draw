@@ -39,7 +39,8 @@ public class HiddenModeTask extends TimerTask {
   public void run() {
     // Get the max time the user is allowed to take.
     int timeLimit =
-        Integer.valueOf(App.getJsonParser().getDifficulty(App.getCurrentUser(), "timeAllowed"));
+        Integer.valueOf(
+            App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed").toString());
 
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
     if (timeElapsed == timeLimit) { // If time runs out, move to results scene.

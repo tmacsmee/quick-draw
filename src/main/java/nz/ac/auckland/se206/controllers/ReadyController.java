@@ -123,7 +123,7 @@ public class ReadyController {
 
   /** Generates a new random prompt. */
   public void reset() {
-    generatePrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+    generatePrompt(App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
   }
 
   public String getPromptLabel() {

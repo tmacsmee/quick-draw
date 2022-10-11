@@ -167,8 +167,4 @@ public class JsonParser {
     allUserData.get(username).replace(type, difficulty);
     mapToJson();
   }
-
-  public String getDifficulty(String username, String type) {
-    return (String) getProperty(username, type);
-  }
 }

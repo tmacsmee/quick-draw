@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 
 public class DifficultyController implements Initializable {
@@ -50,25 +51,25 @@ public class DifficultyController implements Initializable {
 
   public String getTopGuess(ActionEvent event) {
     String currentTopGuess = cbTopGuess.getValue();
-
+    App.getJsonParser().setDifficulty(App.getCurrentUser(), "topGuess", currentTopGuess);
     return (currentTopGuess);
   }
 
   public String getLevel(ActionEvent event) {
     String currentLevel = cbLevel.getValue();
-
+    App.getJsonParser().setDifficulty(App.getCurrentUser(), "level", currentLevel);
     return (currentLevel);
   }
 
   public String getTimeAllowed(ActionEvent event) {
     String currentTimeAllowed = cbTimeAllowed.getValue();
-
+    App.getJsonParser().setDifficulty(App.getCurrentUser(), "timeAllowed", currentTimeAllowed);
     return (currentTimeAllowed);
   }
 
   public String getHowConfident(ActionEvent event) {
     String currentConfidence = cbHowConfident.getValue();
-
+    App.getJsonParser().setDifficulty(App.getCurrentUser(), "confidence", currentConfidence);
     return (currentConfidence);
   }
 

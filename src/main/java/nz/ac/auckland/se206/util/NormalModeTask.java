@@ -37,8 +37,10 @@ public class NormalModeTask extends TimerTask {
    * Handles the time limit functionality. If the time limit is reached, the program will terminate.
    */
   public void run() {
+    int timeLimit =
+        Integer.valueOf(App.getJsonParser().getDifficulty(App.getCurrentUser(), "timeAllowed"));
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
-    if (timeElapsed == 60) { // If time runs out, move to results scene.
+    if (timeElapsed == timeLimit) { // If time runs out, move to results scene.
       timer.cancel();
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
@@ -46,10 +48,11 @@ public class NormalModeTask extends TimerTask {
       canvasController.results();
 
     } else if (timeElapsed
-        < 60) { // If time is still remaining, update the time label and prediction list.
+        < timeLimit) { // If time is still remaining, update the time label and prediction list.
       Platform.runLater(
           () -> {
-            canvasController.setTimerLabel(String.valueOf((59L - timeElapsed) % 60));
+            canvasController.setTimerLabel(
+                String.valueOf(((long) (timeLimit - 1) - timeElapsed) % timeLimit));
             try {
               // Set the prediction list
               canvasController.setPredictionList(

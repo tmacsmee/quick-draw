@@ -30,7 +30,7 @@ public class CanvasController {
   private DoodlePrediction model;
   private double lastX;
   private double lastY;
-  private String activeColor = "black";
+  private Color activeColor = Color.BLACK;
   @FXML private Canvas canvas;
   @FXML private Label predictionList;
   @FXML private Label timerLabel;
@@ -88,7 +88,7 @@ public class CanvasController {
           isCanvasNotEmpty = true;
 
           graphic.setLineWidth(brushSize);
-          graphic.setStroke(Color.BLACK);
+          graphic.setStroke(activeColor);
 
           double thisX = e.getX(); // Get coordinates of mouse on drag.
           double thisY = e.getY();
@@ -177,32 +177,33 @@ public class CanvasController {
   }
 
   @FXML
-  private void changeBrushColour(ActionEvent event) {
+  private void onChangeBrushColour(ActionEvent event) {
     if (event.getSource() == blackButton) {
-      graphic.setStroke(Color.BLACK);
+      activeColor = Color.BLACK;
       blackButton.setDisable(true);
     } else if (event.getSource() == redButton) {
-      graphic.setStroke(Color.RED);
+      activeColor = Color.RED;
       redButton.setDisable(true);
     } else if (event.getSource() == orangeButton) {
-      graphic.setStroke(Color.ORANGE);
+      activeColor = Color.ORANGE;
       orangeButton.setDisable(true);
     } else if (event.getSource() == yellowButton) {
-      graphic.setStroke(Color.YELLOW);
+      activeColor = Color.YELLOW;
       yellowButton.setDisable(true);
     } else if (event.getSource() == greenButton) {
-      graphic.setStroke(Color.GREEN);
+      activeColor = Color.GREEN;
       greenButton.setDisable(true);
     } else if (event.getSource() == blueButton) {
-      graphic.setStroke(Color.BLUE);
+      activeColor = Color.BLUE;
       blueButton.setDisable(true);
     } else if (event.getSource() == purpleButton) {
-      graphic.setStroke(Color.PURPLE);
+      activeColor = Color.PURPLE;
       purpleButton.setDisable(true);
     } else if (event.getSource() == pinkButton) {
-      graphic.setStroke(Color.PINK);
+      activeColor = Color.PINK;
       pinkButton.setDisable(true);
     }
+    graphic.setStroke(activeColor);
     enableBrushButtons();
   }
 

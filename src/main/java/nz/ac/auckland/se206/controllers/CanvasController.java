@@ -30,7 +30,7 @@ public class CanvasController {
   private DoodlePrediction model;
   private double lastX;
   private double lastY;
-  private Color activeColor = Color.BLACK;
+  private Color activeColor;
   @FXML private Canvas canvas;
   @FXML private Label predictionList;
   @FXML private Label timerLabel;
@@ -61,6 +61,9 @@ public class CanvasController {
     System.out.println("***************** Initialising Canvas Controller *****************");
 
     graphic = canvas.getGraphicsContext2D();
+
+    activeColor = Color.BLACK;
+    blackButton.setDisable(true);
 
     // Get coordinates of mouse on press.
     canvas.setOnMousePressed(
@@ -178,6 +181,8 @@ public class CanvasController {
 
   @FXML
   private void onChangeBrushColour(ActionEvent event) {
+    enableBrushButtons();
+
     if (event.getSource() == blackButton) {
       activeColor = Color.BLACK;
       blackButton.setDisable(true);
@@ -204,7 +209,6 @@ public class CanvasController {
       pinkButton.setDisable(true);
     }
     graphic.setStroke(activeColor);
-    enableBrushButtons();
   }
 
   private void enableBrushButtons() {

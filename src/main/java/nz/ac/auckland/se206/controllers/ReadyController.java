@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,19 +12,48 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.HiddenModeTask;
 import nz.ac.auckland.se206.util.JsonParser;
+import nz.ac.auckland.se206.util.NormalModeTask;
+import nz.ac.auckland.se206.util.ZenModeTask;
 
 public class ReadyController {
 
   private List<String> easy;
   private List<String> medium;
   private List<String> hard;
+  private CanvasController canvasController;
+  private HiddenModeTask hiddenModeTask;
+  private NormalModeTask normalModeTask;
+  private ZenModeTask zenModeTask;
+  String prompt;
   @FXML private Label promptLabel;
+  @FXML private Label drawLabel;
 
   /** Initializes the controller class, creates difficulty arrays and generates prompt. */
   @FXML
   private void initialize() {
-    System.out.println("***************** Initialising Ready Controller *****************" + this);
+    System.out.println("***************** Initialising Ready Controller *****************");
+  }
+
+  /** Prepares the ready screen for normal mode */
+  private void normalReady() {
+    canvasController.setPromptLabel(prompt);
+    normalModeTask = new NormalModeTask();
+    normalModeTask.scheduleTask();
+  }
+
+  /** Prepares the ready screen for zen mode */
+  private void zenReady() {
+    canvasController.setPromptLabel(prompt);
+    zenModeTask = new ZenModeTask();
+    zenModeTask.scheduleTask();
+  }
+
+  /** Prepares the ready screen for hidden mode */
+  private void hiddenReady() {
+    hiddenModeTask = new HiddenModeTask();
+    hiddenModeTask.scheduleTask();
   }
 
   /*
@@ -31,20 +61,25 @@ public class ReadyController {
    * timer.
    */
   @FXML
-  private void onReady(ActionEvent event) {
-    String prompt = promptLabel.getText();
-
-    CanvasController canvasController = (CanvasController) App.getController("canvas");
-    canvasController.setPrompt(prompt); // Set the prompt on the canvas controller
+  private void onReady(ActionEvent event) throws IOException {
+    // Set the prompt on the canvas controller
+    canvasController = (CanvasController) App.getController("canvas");
     canvasController.onClear();
-
-    canvasController.startTimer();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
     jsonParser.addWordEncountered(App.getCurrentUser(), prompt);
 
     WordsController wordsController = (WordsController) App.getController("wordsEncountered");
     wordsController.setWordsEncounteredListView();
+    GameModeController gameModeController = (GameModeController) App.getController("gameMode");
+    String gameMode = gameModeController.getGameMode();
+    if (gameMode.equals("normal")) {
+      normalReady();
+    } else if (gameMode.equals("zen")) {
+      zenReady();
+    } else if (gameMode.equals("hidden")) {
+      hiddenReady();
+    }
 
     Button button = (Button) event.getSource(); // Get button scene and change its root.
     Scene buttonScene = button.getScene();
@@ -90,11 +125,44 @@ public class ReadyController {
 
   /** Generates a new random prompt. */
   public void reset() {
-    getPrompt("E");
+    generatePrompt(App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
   }
 
   public String getPromptLabel() {
     return promptLabel.getText();
+  }
+
+  public void decreasePromptLabelSize() {
+    promptLabel.setStyle("-fx-font-size: 20px;");
+  }
+
+  public void resetPromptLabelSize() {
+    promptLabel.setStyle("-fx-font-size: 48px;");
+  }
+
+  public String getPrompt() {
+    return prompt;
+  }
+
+  public void setPromptLabel(String prompt) {
+    promptLabel.setText(prompt);
+  }
+
+  public void setDrawLabel(String gameMode) {
+    switch (gameMode) {
+      case "normal":
+        drawLabel.setText(
+            "You have "
+                + App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed")
+                + " seconds to draw:");
+        break;
+      case "zen":
+        drawLabel.setText("Draw:");
+        break;
+      case "hidden":
+        drawLabel.setText("The word's definition is:");
+        break;
+    }
   }
 
   /**
@@ -102,17 +170,39 @@ public class ReadyController {
    *
    * @param difficulty The difficulty of the prompt.
    */
-  public void getPrompt(String difficulty) {
+  public void generatePrompt(String difficulty) {
     switch (difficulty) { // Get a random word from the correct array
-      case "E": // Generate easy prompt
-        promptLabel.setText(easy.get((int) (Math.random() * easy.size())));
+      case "easy": // Generate easy prompt - easy
+        prompt = easy.get((int) (Math.random() * easy.size()));
         break;
-      case "M": // Generate medium prompt
-        promptLabel.setText(medium.get((int) (Math.random() * medium.size())));
+      case "medium": // Generate medium prompt - easy/medium
+        List<String> easyAndMedium = new ArrayList<>();
+        easyAndMedium.addAll(easy);
+        easyAndMedium.addAll(medium);
+        prompt = easyAndMedium.get((int) (Math.random() * easyAndMedium.size()));
         break;
-      case "H": // Generate hard prompt
-        promptLabel.setText(hard.get((int) (Math.random() * hard.size())));
+      case "hard": // Generate hard prompt - easy/medium/hard
+        List<String> all = new ArrayList<>();
+        all.addAll(easy);
+        all.addAll(medium);
+        all.addAll(hard);
+        prompt = all.get((int) (Math.random() * all.size()));
+        break;
+      case "master": // Generate master prompt - hard
+        prompt = hard.get((int) (Math.random() * hard.size()));
         break;
     }
+  }
+
+  public NormalModeTask getNormalModeTask() {
+    return normalModeTask;
+  }
+
+  public HiddenModeTask getHiddenModeTask() {
+    return hiddenModeTask;
+  }
+
+  public ZenModeTask getZenModeTask() {
+    return zenModeTask;
   }
 }

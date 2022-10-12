@@ -8,12 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.util.JsonParser;
 
 public class LoginController {
 
   @FXML private TextField usernameTextField;
-  @FXML private Button createAccountButton;
-  @FXML private Button loginButton;
   @FXML private Label errorMessageLabel;
 
   /** Initializes the login scene. */
@@ -41,23 +40,32 @@ public class LoginController {
    */
   @FXML
   private void onLogin(ActionEvent event) {
+    JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
 
-    // Set user stats labels
-    App.setCurrentUser(username); // Set the current user
+    // Check username exists, otherwise display error message.
+    if (!jsonParser.isCorrectUsername(username)) {
+      errorMessageLabel.setText("Username does not exist");
+    } else {
+      // Set user stats labels
+      App.setCurrentUser(username); // Set the current user
+
 
     statsController statsController = (statsController) App.getController("stats");
     WordsController wordsController = (WordsController) App.getController("wordsEncountered");
     statsController.updateStats();
     wordsController.setWordsEncounteredListView();
 
-    ReadyController readyController = (ReadyController) App.getController("ready");
-    readyController.createDifficultyArrays(); // Get an array of each difficulty
-    readyController.getPrompt("E");
+      ReadyController readyController = (ReadyController) App.getController("ready");
+      readyController.createDifficultyArrays(); // Get an array of each difficulty
+      readyController.generatePrompt(
+          App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
-    // Change to menu screen
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
+      // Change to menu screen
+      Button button =
+          (Button) event.getSource(); // Get the scene of the button and switch its root.
+      Scene buttonScene = button.getScene();
+      buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
+    }
   }
 }

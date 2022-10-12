@@ -88,7 +88,15 @@ public class JsonParser {
                 "gamesLost",
                 "0",
                 "fastestTime",
-                "0"));
+                "0",
+                "topGuess",
+                "3",
+                "level",
+                "easy",
+                "timeAllowed",
+                "60",
+                "confidence",
+                "1"));
     // Update the map with user data
     allUserData.put(username, userData);
     // Write the map to the JSON file
@@ -145,6 +153,18 @@ public class JsonParser {
         allUserData.get(username).replace("fastestTime", time);
       }
     }
+    mapToJson();
+  }
+
+  /**
+   * Sets the difficulty of the corresponding setting type
+   *
+   * @param username the username of the user
+   * @param type the type of setting to set the difficulty of (words, time, accuracy, confidence)
+   * @param difficulty the difficulty to set the setting to (easy, medium, hard)
+   */
+  public void setDifficulty(String username, String type, String difficulty) {
+    allUserData.get(username).replace(type, difficulty);
     mapToJson();
   }
 }

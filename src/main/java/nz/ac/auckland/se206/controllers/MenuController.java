@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.TextToSpeechTask;
+import nz.ac.auckland.se206.util.JsonParser;
 
 /** The controller of the menu scene. */
 public class MenuController {
@@ -21,18 +22,15 @@ public class MenuController {
   }
 
   /**
-   * Switches to the drawing scene when the start button is clicked.
+   * Switches to the game mode select scene when the start button is clicked.
    *
    * @param event the button click event.
    */
   @FXML
-  private void onStart(ActionEvent event) {
+  private void onPlay(ActionEvent event) {
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
-
-    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
-    new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.GAMEMODE));
   }
 
   /**
@@ -61,6 +59,9 @@ public class MenuController {
 
   @FXML
   private void onDifficulty(ActionEvent event) {
+    DifficultyController difficultyController =
+        (DifficultyController) App.getController("difficulty");
+    difficultyController.initialiseChoiceBox();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.DIFFICULTY));
@@ -79,13 +80,4 @@ public class MenuController {
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.WORDS));
   }
-
-  //  /** Updates the list of words encountered on the menu scene */
-  //  public void setWordsEncounteredListView() {
-  //    JsonParser jsonParser = App.getJsonParser();
-  //    List<String> wordsEncountered =
-  //        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "wordsEncountered");
-  //    ObservableList<String> wordsList = FXCollections.observableArrayList(wordsEncountered);
-  //    wordsEncounteredListView.setItems(wordsList);
-  //  }
 }

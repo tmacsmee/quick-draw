@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
@@ -20,9 +21,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
-import nz.ac.auckland.se206.util.TimeLimitTask;
 
 /** The controller of the canvas scene. */
 public class CanvasController {
@@ -143,12 +144,6 @@ public class CanvasController {
     predictionList.setText("");
   }
 
-  /** Creates and starts the task that manages the time limit. */
-  public void startTimer() {
-    TimeLimitTask task = new TimeLimitTask(this);
-    task.scheduleTask();
-  }
-
   /**
    * Sets the timer label to the given time.
    *
@@ -176,8 +171,18 @@ public class CanvasController {
    *
    * @param prompt randomly generated prompt
    */
-  public void setPrompt(String prompt) {
-    promptLabel.setText("Draw: " + prompt);
+  public void setPromptLabel(String prompt) {
+    promptLabel.setText(prompt);
+  }
+
+  /** Reduces prompt label to allow definition to fit */
+  public void decreasePromptLabelSize() {
+    promptLabel.setStyle("-fx-font-size: 14px;");
+  }
+
+  /** Resets prompt label to default value */
+  public void resetPromptLabelSize() {
+    promptLabel.setStyle("-fx-font-size: 30px;");
   }
 
   public DoodlePrediction getModel() {
@@ -189,22 +194,32 @@ public class CanvasController {
   }
 
   /**
-   * Checks if the prompt is within the top 3 predictions.
+   * Checks if the prompt is within the top 1, 2, or 3 predictions.
    *
-   * @return true if the prompt is within the top 3 predictions, false otherwise
+   * @return true if the prompt is within the top 1, 2, or 3 predictions, false otherwise
    * @throws TranslateException If there is an error in translating the prompt to a classification.
    */
   public boolean isCorrect() throws TranslateException {
-
+    ReadyController readyController = (ReadyController) App.getController("ready");
     // only predict if canvas is not empty
     if (isCanvasNotEmpty) {
       for (Classifications.Classification c :
-          model.getPredictions(getCurrentSnapshot(), 3)) { // Get the top 3 predictions.
-        if (promptLabel
-            .getText()
-            .substring(6)
-            .equalsIgnoreCase(c.getClassName().replace("_", " "))) {
-          return true; // If the prompt is in the top 3 predictions, return true.
+          model.getPredictions(
+              getCurrentSnapshot(),
+              Integer.parseInt(
+                  App.getJsonParser()
+                      .getProperty(App.getCurrentUser(), "topGuess")
+                      .toString()))) { // Get the top 1, 2, or 3 prediction(s).
+
+        // If the prompt equals one of the top x predictions.
+        if (readyController.getPrompt().equalsIgnoreCase(c.getClassName().replace("_", " "))) {
+
+          // If the prompt also has at least confidence percentage specified in the difficulties.
+          if (c.getProbability() * 100
+              >= Integer.parseInt(
+                  App.getJsonParser().getProperty(App.getCurrentUser(), "confidence").toString())) {
+            return true;
+          }
         }
       }
     }
@@ -257,5 +272,45 @@ public class CanvasController {
     ImageIO.write(image, "bmp", imageToClassify);
 
     return imageToClassify;
+  }
+
+  /**
+   * Returns the player to the main menu
+   *
+   * @param event the button click event
+   */
+  public void onExit(ActionEvent event) {
+    GameModeController gameModeController = (GameModeController) App.getController("gameMode");
+    ResultsController resultsController = (ResultsController) App.getController("results");
+    ReadyController readyController = (ReadyController) App.getController("ready");
+
+    Button button = (Button) event.getSource(); // Get the button that was clicked.
+    Scene buttonScene = button.getScene();
+
+    String gameMode = gameModeController.getGameMode();
+
+    // Generate new prompt
+    readyController.generatePrompt(
+        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
+
+    // Cancel the task of the game mode that was being played
+    switch (gameMode) {
+      case "zen" -> { // Cancel zen mode task and take user to results screen
+        readyController.getZenModeTask().cancel();
+        resultsController.setResultLabel("Here's your drawing:"); // Present drawing to user
+        resultsController.setSketchImage();
+        buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.RESULTS)));
+      }
+      case "hidden" -> { // Cancel hidden mode task
+        resetPromptLabelSize(); // Reset labels to original size
+        readyController.resetPromptLabelSize();
+        readyController.getHiddenModeTask().cancel();
+        buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
+      }
+      case "normal" -> { // Cancel normal mode task
+        readyController.getNormalModeTask().cancel();
+        buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.MENU)));
+      }
+    }
   }
 }

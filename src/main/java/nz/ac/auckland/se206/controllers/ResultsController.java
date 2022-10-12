@@ -14,7 +14,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.util.TextToSpeechTask;
 
 public class ResultsController {
 
@@ -43,6 +42,9 @@ public class ResultsController {
     statsController statsController = (statsController) App.getController("stats");
     statsController.updateStats();
 
+    readyController.resetPromptLabelSize();
+    canvasController.resetPromptLabelSize();
+
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
@@ -54,14 +56,12 @@ public class ResultsController {
   @FXML
   private void onPlayAgain(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
-    readyController.reset(); // Reset the canvas.
+    readyController.generatePrompt(
+        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
+    GameModeController gameModeController = (GameModeController) App.getController("gameMode");
 
-    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
-    new Thread(textToSpeechTask).start(); // Run text to speech task on new thread.
+    gameModeController.playAgainHandler(event);
   }
 
   /**

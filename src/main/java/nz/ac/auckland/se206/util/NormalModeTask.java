@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.controllers.CanvasController;
 import nz.ac.auckland.se206.controllers.ResultsController;
 
 /** Handles the clock and time limit functionality. */
-public class TimeLimitTask extends TimerTask {
+public class NormalModeTask extends TimerTask {
   private final long startTime;
   private long timeElapsed;
   private final Timer timer;
@@ -19,13 +19,9 @@ public class TimeLimitTask extends TimerTask {
   private final ResultsController resultsController;
   private final JsonParser jsonParser;
 
-  /**
-   * Constructs the TimeLimitTask object.
-   *
-   * @param canvasController the canvas controller
-   */
-  public TimeLimitTask(CanvasController canvasController) {
-    this.canvasController = canvasController;
+  /** Constructs the NormalModeTask object. */
+  public NormalModeTask() {
+    canvasController = (CanvasController) App.getController("canvas");
     startTime = System.currentTimeMillis(); // Get the current time in milliseconds.
     resultsController = (ResultsController) App.getController("results");
     jsonParser = App.getJsonParser();
@@ -41,8 +37,11 @@ public class TimeLimitTask extends TimerTask {
    * Handles the time limit functionality. If the time limit is reached, the program will terminate.
    */
   public void run() {
+    int timeLimit =
+        Integer.valueOf(
+            App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed").toString());
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
-    if (timeElapsed == 60) { // If time runs out, move to results scene.
+    if (timeElapsed == timeLimit) { // If time runs out, move to results scene.
       timer.cancel();
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
@@ -50,10 +49,11 @@ public class TimeLimitTask extends TimerTask {
       canvasController.results();
 
     } else if (timeElapsed
-        < 60) { // If time is still remaining, update the time label and prediction list.
+        < timeLimit) { // If time is still remaining, update the time label and prediction list.
       Platform.runLater(
           () -> {
-            canvasController.setTimerLabel(String.valueOf((59L - timeElapsed) % 60));
+            canvasController.setTimerLabel(
+                String.valueOf(((long) (timeLimit - 1) - timeElapsed) % timeLimit));
             try {
               // Set the prediction list
               canvasController.setPredictionList(

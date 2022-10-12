@@ -10,7 +10,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
-public class statsController {
+public class StatsController {
 
   @FXML private Label numWinsLabel;
   @FXML private Label numLossesLabel;

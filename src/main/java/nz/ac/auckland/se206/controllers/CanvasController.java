@@ -179,13 +179,20 @@ public class CanvasController {
     return canvas;
   }
 
+  /**
+   * Sets the brush colour to the colour clicked on the palette.
+   *
+   * @param event the button clicked
+   */
   @FXML
   private void onChangeBrushColour(ActionEvent event) {
-    enableBrushButtons();
+    // Enable all buttons
+    enableColourButtons();
 
+    // Get the button that was clicked
     if (event.getSource() == blackButton) {
-      activeColor = Color.BLACK;
-      blackButton.setDisable(true);
+      activeColor = Color.BLACK; // Get the colour from the clicked button
+      blackButton.setDisable(true); // Disable the clicked colour
     } else if (event.getSource() == redButton) {
       activeColor = Color.RED;
       redButton.setDisable(true);
@@ -208,11 +215,13 @@ public class CanvasController {
       activeColor = Color.PINK;
       pinkButton.setDisable(true);
     }
+    // Set the brush colour to the colour of the clicked button
     graphic.setStroke(activeColor);
   }
 
-  private void enableBrushButtons() {
-    blackButton.setDisable(false);
+  /** Enables all colour buttons. Used to reset the colour palette after a colour is selected. */
+  private void enableColourButtons() {
+    blackButton.setDisable(false); // Enable all buttons
     redButton.setDisable(false);
     orangeButton.setDisable(false);
     yellowButton.setDisable(false);

@@ -19,6 +19,10 @@ public class MenuController {
     System.out.println("***************** Initialising Menu Controller *****************" + this);
   }
 
+  public void updateWelcome() {
+    welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
+  }
+
   /**
    * Switches to the game mode select scene when the start button is clicked.
    *

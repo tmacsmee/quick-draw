@@ -52,6 +52,8 @@ public class LoginController {
 
       StatsController statsController = (StatsController) App.getController("stats");
       WordsController wordsController = (WordsController) App.getController("wordsEncountered");
+      MenuController menuController = (MenuController) App.getController("menu");
+      menuController.updateWelcome();
       statsController.updateStats();
       wordsController.setWordsEncounteredListView();
 

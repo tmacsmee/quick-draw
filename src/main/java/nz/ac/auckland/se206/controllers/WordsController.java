@@ -17,6 +17,11 @@ public class WordsController {
   @FXML private ListView<String> mediumWordsEncounteredListView;
   @FXML private ListView<String> hardWordsEncounteredListView;
 
+  /**
+   * Switches to the main menu scene when the user clicks button.
+   *
+   * @param event the button click event.
+   */
   @FXML
   private void onSwitchToMenu(ActionEvent event) {
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
@@ -24,26 +29,27 @@ public class WordsController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
   }
 
+  /** Separates the list of words encountered by the user by difficulty and sets the list. */
   public void setEncounteredListView() {
+
     JsonParser jsonParser = App.getJsonParser();
-    if (jsonParser.getProperty(App.getCurrentUser(), "easyWordsEncountered") != null) {
-      ObservableList<String> easyWordsList =
-          FXCollections.observableArrayList(
-              (List<String>) jsonParser.getProperty(App.getCurrentUser(), "easyWordsEncountered"));
-      easyWordsEncounteredListView.setItems(easyWordsList);
-    }
-    if (jsonParser.getProperty(App.getCurrentUser(), "mediumWordsEncountered") != null) {
-      ObservableList<String> mediumWordsList =
-          FXCollections.observableArrayList(
-              (List<String>)
-                  jsonParser.getProperty(App.getCurrentUser(), "mediumWordsEncountered"));
-      mediumWordsEncounteredListView.setItems(mediumWordsList);
-    }
-    if (jsonParser.getProperty(App.getCurrentUser(), "hardWordsEncountered") != null) {
-      ObservableList<String> hardWordsList =
-          FXCollections.observableArrayList(
-              (List<String>) jsonParser.getProperty(App.getCurrentUser(), "hardWordsEncountered"));
-      hardWordsEncounteredListView.setItems(hardWordsList);
-    }
+
+    // Set list of easy words encountered
+    ObservableList<String> easyWordsList =
+        FXCollections.observableArrayList(
+            (List<String>) jsonParser.getProperty(App.getCurrentUser(), "easyWordsEncountered"));
+    easyWordsEncounteredListView.setItems(easyWordsList);
+
+    // Set list of medium words encountered
+    ObservableList<String> mediumWordsList =
+        FXCollections.observableArrayList(
+            (List<String>) jsonParser.getProperty(App.getCurrentUser(), "mediumWordsEncountered"));
+    mediumWordsEncounteredListView.setItems(mediumWordsList);
+
+    // Set list of hard words encountered
+    ObservableList<String> hardWordsList =
+        FXCollections.observableArrayList(
+            (List<String>) jsonParser.getProperty(App.getCurrentUser(), "hardWordsEncountered"));
+    hardWordsEncounteredListView.setItems(hardWordsList);
   }
 }

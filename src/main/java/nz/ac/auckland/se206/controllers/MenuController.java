@@ -66,6 +66,9 @@ public class MenuController {
 
   @FXML
   private void onDifficulty(ActionEvent event) {
+    DifficultyController difficultyController =
+        (DifficultyController) App.getController("difficulty");
+    difficultyController.initialiseChoiceBox();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.DIFFICULTY));

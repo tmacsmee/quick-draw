@@ -123,7 +123,7 @@ public class ReadyController {
 
   /** Generates a new random prompt. */
   public void reset() {
-    generatePrompt(App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+    generatePrompt(App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
   }
 
   public String getPromptLabel() {
@@ -149,7 +149,10 @@ public class ReadyController {
   public void setDrawLabel(String gameMode) {
     switch (gameMode) {
       case "normal":
-        drawLabel.setText("You have 1 minute to draw:");
+        drawLabel.setText(
+            "You have "
+                + App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed")
+                + " seconds to draw:");
         break;
       case "zen":
         drawLabel.setText("Draw:");

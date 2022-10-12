@@ -96,7 +96,7 @@ public class GameModeController {
 
     } catch (Exception e) { // Try a new word if the definition is not found
       readyController.generatePrompt(
-          App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+          App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
       onPlayHidden(event);
     }
   }

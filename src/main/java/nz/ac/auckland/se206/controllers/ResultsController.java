@@ -57,7 +57,7 @@ public class ResultsController {
   private void onPlayAgain(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.generatePrompt(
-        App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
 

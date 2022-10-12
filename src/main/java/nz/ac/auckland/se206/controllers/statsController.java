@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.SceneManager;
 
-public class statsController {
+public class StatsController {
 
   @FXML
   private void onSwitchToMenu(ActionEvent event) {

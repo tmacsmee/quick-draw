@@ -2,7 +2,7 @@
     -fx-background: #fab260;
 }
 
-Button {
+.button {
     -fx-background-color: white;
     -fx-padding: 10;
     -fx-font-family: "Arial";
@@ -14,7 +14,7 @@ Button {
     -fx-cursor: hand;
 }
 
-Button:hover {
+.button:hover {
     -fx-background-color: #FF8E5E;
     -fx-text-fill: white;
 }
@@ -93,6 +93,7 @@ HBox {
 
 .round-button{
     -fx-background-radius: 100;
+    -fx-background-color: rgb(190, 190, 190);
 }
 
 .results-button-box {

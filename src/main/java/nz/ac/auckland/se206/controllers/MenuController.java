@@ -5,15 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.util.TextToSpeechTask;
-import nz.ac.auckland.se206.util.JsonParser;
 
 /** The controller of the menu scene. */
 public class MenuController {
 
   @FXML private Label welcomeLabel;
-  // @FXML private ListView<String> wordsEncounteredListView;
 
   /** Initializes the menu scene. */
   @FXML

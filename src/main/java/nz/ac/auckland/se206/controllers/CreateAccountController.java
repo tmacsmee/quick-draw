@@ -47,7 +47,7 @@ public class CreateAccountController {
       // Set user stats labels
       App.setCurrentUser(username);
 
-      statsController statsController = (statsController) App.getController("stats");
+      StatsController statsController = (StatsController) App.getController("stats");
       WordsController wordsController = (WordsController) App.getController("wordsEncountered");
       statsController.updateStats();
       wordsController.setWordsEncounteredListView();

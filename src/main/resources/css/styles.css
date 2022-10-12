@@ -157,3 +157,63 @@ HBox {
     -fx-font-size: 18;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, -2, 2);
 }
+
+.color-picker-grid {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, -2, 2);
+}
+
+.colour-picker-button {
+    -fx-padding: 0;
+    -fx-effect: none;
+    -fx-cursor: hand;
+}
+
+.colour-picker-black {
+    -fx-background-color: black;
+    -fx-border-color: white;
+    -fx-border-width: 2 2 2 2;
+}
+
+.colour-picker-red {
+    -fx-background-color: red;
+    -fx-border-color: white;
+    -fx-border-width: 2 2 2 0;
+}
+
+.colour-picker-orange {
+    -fx-background-color: orange;
+    -fx-border-color: white;
+    -fx-border-width: 2 2 2 0;
+}
+
+.colour-picker-yellow {
+    -fx-background-color: yellow;
+    -fx-border-color: white;
+    -fx-border-width: 2 2 2 0;
+}
+
+.colour-picker-green {
+    -fx-background-color: green;
+    -fx-border-color: white;
+    -fx-border-width: 0 2 2 2;
+}
+
+.colour-picker-blue {
+    -fx-background-color: blue;
+    -fx-border-color: white;
+    -fx-border-width: 0 2 2 0;
+}
+
+.colour-picker-purple {
+    -fx-background-color: purple;
+    -fx-border-color: white;
+    -fx-border-width: 0 2 2 0;
+}
+
+.colour-picker-pink {
+    -fx-background-color: pink;
+    -fx-border-color: white;
+    -fx-border-width: 0 2 2 0;
+}
+
+

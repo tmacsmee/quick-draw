@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
@@ -29,6 +30,7 @@ public class CanvasController {
   private DoodlePrediction model;
   private double lastX;
   private double lastY;
+  private String activeColor = "black";
   @FXML private Canvas canvas;
   @FXML private Label predictionList;
   @FXML private Label timerLabel;
@@ -36,6 +38,14 @@ public class CanvasController {
   @FXML private Button clearButton;
   @FXML private Button brushButton;
   @FXML private Button eraserButton;
+  @FXML private Button blackButton;
+  @FXML private Button redButton;
+  @FXML private Button orangeButton;
+  @FXML private Button yellowButton;
+  @FXML private Button greenButton;
+  @FXML private Button blueButton;
+  @FXML private Button purpleButton;
+  @FXML private Button pinkButton;
 
   // boolean used to check if the canvas is empty or not
   private boolean isCanvasNotEmpty = false;
@@ -164,6 +174,47 @@ public class CanvasController {
 
   public Canvas getCanvas() {
     return canvas;
+  }
+
+  @FXML
+  private void changeBrushColour(ActionEvent event) {
+    if (event.getSource() == blackButton) {
+      graphic.setStroke(Color.BLACK);
+      blackButton.setDisable(true);
+    } else if (event.getSource() == redButton) {
+      graphic.setStroke(Color.RED);
+      redButton.setDisable(true);
+    } else if (event.getSource() == orangeButton) {
+      graphic.setStroke(Color.ORANGE);
+      orangeButton.setDisable(true);
+    } else if (event.getSource() == yellowButton) {
+      graphic.setStroke(Color.YELLOW);
+      yellowButton.setDisable(true);
+    } else if (event.getSource() == greenButton) {
+      graphic.setStroke(Color.GREEN);
+      greenButton.setDisable(true);
+    } else if (event.getSource() == blueButton) {
+      graphic.setStroke(Color.BLUE);
+      blueButton.setDisable(true);
+    } else if (event.getSource() == purpleButton) {
+      graphic.setStroke(Color.PURPLE);
+      purpleButton.setDisable(true);
+    } else if (event.getSource() == pinkButton) {
+      graphic.setStroke(Color.PINK);
+      pinkButton.setDisable(true);
+    }
+    enableBrushButtons();
+  }
+
+  private void enableBrushButtons() {
+    blackButton.setDisable(false);
+    redButton.setDisable(false);
+    orangeButton.setDisable(false);
+    yellowButton.setDisable(false);
+    greenButton.setDisable(false);
+    blueButton.setDisable(false);
+    purpleButton.setDisable(false);
+    pinkButton.setDisable(false);
   }
 
   /**

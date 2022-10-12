@@ -10,7 +10,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -39,6 +42,68 @@
                 </Canvas>
                 <HBox alignment="CENTER" prefHeight="115.0" prefWidth="500.0" styleClass="canvas-buttons">
                   <children>
+                        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="161.0" styleClass="color-picker-grid">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BASELINE" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="40.0">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-black" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="40.0" GridPane.rowIndex="1">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-green" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="41.0" GridPane.columnIndex="1">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-red" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="41.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-blue" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="115.0" prefWidth="41.0" GridPane.columnIndex="2">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-orange" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="88.0" prefWidth="41.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-purple" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="132.0" prefWidth="41.0" GridPane.columnIndex="3">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-yellow" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="101.0" prefWidth="41.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <styleClass>
+                                    <String fx:value="colour-picker-button" />
+                                    <String fx:value="colour-picker-pink" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </GridPane>
                         <Button fx:id="brushButton" layoutX="157.0" layoutY="57.0" mnemonicParsing="false" onAction="#onSwitchToBrush" prefHeight="38.0" prefWidth="35.0" styleClass="rounded-corners">
                            <graphic>
                               <ImageView fitHeight="128.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">

@@ -43,7 +43,7 @@ public class statsController {
 
   @FXML
   private void onBadgeOne() {
-    txtBadgeDescription.setText("win more games that you have lost");
+    txtBadgeDescription.setText("Win more games that you have lost");
   }
 
   @FXML
@@ -69,5 +69,15 @@ public class statsController {
   @FXML
   private void onBadgeSix() {
     txtBadgeDescription.setText("Win 3 times in a row");
+  }
+
+  @FXML
+  private void onBadgeSeven() {
+    txtBadgeDescription.setText("Win with your drawing as the number one guess");
+  }
+
+  @FXML
+  private void onBadgeEight() {
+    txtBadgeDescription.setText("Win with less than 5 seconds left on the clock");
   }
 }

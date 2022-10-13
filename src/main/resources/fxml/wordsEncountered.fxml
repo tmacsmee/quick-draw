@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.WordsController">
    <children>
       <VBox alignment="CENTER" layoutX="59.0" layoutY="24.0" prefHeight="122.0" prefWidth="700.0" styleClass="coloured-box">
@@ -24,7 +23,7 @@
                   <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="254.0" prefWidth="242.0" styleClass="list-box">
                      <children>
                         <Label styleClass="menu-screenText" text="Easy Words" />
-                        <ListView fx:id="wordsEncounteredListView" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="205.0" prefWidth="214.0" styleClass="list-cell" />
+                        <ListView fx:id="easyWordsEncounteredListView" focusTraversable="false" maxWidth="-Infinity" prefHeight="195.0" prefWidth="222.0" styleClass="list-cell" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="254.0" prefWidth="242.0" styleClass="list-box">

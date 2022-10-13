@@ -67,10 +67,10 @@ public class ReadyController {
     canvasController.onClear();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
-    jsonParser.addWordEncountered(App.getCurrentUser(), prompt);
+    jsonParser.addWordEncountered(App.getCurrentUser(), prompt, getPromptList(prompt));
 
     WordsController wordsController = (WordsController) App.getController("wordsEncountered");
-    wordsController.setWordsEncounteredListView();
+    wordsController.setEncounteredListView();
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
     String gameMode = gameModeController.getGameMode();
     if (gameMode.equals("normal")) {
@@ -93,8 +93,12 @@ public class ReadyController {
     hard = new ArrayList<>();
 
     JsonParser jsonParser = App.getJsonParser();
-    List<String> wordsEncountered =
-        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "wordsEncountered");
+    List<String> easyWordsEncountered =
+        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "easyWordsEncountered");
+    List<String> mediumWordsEncountered =
+        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "mediumWordsEncountered");
+    List<String> hardWordsEncountered =
+        (List<String>) jsonParser.getProperty(App.getCurrentUser(), "hardWordsEncountered");
 
     try (Scanner scanner = new Scanner(new File("src/main/resources/category_difficulty.csv"))) {
       while (scanner.hasNextLine()) { // Iterate through each line in the csv file
@@ -102,17 +106,17 @@ public class ReadyController {
         String[] split = line.split(","); // Separate word and difficulty
         switch (split[1]) {
           case ("E"): // If difficulty is easy, add to easy array
-            if (!wordsEncountered.contains(split[0])) {
+            if (!easyWordsEncountered.contains(split[0])) {
               easy.add(split[0]);
             }
             break;
           case "M": // If difficulty is medium, add to medium array
-            if (!wordsEncountered.contains(split[0])) {
+            if (!mediumWordsEncountered.contains(split[0])) {
               medium.add(split[0]);
             }
             break;
           case "H": // If difficulty is hard, add to hard array
-            if (!wordsEncountered.contains(split[0])) {
+            if (!hardWordsEncountered.contains(split[0])) {
               hard.add(split[0]);
             }
             break;
@@ -146,6 +150,16 @@ public class ReadyController {
 
   public void setPromptLabel(String prompt) {
     promptLabel.setText(prompt);
+  }
+
+  public String getPromptList(String prompt) {
+    if (easy.contains(prompt)) {
+      return "easyWordsEncountered";
+    } else if (medium.contains(prompt)) {
+      return "mediumWordsEncountered";
+    } else {
+      return "hardWordsEncountered";
+    }
   }
 
   public void setDrawLabel(String gameMode) {

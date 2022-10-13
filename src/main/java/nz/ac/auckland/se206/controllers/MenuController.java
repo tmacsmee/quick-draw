@@ -59,6 +59,11 @@ public class MenuController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.HOWTOPLAY));
   }
 
+  /**
+   * Switches to the difficulty scene when the user clicks button.
+   *
+   * @param event the button click event.
+   */
   @FXML
   private void onDifficulty(ActionEvent event) {
     DifficultyController difficultyController =
@@ -69,6 +74,11 @@ public class MenuController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.DIFFICULTY));
   }
 
+  /**
+   * Switches to the badges scene when the user clicks button.
+   *
+   * @param event the button click event.
+   */
   @FXML
   private void onBadges(ActionEvent event) {
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
@@ -76,8 +86,15 @@ public class MenuController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.STATS));
   }
 
+  /**
+   * Switches to the words encountered scene when the button is clicked.
+   *
+   * @param event the button click event.
+   */
   @FXML
   private void onWordsEncountered(ActionEvent event) {
+    WordsController wordsController = (WordsController) App.getController("wordsEncountered");
+    wordsController.setEncounteredListView(); // Set the lists for the words encountered.
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.WORDS));

@@ -30,24 +30,24 @@ public class DifficultyController {
   @FXML
   public void initialize() {
     System.out.println("***************** Initialising Difficulty Controller *****************");
+    cbTopGuess.getItems().addAll(topGuess);
+    cbLevel.getItems().addAll(level);
+    cbTimeAllowed.getItems().addAll(timeAllowed);
+    cbHowConfident.getItems().addAll(confidence);
   }
 
   public void initialiseChoiceBox() {
     JsonParser jsonParser = App.getJsonParser();
 
-    cbTopGuess.getItems().addAll(topGuess);
     cbTopGuess.setValue(jsonParser.getProperty(App.getCurrentUser(), "topGuess").toString());
     cbTopGuess.setOnAction(this::getTopGuess);
 
-    cbLevel.getItems().addAll(level);
     cbLevel.setValue(jsonParser.getProperty(App.getCurrentUser(), "level").toString());
     cbLevel.setOnAction(this::getLevel);
 
-    cbTimeAllowed.getItems().addAll(timeAllowed);
     cbTimeAllowed.setValue(jsonParser.getProperty(App.getCurrentUser(), "timeAllowed").toString());
     cbTimeAllowed.setOnAction(this::getTimeAllowed);
 
-    cbHowConfident.getItems().addAll(confidence);
     cbHowConfident.setValue(jsonParser.getProperty(App.getCurrentUser(), "confidence").toString());
     cbHowConfident.setOnAction(this::getHowConfident);
   }

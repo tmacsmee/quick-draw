@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -18,32 +21,158 @@
                   <Label styleClass="menu-title" text="Speedy Sketchers!" />
                   <Label alignment="CENTER" prefHeight="42.0" prefWidth="390.0" styleClass="header" text="Excel the artist in you!" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </VBox>
-            <VBox maxHeight="30.0" maxWidth="780.0" minHeight="30.0" minWidth="780.0" prefHeight="30.0" prefWidth="780.0" />
-            <VBox alignment="CENTER" maxHeight="260.0" maxWidth="520.0" minHeight="260.0" minWidth="520.0" prefHeight="260.0" prefWidth="520.0" styleClass="coloured-box">
+            <VBox alignment="CENTER" maxHeight="260.0" maxWidth="800.0" minHeight="260.0" minWidth="520.0" prefHeight="260.0" prefWidth="800.0" styleClass="coloured-box">
                <children>
-                  <Label alignment="CENTER" minWidth="500.0" prefHeight="39.0" prefWidth="439.0" styleClass="menu-screenText" text="New Here? Create an Account Below" />
-                  <HBox alignment="BOTTOM_CENTER" maxHeight="200.0" maxWidth="500.0" minHeight="200.0" minWidth="500.0" prefHeight="200.0" prefWidth="500.0">
+                  <Label alignment="CENTER" minWidth="500.0" prefHeight="39.0" prefWidth="439.0" styleClass="menu-screenText" text="Select an avatar and add a user below!" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" maxHeight="180.0" maxWidth="360.0" minHeight="180.0" minWidth="360.0" prefHeight="180.0" prefWidth="360.0" styleClass="form-vbox">
-                           <children>
-                              <TextField fx:id="usernameTextField" promptText="Username" styleClass="user-fields">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Label fx:id="errorMessageLabel" alignment="TOP_CENTER" prefHeight="24.0" prefWidth="314.0" styleClass="menu-screenText" textFill="#d12937">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
+                        <Button fx:id="catAvatar" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChooseCat" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/cat.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="chickenAvatar" layoutX="20.0" layoutY="20.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChooseChicken" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/chicken.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="dogAvatar" layoutX="100.0" layoutY="20.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChooseDog" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/dog.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="snakeAvatar" layoutX="180.0" layoutY="20.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChooseSnake" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/snake.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="pufferFishAvatar" layoutX="260.0" layoutY="20.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChoosePufferFish" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/puffer-fish.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="rabbitAvatar" layoutX="340.0" layoutY="20.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChooseRabbit" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/rabbit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="sealionAvatar" layoutX="420.0" layoutY="20.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChooseSealion" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/sea-lion.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="pandaAvatar" layoutX="500.0" layoutY="20.0" maxHeight="80.0" maxWidth="80.0" mnemonicParsing="false" onAction="#onChoosePanda" prefHeight="80.0" prefWidth="80.0">
+                           <styleClass>
+                              <String fx:value="create-account-button" />
+                              <String fx:value="rounded-corners" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0">
+                                 <image>
+                                    <Image url="@../images/panda.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
                   </HBox>
+                  <TextField fx:id="usernameTextField" maxWidth="300.0" promptText="Username" styleClass="user-fields">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
                </children>
             </VBox>
-            <VBox prefHeight="20.0" prefWidth="780.0" />
             <HBox alignment="BOTTOM_RIGHT" maxHeight="100.0" maxWidth="780.0" minHeight="100.0" minWidth="780.0" prefHeight="100.0" prefWidth="780.0">
                <children>
                   <Button fx:id="createButton" maxHeight="65.0" maxWidth="160.0" minHeight="65.0" minWidth="160.0" mnemonicParsing="false" onAction="#onCreate" prefHeight="65.0" prefWidth="160.0" styleClass="rounded-corners" text="Create" />
@@ -51,8 +180,8 @@
                   <VBox alignment="CENTER" maxHeight="90.0" maxWidth="230.0" minHeight="90.0" minWidth="230.0" prefHeight="90.0" prefWidth="422.0">
                      <children>
                         <Label styleClass="menu-screenText" text="Already have" textFill="WHITE" />
-                        <Label styleClass="menu-screenText" text="an account?" textFill="WHITE" />
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLogin" prefHeight="52.0" prefWidth="127.0" text="Log In">
+                        <Label styleClass="menu-screenText" text="a profile?" textFill="WHITE" />
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLogin" prefHeight="52.0" prefWidth="127.0" text="Find User">
                            <styleClass>
                               <String fx:value="create-account-button" />
                               <String fx:value="rounded-corners" />
@@ -60,6 +189,9 @@
                      </children>
                   </VBox>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>

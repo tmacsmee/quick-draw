@@ -80,7 +80,7 @@ public class CanvasController {
     // Passing FileInputStream object as a parameter
     FileInputStream inputstream =
         new FileInputStream(
-            "C:\\Users\\mccha\\OneDrive\\Documents\\University\\Second\\Sem2\\206\\206-beta-UI\\quick-draw-beta-final-team-39\\src\\main\\resources\\images\\curser_image1.png");
+            System.getProperty("user.dir") + "/src/main/resources/images/curser_image.png");
     Image image = new Image(inputstream);
 
     canvas.setCursor(new ImageCursor(image));
@@ -118,7 +118,7 @@ public class CanvasController {
     // Passing FileInputStream object as a parameter
     FileInputStream inputstream =
         new FileInputStream(
-            "C:\\Users\\mccha\\OneDrive\\Documents\\University\\Second\\Sem2\\206\\206-final\\quick-draw-beta-final-team-39\\src\\main\\resources\\images\\eraser_cursor.png");
+            System.getProperty("user.dir") + "/src/main/resources/images/eraser_cursor.png");
     Image image = new Image(inputstream);
 
     canvas.setCursor(new ImageCursor(image));

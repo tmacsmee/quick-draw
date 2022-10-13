@@ -69,6 +69,8 @@ public class ReadyController {
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
     jsonParser.addWordEncountered(App.getCurrentUser(), prompt);
 
+    WordsController wordsController = (WordsController) App.getController("wordsEncountered");
+    wordsController.setWordsEncounteredListView();
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
     String gameMode = gameModeController.getGameMode();
     if (gameMode.equals("normal")) {

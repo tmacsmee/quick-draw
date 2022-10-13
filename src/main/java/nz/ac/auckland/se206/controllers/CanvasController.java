@@ -6,10 +6,13 @@ import ai.djl.translate.TranslateException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -64,11 +67,23 @@ public class CanvasController {
     model = new DoodlePrediction(); // Load the model.
   }
 
-  /** Called when the brush button is pressed, sets the brush to be used for drawing. */
+  /**
+   * Called when the brush button is pressed, sets the brush to be used for drawing.
+   *
+   * @throws FileNotFoundException
+   */
   @FXML
-  private void onSwitchToBrush() {
+  private void onSwitchToBrush() throws FileNotFoundException {
     brushButton.setDisable(true); // Toggle to disable the brush button.
     eraserButton.setDisable(false);
+
+    // Passing FileInputStream object as a parameter
+    FileInputStream inputstream =
+        new FileInputStream(
+            "C:\\Users\\mccha\\OneDrive\\Documents\\University\\Second\\Sem2\\206\\206-beta-UI\\quick-draw-beta-final-team-39\\src\\main\\resources\\images\\curser_image1.png");
+    Image image = new Image(inputstream);
+
+    canvas.setCursor(new ImageCursor(image));
 
     canvas.setOnMouseDragged(
         e -> {
@@ -90,11 +105,23 @@ public class CanvasController {
         });
   }
 
-  /** Called when the eraser button is pressed, sets the eraser to be used. */
+  /**
+   * Called when the eraser button is pressed, sets the eraser to be used.
+   *
+   * @throws FileNotFoundException
+   */
   @FXML
-  private void onSwitchToEraser() {
+  private void onSwitchToEraser() throws FileNotFoundException {
     eraserButton.setDisable(true); // Toggle to disable the eraser button.
     brushButton.setDisable(false);
+
+    // Passing FileInputStream object as a parameter
+    FileInputStream inputstream =
+        new FileInputStream(
+            "C:\\Users\\mccha\\OneDrive\\Documents\\University\\Second\\Sem2\\206\\206-final\\quick-draw-beta-final-team-39\\src\\main\\resources\\images\\eraser_cursor.png");
+    Image image = new Image(inputstream);
+
+    canvas.setCursor(new ImageCursor(image));
 
     double eraserSize = 12.5;
     canvas.setOnMouseDragged(

@@ -50,9 +50,12 @@ public class LoginController {
       // Set user stats labels
       App.setCurrentUser(username); // Set the current user
 
+      StatsController statsController = (StatsController) App.getController("stats");
+      WordsController wordsController = (WordsController) App.getController("wordsEncountered");
       MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateStats();
-      menuController.setWordsEncounteredListView();
+      menuController.updateWelcome();
+      statsController.updateStats();
+      wordsController.setWordsEncounteredListView();
 
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty

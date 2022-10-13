@@ -39,8 +39,8 @@ public class ResultsController {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.reset(); // Reset the canvas.
 
-    MenuController menuController = (MenuController) App.getController("menu");
-    menuController.updateStats();
+    StatsController statsController = (StatsController) App.getController("stats");
+    statsController.updateStats();
 
     readyController.resetPromptLabelSize();
     canvasController.resetPromptLabelSize();

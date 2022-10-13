@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
@@ -32,6 +33,7 @@ public class CanvasController {
   private DoodlePrediction model;
   private double lastX;
   private double lastY;
+  private Color activeColor;
   @FXML private Canvas canvas;
   @FXML private Label predictionList;
   @FXML private Label timerLabel;
@@ -39,6 +41,14 @@ public class CanvasController {
   @FXML private Button clearButton;
   @FXML private Button brushButton;
   @FXML private Button eraserButton;
+  @FXML private Button blackButton;
+  @FXML private Button redButton;
+  @FXML private Button orangeButton;
+  @FXML private Button yellowButton;
+  @FXML private Button greenButton;
+  @FXML private Button blueButton;
+  @FXML private Button purpleButton;
+  @FXML private Button pinkButton;
 
   // boolean used to check if the canvas is empty or not
   private boolean isCanvasNotEmpty = false;
@@ -54,6 +64,9 @@ public class CanvasController {
     System.out.println("***************** Initialising Canvas Controller *****************");
 
     graphic = canvas.getGraphicsContext2D();
+
+    activeColor = Color.BLACK;
+    blackButton.setDisable(true);
 
     // Get coordinates of mouse on press.
     canvas.setOnMousePressed(
@@ -93,7 +106,7 @@ public class CanvasController {
           isCanvasNotEmpty = true;
 
           graphic.setLineWidth(brushSize);
-          graphic.setStroke(Color.BLACK);
+          graphic.setStroke(activeColor);
 
           double thisX = e.getX(); // Get coordinates of mouse on drag.
           double thisY = e.getY();
@@ -191,6 +204,58 @@ public class CanvasController {
 
   public Canvas getCanvas() {
     return canvas;
+  }
+
+  /**
+   * Sets the brush colour to the colour clicked on the palette.
+   *
+   * @param event the button clicked
+   */
+  @FXML
+  private void onChangeBrushColour(ActionEvent event) {
+    // Enable all buttons
+    enableColourButtons();
+
+    // Get the button that was clicked
+    if (event.getSource() == blackButton) {
+      activeColor = Color.BLACK; // Get the colour from the clicked button
+      blackButton.setDisable(true); // Disable the clicked colour
+    } else if (event.getSource() == redButton) {
+      activeColor = Color.RED;
+      redButton.setDisable(true);
+    } else if (event.getSource() == orangeButton) {
+      activeColor = Color.ORANGE;
+      orangeButton.setDisable(true);
+    } else if (event.getSource() == yellowButton) {
+      activeColor = Color.YELLOW;
+      yellowButton.setDisable(true);
+    } else if (event.getSource() == greenButton) {
+      activeColor = Color.GREEN;
+      greenButton.setDisable(true);
+    } else if (event.getSource() == blueButton) {
+      activeColor = Color.BLUE;
+      blueButton.setDisable(true);
+    } else if (event.getSource() == purpleButton) {
+      activeColor = Color.PURPLE;
+      purpleButton.setDisable(true);
+    } else if (event.getSource() == pinkButton) {
+      activeColor = Color.PINK;
+      pinkButton.setDisable(true);
+    }
+    // Set the brush colour to the colour of the clicked button
+    graphic.setStroke(activeColor);
+  }
+
+  /** Enables all colour buttons. Used to reset the colour palette after a colour is selected. */
+  private void enableColourButtons() {
+    blackButton.setDisable(false); // Enable all buttons
+    redButton.setDisable(false);
+    orangeButton.setDisable(false);
+    yellowButton.setDisable(false);
+    greenButton.setDisable(false);
+    blueButton.setDisable(false);
+    purpleButton.setDisable(false);
+    pinkButton.setDisable(false);
   }
 
   /**

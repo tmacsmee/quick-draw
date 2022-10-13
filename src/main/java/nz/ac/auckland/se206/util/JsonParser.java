@@ -63,10 +63,10 @@ public class JsonParser {
    * @param username the username of the user
    * @param word the word to add
    */
-  public void addWordEncountered(String username, String word) {
+  public void addWordEncountered(String username, String word, String wordsEncounteredCategory) {
     // Add a word if it is not already in the list
-    if (!((List<String>) (getProperty(username, "wordsEncountered"))).contains(word)) {
-      ((List<String>) (getProperty(username, "wordsEncountered"))).add(word);
+    if (!((List<String>) (getProperty(username, wordsEncounteredCategory))).contains(word)) {
+      ((List<String>) (getProperty(username, wordsEncounteredCategory))).add(word);
       mapToJson();
     }
   }
@@ -81,7 +81,11 @@ public class JsonParser {
     Map<String, Object> userData =
         new HashMap<>(
             Map.of(
-                "wordsEncountered",
+                "easyWordsEncountered",
+                new ArrayList<String>(),
+                "mediumWordsEncountered",
+                new ArrayList<String>(),
+                "hardWordsEncountered",
                 new ArrayList<String>(),
                 "gamesWon",
                 "0",
@@ -166,9 +170,5 @@ public class JsonParser {
   public void setDifficulty(String username, String type, String difficulty) {
     allUserData.get(username).replace(type, difficulty);
     mapToJson();
-  }
-
-  public String getDifficulty(String username, String type) {
-    return (String) getProperty(username, type);
   }
 }

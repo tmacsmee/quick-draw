@@ -2,9 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StatsController">
    <children>
@@ -22,7 +25,7 @@
             <HBox prefHeight="46.0" prefWidth="90.0" />
             <Label styleClass="menu-screenText" text="Speediest:" />
             <HBox prefHeight="46.0" prefWidth="0.0" />
-            <Label fx:id="fastestTimeLabel" styleClass="menu-screenText" text="30 seconds" />
+            <Label fx:id="fastestTimeLabel" styleClass="menu-screenText" text="No Games" />
             <HBox prefHeight="46.0" prefWidth="90.0" />
             <Label styleClass="menu-screenText" text="Losses:" />
             <HBox prefHeight="46.0" prefWidth="0.0" />
@@ -37,31 +40,99 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="181.0" prefWidth="92.0" spacing="10.0">
                      <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeOne" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeFive" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="92.0" spacing="10.0">
                      <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeTwo" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeSix" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="92.0" spacing="10.0">
                      <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeThree" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeSeven" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="92.0" spacing="10.0">
                      <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="round-button" text="Button" />
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeFour" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeEight" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../images/doubts-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="181.0" prefWidth="290.0" styleClass="list-box">
                      <children>
                         <Label prefWidth="194.0" styleClass="menu-screenText" text="Badge Description" />
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text fx:id="txtBadgeDescription" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-screenText" textAlignment="CENTER" wrappingWidth="250.0" />
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>

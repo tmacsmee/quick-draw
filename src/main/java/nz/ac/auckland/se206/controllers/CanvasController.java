@@ -6,10 +6,13 @@ import ai.djl.translate.TranslateException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -77,11 +80,23 @@ public class CanvasController {
     model = new DoodlePrediction(); // Load the model.
   }
 
-  /** Called when the brush button is pressed, sets the brush to be used for drawing. */
+  /**
+   * Called when the brush button is pressed, sets the brush to be used for drawing.
+   *
+   * @throws FileNotFoundException
+   */
   @FXML
-  private void onSwitchToBrush() {
+  private void onSwitchToBrush() throws FileNotFoundException {
     brushButton.setDisable(true); // Toggle to disable the brush button.
     eraserButton.setDisable(false);
+
+    // Passing FileInputStream object as a parameter
+    FileInputStream inputstream =
+        new FileInputStream(
+            System.getProperty("user.dir") + "/src/main/resources/images/curser_image.png");
+    Image image = new Image(inputstream);
+
+    canvas.setCursor(new ImageCursor(image));
 
     canvas.setOnMouseDragged(
         e -> {
@@ -103,11 +118,23 @@ public class CanvasController {
         });
   }
 
-  /** Called when the eraser button is pressed, sets the eraser to be used. */
+  /**
+   * Called when the eraser button is pressed, sets the eraser to be used.
+   *
+   * @throws FileNotFoundException
+   */
   @FXML
-  private void onSwitchToEraser() {
+  private void onSwitchToEraser() throws FileNotFoundException {
     eraserButton.setDisable(true); // Toggle to disable the eraser button.
     brushButton.setDisable(false);
+
+    // Passing FileInputStream object as a parameter
+    FileInputStream inputstream =
+        new FileInputStream(
+            System.getProperty("user.dir") + "/src/main/resources/images/eraser_cursor.png");
+    Image image = new Image(inputstream);
+
+    canvas.setCursor(new ImageCursor(image));
 
     double eraserSize = 12.5;
     canvas.setOnMouseDragged(
@@ -246,9 +273,8 @@ public class CanvasController {
               getCurrentSnapshot(),
               Integer.parseInt(
                   App.getJsonParser()
-                      .getDifficulty(
-                          App.getCurrentUser(),
-                          "topGuess")))) { // Get the top 1, 2, or 3 prediction(s).
+                      .getProperty(App.getCurrentUser(), "topGuess")
+                      .toString()))) { // Get the top 1, 2, or 3 prediction(s).
 
         // If the prompt equals one of the top x predictions.
         if (readyController.getPrompt().equalsIgnoreCase(c.getClassName().replace("_", " "))) {
@@ -256,7 +282,7 @@ public class CanvasController {
           // If the prompt also has at least confidence percentage specified in the difficulties.
           if (c.getProbability() * 100
               >= Integer.parseInt(
-                  App.getJsonParser().getDifficulty(App.getCurrentUser(), "confidence"))) {
+                  App.getJsonParser().getProperty(App.getCurrentUser(), "confidence").toString())) {
             return true;
           }
         }
@@ -330,7 +356,7 @@ public class CanvasController {
 
     // Generate new prompt
     readyController.generatePrompt(
-        App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
     // Cancel the task of the game mode that was being played
     switch (gameMode) {

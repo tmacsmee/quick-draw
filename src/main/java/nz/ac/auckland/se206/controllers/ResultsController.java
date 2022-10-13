@@ -39,8 +39,8 @@ public class ResultsController {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.reset(); // Reset the canvas.
 
-    MenuController menuController = (MenuController) App.getController("menu");
-    menuController.updateStats();
+    StatsController statsController = (StatsController) App.getController("stats");
+    statsController.updateStats();
 
     readyController.resetPromptLabelSize();
     canvasController.resetPromptLabelSize();
@@ -57,7 +57,7 @@ public class ResultsController {
   private void onPlayAgain(ActionEvent event) {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.generatePrompt(
-        App.getJsonParser().getDifficulty(App.getCurrentUser(), "level"));
+        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
 

@@ -19,6 +19,8 @@ public class JsonParser {
 
   private final ObjectMapper mapper = new ObjectMapper();
   private Map<String, Map<String, Object>> allUserData;
+  private Map<String, String> userAvatars;
+  private ArrayList<String> allUsernames;
 
   public JsonParser() {
     try {
@@ -30,7 +32,8 @@ public class JsonParser {
         mapper.writeValue(file, node);
       }
       allUserData = mapper.readValue(Paths.get(".user_files/user_data.json").toFile(), Map.class);
-
+      allUsernames = new ArrayList<>();
+      userAvatars = new HashMap<>();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -76,7 +79,10 @@ public class JsonParser {
    *
    * @param username the username of the user
    */
-  public void addUser(String username) {
+  public void addUser(String username, String avatar) {
+    // Save user avatar
+    userAvatars.put(username, avatar);
+    allUsernames.add(username);
     // Create a new blank user
     Map<String, Object> userData =
         new HashMap<>(
@@ -170,5 +176,17 @@ public class JsonParser {
   public void setDifficulty(String username, String type, String difficulty) {
     allUserData.get(username).replace(type, difficulty);
     mapToJson();
+  }
+
+  public void setAvatar(String username, String avatar) {
+    userAvatars.put(username, avatar);
+  }
+
+  public String getAvatar(String username) {
+    return userAvatars.get(username);
+  }
+
+  public ArrayList<String> getAllUsernames() {
+    return allUsernames;
   }
 }

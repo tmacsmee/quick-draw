@@ -19,6 +19,9 @@
                   <Label fx:id="welcomeLabel" styleClass="menu-title" text="Welcome Back Username!" />
                   <Label styleClass="header" text="Excel the artist in you!" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -29,38 +32,38 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount1" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userOneButton" mnemonicParsing="false" onAction="#onSelectUserOne" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userOneImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userOne" styleClass="menu-screenText" text="1" />
+                              <Label fx:id="userOneLabel" styleClass="menu-screenText" text="1" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount12" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userFiveButton" mnemonicParsing="false" onAction="#onSelectUserFive" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userFiveImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userFive" styleClass="menu-screenText" text="5" />
+                              <Label fx:id="userFiveLabel" styleClass="menu-screenText" text="5" />
                            </children>
                         </VBox>
                      </children>
@@ -69,38 +72,38 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount1" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userTwoButton" mnemonicParsing="false" onAction="#onSelectUserTwo" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userTwoImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userTwo" styleClass="menu-screenText" text="2" />
+                              <Label fx:id="userTwoLabel" styleClass="menu-screenText" text="2" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount11" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userSixButton" mnemonicParsing="false" onAction="#onSelectUserSix" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userSixImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userSix" styleClass="menu-screenText" text="6" />
+                              <Label fx:id="userSixLabel" styleClass="menu-screenText" text="6" />
                            </children>
                         </VBox>
                      </children>
@@ -109,38 +112,38 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount11" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userThreeButton" mnemonicParsing="false" onAction="#onSelectUserThree" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userThreeImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userThree" styleClass="menu-screenText" text="3" />
+                              <Label fx:id="userThreeLabel" styleClass="menu-screenText" text="3" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount111" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userSevenButton" mnemonicParsing="false" onAction="#onSelectUserSeven" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userSevenImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userSeven" styleClass="menu-screenText" text="7" />
+                              <Label fx:id="userSevenLabel" styleClass="menu-screenText" text="7" />
                            </children>
                         </VBox>
                      </children>
@@ -149,38 +152,38 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount111" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userFourButton" mnemonicParsing="false" onAction="#onSelectUserFour" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userFourImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userFour" styleClass="menu-screenText" text="4" />
+                              <Label fx:id="userFourLabel" styleClass="menu-screenText" text="4" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
                            <children>
-                              <Button fx:id="btnSwitchAccount1111" mnemonicParsing="false" onAction="#onSwitchAccount" prefHeight="120.0" prefWidth="120.0">
+                              <Button fx:id="userEightButton" mnemonicParsing="false" onAction="#onSelectUserEight" prefHeight="120.0" prefWidth="120.0">
                                  <styleClass>
                                     <String fx:value="create-account-button" />
                                     <String fx:value="rounded-corners" />
                                  </styleClass>
                                  <graphic>
-                                    <ImageView fitHeight="90.0" fitWidth="90.0">
+                                    <ImageView fx:id="userEightImage" fitHeight="90.0" fitWidth="90.0">
                                        <image>
                                           <Image url="@../images/doubts-button.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="user8" styleClass="menu-screenText" text="8" />
+                              <Label fx:id="userEightLabel" styleClass="menu-screenText" text="8" />
                            </children>
                         </VBox>
                      </children>

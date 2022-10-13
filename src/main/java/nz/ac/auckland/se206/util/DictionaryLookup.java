@@ -14,7 +14,7 @@ public class DictionaryLookup {
    * @return The definition of the word.
    * @throws IOException If the API call fails.
    */
-  public String getDefinition(String word) throws IOException {
+  public String getDefinition(String word, String difficulty) throws IOException {
 
     ObjectMapper mapper = new ObjectMapper();
 
@@ -22,6 +22,6 @@ public class DictionaryLookup {
     HashMap<String, HashMap<String, String>> definitions =
         mapper.readValue(new File("src/main/resources/definitions.json"), HashMap.class);
 
-    return definitions.get("E").get(word);
+    return definitions.get(difficulty).get(word);
   }
 }

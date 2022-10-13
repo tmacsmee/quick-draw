@@ -1,5 +1,5 @@
 {
-    "E": {
+    "easy": {
         "airplane": "an aircraft that has a fixed wing and is powered by propellers or jets",
         "ant": "social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers",
         "anvil": "a heavy block of iron or steel on which hot metals are shaped by hammering",
@@ -129,7 +129,7 @@
         "wheel": "a simple machine consisting of a circular frame with spokes (or a solid disc) that can rotate on a shaft or axle (as in vehicles or other machines)",
         "windmill": "generator that extracts usable energy from winds"
     },
-    "M": {
+    "medium": {
         "ambulance": "a vehicle that takes people to and from hospitals",
         "angel": "the highest waterfall; has more than one leap; flow varies seasonally",
         "arm": "the part of an armchair or sofa that supports the elbow and forearm of a seated person",
@@ -246,7 +246,7 @@
         "zebra": "any of several fleet black-and-white striped African equines",
         "zigzag": "having short sharp turns or angles"
     },
-    "H": {
+    "hard": {
         "asparagus": "edible young shoots of the asparagus plant",
         "barn": "an outlying farm building for storing grain or animal feed and housing farm animals",
         "baseball": "a ball game played with a bat and ball between two teams of nine players; teams take turns at bat trying to score runs",

@@ -137,7 +137,7 @@ public class ReadyController {
   }
 
   public void decreasePromptLabelSize() {
-    promptLabel.setStyle("-fx-font-size: 20px;");
+    promptLabel.setStyle("-fx-font-size: 24px;");
   }
 
   public void resetPromptLabelSize() {

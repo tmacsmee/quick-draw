@@ -47,30 +47,6 @@ public class LoginController {
   }
 
   /**
-   * Switches to the main menu scene when the button is clicked
-   *
-   * @param username
-   */
-  public void login(String username) {
-
-    App.setCurrentUser(username); // Set the current user
-
-    // Get controllers for the scenes
-    StatsController statsController = (StatsController) App.getController("stats");
-    WordsController wordsController = (WordsController) App.getController("wordsEncountered");
-    MenuController menuController = (MenuController) App.getController("menu");
-    ReadyController readyController = (ReadyController) App.getController("ready");
-
-    readyController.createDifficultyArrays(); // Get an array of each difficulty
-    readyController.generatePrompt(
-        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
-    menuController.updateWelcome(); // Update the welcome message in the menu scene
-    statsController.updateStats(); // Update the stats in the stats scene
-    wordsController
-        .setEncounteredListView(); // Update the list of words encountered in the words scene
-  }
-
-  /**
    * Sets the username and avatar of the user in the login scene, displaying profiles of the user
    * with the userNumber.
    *
@@ -345,7 +321,7 @@ public class LoginController {
    */
   public void selectUser(String username, ActionEvent event) {
     // Login and set the current user
-    login(username);
+    App.changeUser(username);
     App.setCurrentUser(username);
 
     // Update the welcome message and change to main menu

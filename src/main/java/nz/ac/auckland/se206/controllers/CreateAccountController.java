@@ -65,18 +65,12 @@ public class CreateAccountController {
       jsonParser.getListUsernames().add(username);
 
       // Set user stats labels
-      App.setCurrentUser(username);
+      App.changeUser(username);
 
-      StatsController statsController = (StatsController) App.getController("stats");
-      WordsController wordsController = (WordsController) App.getController("wordsEncountered");
-      MenuController menuController = (MenuController) App.getController("menu");
       LoginController loginController = (LoginController) App.getController("login");
 
       loginController.setProfiles();
       loginController.setVisibility(jsonParser.getListUsernames().size(), true);
-      menuController.updateWelcome();
-      statsController.updateStats();
-      wordsController.setEncounteredListView();
 
       // Switch to menu scene
       Button button =

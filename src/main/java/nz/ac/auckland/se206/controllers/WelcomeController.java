@@ -36,6 +36,7 @@ public class WelcomeController {
 
   @FXML
   private void onSelectPlayer(ActionEvent event) throws FileNotFoundException {
+
     // Set account profiles
     LoginController loginController = (LoginController) App.getController("login");
     loginController.setProfiles();

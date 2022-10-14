@@ -67,6 +67,7 @@ public class ReadyController {
     canvasController.onClear();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
+
     jsonParser.addWordEncountered(App.getCurrentUser(), prompt, getPromptList(prompt));
 
     WordsController wordsController = (WordsController) App.getController("wordsEncountered");

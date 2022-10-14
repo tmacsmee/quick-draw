@@ -50,11 +50,25 @@ public class LoginController {
     System.out.println("***************** Initialising Login Controller *****************");
   }
 
+  /**
+   * Sets the username and avatar of the user in the login scene, displaying profiles of the user
+   * with the userNumber.
+   *
+   * @param userNumber the number of the user
+   * @throws FileNotFoundException
+   */
   public void setUserProfile(int userNumber) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
+
+    // Get the username of the user with the userNumber from array of usernames
     String username = jsonParser.getListUsernames().get(userNumber - 1);
+
     switch (userNumber) {
+
+        // For user 1
       case 1 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
@@ -62,10 +76,16 @@ public class LoginController {
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
         Image image = new Image(inputstream);
+
+        // Set username and avatar image
         userOneLabel.setText(username);
         userOneImage.setImage(image);
       }
+
+        // For user 2
       case 2 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
@@ -73,10 +93,16 @@ public class LoginController {
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
         Image image = new Image(inputstream);
+
+        // Set username and avatar image
         userTwoLabel.setText(username);
         userTwoImage.setImage(image);
       }
+
+        // For user 3
       case 3 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
@@ -84,10 +110,16 @@ public class LoginController {
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
         Image image = new Image(inputstream);
+
+        // Set username and avatar image
         userThreeLabel.setText(username);
         userThreeImage.setImage(image);
       }
+
+        // For user 4
       case 4 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
@@ -95,11 +127,16 @@ public class LoginController {
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
         Image image = new Image(inputstream);
+        // Set username and avatar image
+        // Set username and avatar image
         userFourLabel.setText(username);
         userFourImage.setImage(image);
       }
 
+        // For user 5
       case 5 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
@@ -107,10 +144,16 @@ public class LoginController {
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
         Image image = new Image(inputstream);
+
+        // Set username and avatar image
         userFiveLabel.setText(username);
         userFiveImage.setImage(image);
       }
+
+        // For user 6
       case 6 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
@@ -118,10 +161,16 @@ public class LoginController {
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
         Image image = new Image(inputstream);
+
+        // Set username and avatar image
         userSixLabel.setText(username);
         userSixImage.setImage(image);
       }
+
+        // For user 7
       case 7 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
@@ -129,17 +178,26 @@ public class LoginController {
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
         Image image = new Image(inputstream);
+
+        // Set username and avatar image
         userSevenLabel.setText(username);
         userSevenImage.setImage(image);
       }
+
+        // For user 8
       case 8 -> {
+
+        // Find the image for the user's avatar
         FileInputStream inputstream =
             new FileInputStream(
                 System.getProperty("user.dir")
                     + "/src/main/resources/images/"
                     + jsonParser.getProperty(username, "avatar")
                     + ".png");
+
         Image image = new Image(inputstream);
+
+        // Set username and avatar image
         userEightLabel.setText(username);
         userEightImage.setImage(image);
       }
@@ -160,118 +218,115 @@ public class LoginController {
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));
   }
 
+  /**
+   * Switches to the main menu scene when the button is clicked
+   *
+   * @param username
+   */
   public void login(String username) {
 
-    // Set user stats labels
     App.setCurrentUser(username); // Set the current user
 
+    // Get controllers for the scenes
     StatsController statsController = (StatsController) App.getController("stats");
     WordsController wordsController = (WordsController) App.getController("wordsEncountered");
     MenuController menuController = (MenuController) App.getController("menu");
-
-    menuController.updateWelcome();
-    statsController.updateStats();
-    wordsController.setEncounteredListView();
     ReadyController readyController = (ReadyController) App.getController("ready");
+
     readyController.createDifficultyArrays(); // Get an array of each difficulty
     readyController.generatePrompt(
         App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
+    menuController.updateWelcome(); // Update the welcome message in the menu scene
+    statsController.updateStats(); // Update the stats in the stats scene
+    wordsController
+        .setEncounteredListView(); // Update the list of words encountered in the words scene
   }
 
   @FXML
   private void onSelectUserOne(ActionEvent event) throws FileNotFoundException {
-    if (App.getJsonParser().getListUsernames().size() > 0) {
 
-      App.setCurrentUser(userOneLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    login(userOneLabel.getText());
+    App.setCurrentUser(userOneLabel.getText());
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
+    changeToMenu(event);
   }
 
   @FXML
   private void onSelectUserTwo(ActionEvent event) {
-    if (App.getJsonParser().getListUsernames().size() > 1) {
 
-      App.setCurrentUser(userTwoLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    String username = userTwoLabel.getText();
+    login(username);
+    App.setCurrentUser(username);
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
+    changeToMenu(event);
   }
 
   @FXML
   private void onSelectUserThree(ActionEvent event) {
-    if (App.getJsonParser().getListUsernames().size() > 2) {
+    String username = userThreeLabel.getText();
+    login(username);
+    App.setCurrentUser(username);
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
 
-      App.setCurrentUser(userThreeLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    changeToMenu(event);
   }
 
   @FXML
   private void onSelectUserFour(ActionEvent event) {
-    if (App.getJsonParser().getListUsernames().size() > 3) {
+    String username = userFourLabel.getText();
+    login(username);
+    App.setCurrentUser(username);
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
 
-      App.setCurrentUser(userFourLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    changeToMenu(event);
   }
 
   @FXML
   private void onSelectUserFive(ActionEvent event) {
-    if (App.getJsonParser().getListUsernames().size() > 4) {
+    String username = userFiveLabel.getText();
+    login(username);
+    App.setCurrentUser(username);
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
 
-      App.setCurrentUser(userFiveLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    changeToMenu(event);
   }
 
   @FXML
   private void onSelectUserSix(ActionEvent event) {
-    if (App.getJsonParser().getListUsernames().size() > 5) {
+    String username = userSixLabel.getText();
+    login(username);
+    App.setCurrentUser(username);
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
 
-      App.setCurrentUser(userSixLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    changeToMenu(event);
   }
 
   @FXML
   private void onSelectUserSeven(ActionEvent event) {
-    if (App.getJsonParser().getListUsernames().size() > 6) {
+    String username = userSevenLabel.getText();
+    login(username);
+    App.setCurrentUser(username);
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
 
-      App.setCurrentUser(userSevenLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    changeToMenu(event);
   }
 
   @FXML
   private void onSelectUserEight(ActionEvent event) {
-    if (App.getJsonParser().getListUsernames().size() > 7) {
+    String username = userEightLabel.getText();
+    login(username);
+    App.setCurrentUser(username);
+    MenuController menuController = (MenuController) App.getController("menu");
+    menuController.updateWelcome();
 
-      App.setCurrentUser(userEightLabel.getText());
-      MenuController menuController = (MenuController) App.getController("menu");
-      menuController.updateWelcome();
-
-      changeToMenu(event);
-    }
+    changeToMenu(event);
   }
 
   public void setProfiles() throws FileNotFoundException {

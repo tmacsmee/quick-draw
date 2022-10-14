@@ -14,12 +14,13 @@ public class MenuController {
 
   @FXML private Label welcomeLabel;
 
-  /** Initializes the menu scene. */
+  /** Initializes the menu scene when the app is run. */
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising Menu Controller *****************" + this);
   }
 
+  /** Updates the welcome label to display the user's name. */
   public void updateWelcome() {
     welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
   }
@@ -70,7 +71,7 @@ public class MenuController {
    * @param event the button click event.
    */
   @FXML
-  private void onDifficulty(ActionEvent event) {
+  private void onChangeToDifficulty(ActionEvent event) {
     DifficultyController difficultyController =
         (DifficultyController) App.getController("difficulty");
     difficultyController.initialiseChoiceBox();

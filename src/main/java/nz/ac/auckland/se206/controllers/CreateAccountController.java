@@ -25,7 +25,7 @@ public class CreateAccountController {
 
   private static String chosenAvatar = null;
 
-  /** Initializes the createAccount scene. */
+  /** Initializes the createAccount scene when first created. */
   @FXML
   private void initialize() {
     System.out.println(

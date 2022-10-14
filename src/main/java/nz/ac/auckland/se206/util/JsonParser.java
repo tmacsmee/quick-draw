@@ -20,6 +20,7 @@ public class JsonParser {
   private final ObjectMapper mapper = new ObjectMapper();
   private Map<String, Map<String, Object>> allUserData;
 
+  /** This method constructs a new JsonParser. */
   public JsonParser() {
     try {
       if (!Paths.get(".user_files/user_data.json").toFile().exists()) {
@@ -144,10 +145,16 @@ public class JsonParser {
    * @param time the time to set as the fastest time
    */
   public void setFastestTime(String username, String time) {
-    if (getProperty(username, "fastestTime").equals("0")) {
+
+    // Get current fastest time
+    String fastestTime = (String) getProperty(username, "fastestTime");
+
+    // If the fastest time has not been set yet, set it to the inputted time
+    if (fastestTime.equals("0")) {
       allUserData.get(username).replace("fastestTime", time);
     } else {
-      String fastestTime = (String) getProperty(username, "fastestTime");
+      // If the inputted time is faster than the current fastest time, set it to the inputted time
+
       if (Integer.parseInt(time) < Integer.parseInt(fastestTime)) {
         allUserData.get(username).replace("fastestTime", time);
       }

@@ -15,7 +15,7 @@ public class GameModeController {
   private ReadyController readyController;
   private String gameMode;
 
-  /** Initializes the createAccount scene. */
+  /** Initializes the createAccount scene when the app is run. */
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising Game Mode Controller *****************");
@@ -71,7 +71,7 @@ public class GameModeController {
    * @param event the button click event.
    */
   @FXML
-  public void onPlayHidden(ActionEvent event) throws IOException {
+  private void onPlayHidden(ActionEvent event) throws IOException {
     gameMode = "hidden";
 
     readyController = (ReadyController) App.getController("ready");

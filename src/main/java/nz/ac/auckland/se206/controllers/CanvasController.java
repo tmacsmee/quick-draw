@@ -21,7 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.ml.DoodlePrediction;
@@ -147,7 +146,6 @@ public class CanvasController {
   }
 
   /** Clears the entire canvas when called. */
-  @FXML
   public void onClear() {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
@@ -344,7 +342,8 @@ public class CanvasController {
    *
    * @param event the button click event
    */
-  public void onExit(ActionEvent event) {
+  @FXML
+  private void onExit(ActionEvent event) {
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
     ResultsController resultsController = (ResultsController) App.getController("results");
     ReadyController readyController = (ReadyController) App.getController("ready");

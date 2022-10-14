@@ -20,6 +20,7 @@ public class JsonParser {
   private final ObjectMapper mapper = new ObjectMapper();
   private Map<String, Map<String, Object>> allUserData;
 
+  /** This method constructs a new JsonParser. */
   public JsonParser() {
     try {
       if (!Paths.get(".user_files/user_data.json").toFile().exists()) {
@@ -30,7 +31,6 @@ public class JsonParser {
         mapper.writeValue(file, node);
       }
       allUserData = mapper.readValue(Paths.get(".user_files/user_data.json").toFile(), Map.class);
-
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -44,7 +44,8 @@ public class JsonParser {
    * @return the value of the property
    */
   public Object getProperty(String username, String property) {
-    return allUserData.get(username).get(property);
+    Map<String, Object> userData = allUserData.get(username);
+    return userData.get(property);
   }
 
   /**
@@ -76,33 +77,28 @@ public class JsonParser {
    *
    * @param username the username of the user
    */
-  public void addUser(String username) {
+  public void addUser(String username, String avatar) {
+    // Save user avatar
     // Create a new blank user
     Map<String, Object> userData =
         new HashMap<>(
-            Map.of(
-                "easyWordsEncountered",
-                new ArrayList<String>(),
-                "mediumWordsEncountered",
-                new ArrayList<String>(),
-                "hardWordsEncountered",
-                new ArrayList<String>(),
-                "gamesWon",
-                "0",
-                "gamesLost",
-                "0",
-                "fastestTime",
-                "0",
-                "topGuess",
-                "3",
-                "level",
-                "easy",
-                "timeAllowed",
-                "60",
-                "confidence",
-                "1"));
+            Map.ofEntries(
+                Map.entry("userNum", allUserData.size() + 1),
+                Map.entry("easyWordsEncountered", new ArrayList<String>()),
+                Map.entry("mediumWordsEncountered", new ArrayList<String>()),
+                Map.entry("hardWordsEncountered", new ArrayList<String>()),
+                Map.entry("gamesWon", "0"),
+                Map.entry("gamesLost", "0"),
+                Map.entry("fastestTime", "0"),
+                Map.entry("topGuess", "3"),
+                Map.entry("level", "easy"),
+                Map.entry("timeAllowed", "60"),
+                Map.entry("confidence", "1"),
+                Map.entry("avatar", avatar)));
+
     // Update the map with user data
     allUserData.put(username, userData);
+
     // Write the map to the JSON file
     mapToJson();
   }
@@ -149,10 +145,16 @@ public class JsonParser {
    * @param time the time to set as the fastest time
    */
   public void setFastestTime(String username, String time) {
-    if (getProperty(username, "fastestTime").equals("0")) {
+
+    // Get current fastest time
+    String fastestTime = (String) getProperty(username, "fastestTime");
+
+    // If the fastest time has not been set yet, set it to the inputted time
+    if (fastestTime.equals("0")) {
       allUserData.get(username).replace("fastestTime", time);
     } else {
-      String fastestTime = (String) getProperty(username, "fastestTime");
+      // If the inputted time is faster than the current fastest time, set it to the inputted time
+
       if (Integer.parseInt(time) < Integer.parseInt(fastestTime)) {
         allUserData.get(username).replace("fastestTime", time);
       }
@@ -170,5 +172,9 @@ public class JsonParser {
   public void setDifficulty(String username, String type, String difficulty) {
     allUserData.get(username).replace(type, difficulty);
     mapToJson();
+  }
+
+  public ArrayList<String> getListUsernames() {
+    return new ArrayList<>(allUserData.keySet());
   }
 }

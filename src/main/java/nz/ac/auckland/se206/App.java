@@ -8,6 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.controllers.MenuController;
+import nz.ac.auckland.se206.controllers.ReadyController;
+import nz.ac.auckland.se206.controllers.StatsController;
+import nz.ac.auckland.se206.controllers.WordsController;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.util.JsonParser;
 
@@ -89,11 +93,12 @@ public class App extends Application {
     SceneManager.addUi(SceneManager.AppUi.DIFFICULTY, loadFxml("difficulty"));
     SceneManager.addUi(SceneManager.AppUi.STATS, loadFxml("stats"));
     SceneManager.addUi(SceneManager.AppUi.WORDS, loadFxml("wordsEncountered"));
+    SceneManager.addUi(SceneManager.AppUi.WELCOME, loadFxml("welcome"));
 
     jsonParser = new JsonParser();
 
     // Show the login scene.
-    Scene scene = new Scene(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN), 800, 600);
+    Scene scene = new Scene(SceneManager.getUiRoot(SceneManager.AppUi.WELCOME), 800, 600);
     scene
         .getStylesheets()
         .add(getClass().getResource("/css/styles.css").toExternalForm()); // Initialize css.
@@ -106,5 +111,28 @@ public class App extends Application {
           Platform.exit();
           voice.terminate();
         });
+  }
+
+  /**
+   * This method changes the current user of the application and updates labels to be user specific.
+   *
+   * @param username the username of the user
+   */
+  public static void changeUser(String username) {
+    App.setCurrentUser(username);
+
+    // Get all controllers
+    StatsController statsController = (StatsController) App.getController("stats");
+    WordsController wordsController = (WordsController) App.getController("wordsEncountered");
+    MenuController menuController = (MenuController) App.getController("menu");
+    ReadyController readyController = (ReadyController) App.getController("ready");
+
+    menuController.updateWelcome(); // Update welcome label
+    statsController.updateStats(); // Update users stats
+    wordsController.setEncounteredListView(); // Updates users encountered lists
+
+    readyController.createDifficultyArrays(); // Get an array of each difficulty
+    readyController.generatePrompt(
+        App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
   }
 }

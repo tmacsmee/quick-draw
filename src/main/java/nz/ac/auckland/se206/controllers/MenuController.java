@@ -32,7 +32,6 @@ public class MenuController {
    */
   @FXML
   private void onPlay(ActionEvent event) {
-    System.out.println(App.getCurrentUser());
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.GAMEMODE));

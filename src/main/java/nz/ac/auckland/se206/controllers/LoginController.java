@@ -275,9 +275,59 @@ public class LoginController {
   }
 
   public void setProfiles() throws FileNotFoundException {
-    for (int i = 1; i < App.getJsonParser().getListUsernames().size() + 1; i++) {
-      System.out.println(i);
-      setUserProfile(i);
+    for (int i = 1; i <= 8; i++) {
+
+      if (App.getJsonParser().getListUsernames().size() >= i) {
+        System.out.println(i);
+        setUserProfile(i);
+      } else {
+        setVisibility(i, false);
+      }
+    }
+  }
+
+  public void setVisibility(int i, boolean visible) {
+    switch (i) {
+      case 1 -> {
+        userOneLabel.setVisible(visible);
+        userOneImage.setVisible(visible);
+        userOneButton.setVisible(visible);
+      }
+      case 2 -> {
+        userTwoLabel.setVisible(visible);
+        userTwoImage.setVisible(visible);
+        userTwoButton.setVisible(visible);
+      }
+      case 3 -> {
+        userThreeLabel.setVisible(visible);
+        userThreeImage.setVisible(visible);
+        userThreeButton.setVisible(visible);
+      }
+      case 4 -> {
+        userFourLabel.setVisible(visible);
+        userFourImage.setVisible(visible);
+        userFourButton.setVisible(visible);
+      }
+      case 5 -> {
+        userFiveLabel.setVisible(visible);
+        userFiveImage.setVisible(visible);
+        userFiveButton.setVisible(visible);
+      }
+      case 6 -> {
+        userSixLabel.setVisible(visible);
+        userSixImage.setVisible(visible);
+        userSixButton.setVisible(visible);
+      }
+      case 7 -> {
+        userSevenLabel.setVisible(visible);
+        userSevenImage.setVisible(visible);
+        userSevenButton.setVisible(visible);
+      }
+      case 8 -> {
+        userEightLabel.setVisible(visible);
+        userEightImage.setVisible(visible);
+        userEightButton.setVisible(visible);
+      }
     }
   }
 

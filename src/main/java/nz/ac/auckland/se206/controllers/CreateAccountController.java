@@ -64,6 +64,7 @@ public class CreateAccountController {
       LoginController loginController = (LoginController) App.getController("login");
 
       loginController.setProfiles();
+      loginController.setVisibility(jsonParser.getListUsernames().size(), true);
       menuController.updateWelcome();
       statsController.updateStats();
       wordsController.setEncounteredListView();

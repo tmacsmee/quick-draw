@@ -45,7 +45,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userOneLabel" styleClass="menu-screenText" text="1" />
+                              <Label fx:id="userOneLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="161.0" prefWidth="146.0">
@@ -63,7 +63,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userFiveLabel" styleClass="menu-screenText" text="5" />
+                              <Label fx:id="userFiveLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                      </children>
@@ -85,7 +85,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userTwoLabel" styleClass="menu-screenText" text="2" />
+                              <Label fx:id="userTwoLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
@@ -103,7 +103,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userSixLabel" styleClass="menu-screenText" text="6" />
+                              <Label fx:id="userSixLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                      </children>
@@ -125,7 +125,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userThreeLabel" styleClass="menu-screenText" text="3" />
+                              <Label fx:id="userThreeLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
@@ -143,7 +143,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userSevenLabel" styleClass="menu-screenText" text="7" />
+                              <Label fx:id="userSevenLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                      </children>
@@ -165,7 +165,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userFourLabel" styleClass="menu-screenText" text="4" />
+                              <Label fx:id="userFourLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="161.0" prefWidth="146.0">
@@ -183,7 +183,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="userEightLabel" styleClass="menu-screenText" text="8" />
+                              <Label fx:id="userEightLabel" styleClass="menu-screenText" />
                            </children>
                         </VBox>
                      </children>

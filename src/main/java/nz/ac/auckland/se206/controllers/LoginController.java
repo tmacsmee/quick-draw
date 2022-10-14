@@ -180,7 +180,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserOne(ActionEvent event) throws FileNotFoundException {
-    if (!userOneLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 0) {
 
       App.setCurrentUser(userOneLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");
@@ -192,7 +192,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserTwo(ActionEvent event) {
-    if (!userTwoLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 1) {
 
       App.setCurrentUser(userTwoLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");
@@ -204,7 +204,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserThree(ActionEvent event) {
-    if (!userThreeLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 2) {
 
       App.setCurrentUser(userThreeLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");
@@ -216,7 +216,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserFour(ActionEvent event) {
-    if (!userFourLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 3) {
 
       App.setCurrentUser(userFourLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");
@@ -228,7 +228,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserFive(ActionEvent event) {
-    if (!userFiveLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 4) {
 
       App.setCurrentUser(userFiveLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");
@@ -240,7 +240,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserSix(ActionEvent event) {
-    if (!userSixLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 5) {
 
       App.setCurrentUser(userSixLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");
@@ -252,7 +252,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserSeven(ActionEvent event) {
-    if (!userSevenLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 6) {
 
       App.setCurrentUser(userSevenLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");
@@ -264,7 +264,7 @@ public class LoginController {
 
   @FXML
   private void onSelectUserEight(ActionEvent event) {
-    if (!userEightLabel.getText().equals(null)) {
+    if (App.getJsonParser().getListUsernames().size() > 7) {
 
       App.setCurrentUser(userEightLabel.getText());
       MenuController menuController = (MenuController) App.getController("menu");

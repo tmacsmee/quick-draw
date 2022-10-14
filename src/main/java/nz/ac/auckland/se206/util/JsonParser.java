@@ -19,8 +19,6 @@ public class JsonParser {
 
   private final ObjectMapper mapper = new ObjectMapper();
   private Map<String, Map<String, Object>> allUserData;
-  private Map<String, String> userAvatars;
-  private ArrayList<String> allUsernames;
 
   public JsonParser() {
     try {
@@ -32,8 +30,6 @@ public class JsonParser {
         mapper.writeValue(file, node);
       }
       allUserData = mapper.readValue(Paths.get(".user_files/user_data.json").toFile(), Map.class);
-      allUsernames = new ArrayList<>();
-      userAvatars = new HashMap<>();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -47,7 +43,8 @@ public class JsonParser {
    * @return the value of the property
    */
   public Object getProperty(String username, String property) {
-    return allUserData.get(username).get(property);
+    Map<String, Object> userData = allUserData.get(username);
+    return userData.get(property);
   }
 
   /**
@@ -81,34 +78,26 @@ public class JsonParser {
    */
   public void addUser(String username, String avatar) {
     // Save user avatar
-    userAvatars.put(username, avatar);
-    allUsernames.add(username);
     // Create a new blank user
     Map<String, Object> userData =
         new HashMap<>(
-            Map.of(
-                "easyWordsEncountered",
-                new ArrayList<String>(),
-                "mediumWordsEncountered",
-                new ArrayList<String>(),
-                "hardWordsEncountered",
-                new ArrayList<String>(),
-                "gamesWon",
-                "0",
-                "gamesLost",
-                "0",
-                "fastestTime",
-                "0",
-                "topGuess",
-                "3",
-                "level",
-                "easy",
-                "timeAllowed",
-                "60",
-                "confidence",
-                "1"));
+            Map.ofEntries(
+                Map.entry("userNum", allUserData.size() + 1),
+                Map.entry("easyWordsEncountered", new ArrayList<String>()),
+                Map.entry("mediumWordsEncountered", new ArrayList<String>()),
+                Map.entry("hardWordsEncountered", new ArrayList<String>()),
+                Map.entry("gamesWon", "0"),
+                Map.entry("gamesLost", "0"),
+                Map.entry("fastestTime", "0"),
+                Map.entry("topGuess", "3"),
+                Map.entry("level", "easy"),
+                Map.entry("timeAllowed", "60"),
+                Map.entry("confidence", "1"),
+                Map.entry("avatar", avatar)));
+
     // Update the map with user data
     allUserData.put(username, userData);
+
     // Write the map to the JSON file
     mapToJson();
   }
@@ -178,15 +167,7 @@ public class JsonParser {
     mapToJson();
   }
 
-  public void setAvatar(String username, String avatar) {
-    userAvatars.put(username, avatar);
-  }
-
-  public String getAvatar(String username) {
-    return userAvatars.get(username);
-  }
-
-  public ArrayList<String> getAllUsernames() {
-    return allUsernames;
+  public ArrayList<String> getListUsernames() {
+    return new ArrayList<>(allUserData.keySet());
   }
 }

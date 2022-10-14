@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.FileNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -27,9 +28,10 @@ public class CreateAccountController {
    * error.
    *
    * @param event button click event
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onCreate(ActionEvent event) {
+  private void onCreate(ActionEvent event) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
 
@@ -43,10 +45,15 @@ public class CreateAccountController {
     } else if (jsonParser.isCorrectUsername(username)) {
       // Checks if username is already taken
       errorMessageLabel.setText("Username already exists");
+    } else if (jsonParser.getListUsernames().size() == 8) {
+      errorMessageLabel.setText("Too many users");
     } else {
+      usernameTextField.setText("");
+      errorMessageLabel.setText("");
+
       // Add account to json file
       jsonParser.addUser(username, chosenAvatar);
-      jsonParser.getAllUsernames().add(username);
+      jsonParser.getListUsernames().add(username);
 
       // Set user stats labels
       App.setCurrentUser(username);
@@ -54,7 +61,9 @@ public class CreateAccountController {
       StatsController statsController = (StatsController) App.getController("stats");
       WordsController wordsController = (WordsController) App.getController("wordsEncountered");
       MenuController menuController = (MenuController) App.getController("menu");
+      LoginController loginController = (LoginController) App.getController("login");
 
+      loginController.setProfiles();
       menuController.updateWelcome();
       statsController.updateStats();
       wordsController.setEncounteredListView();
@@ -85,7 +94,6 @@ public class CreateAccountController {
 
   @FXML
   private void onChooseCat(ActionEvent event) {
-    System.out.println("chose cat");
     chosenAvatar = "cat";
   }
 

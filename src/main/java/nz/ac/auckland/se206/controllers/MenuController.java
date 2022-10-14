@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.FileNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -30,6 +31,7 @@ public class MenuController {
    */
   @FXML
   private void onPlay(ActionEvent event) {
+    System.out.println(App.getCurrentUser());
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.GAMEMODE));
@@ -39,9 +41,12 @@ public class MenuController {
    * Switches to the login scene when the user clicks button to switch account.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSwitchAccount(ActionEvent event) {
+  private void onSwitchAccount(ActionEvent event) throws FileNotFoundException {
+    LoginController loginController = (LoginController) App.getController("login");
+    loginController.setProfiles();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));

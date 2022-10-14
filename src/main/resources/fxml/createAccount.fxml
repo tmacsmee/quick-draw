@@ -171,6 +171,11 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
+                  <Label fx:id="errorMessageLabel" alignment="CENTER" styleClass="menu-screenText" textFill="#d12937">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" maxHeight="100.0" maxWidth="780.0" minHeight="100.0" minWidth="780.0" prefHeight="100.0" prefWidth="780.0">

@@ -190,7 +190,7 @@ public class CanvasController {
 
   /** Reduces prompt label to allow definition to fit */
   public void decreasePromptLabelSize() {
-    promptLabel.setStyle("-fx-font-size: 14px;");
+    promptLabel.setStyle("-fx-font-size: 12px;");
   }
 
   /** Resets prompt label to default value */

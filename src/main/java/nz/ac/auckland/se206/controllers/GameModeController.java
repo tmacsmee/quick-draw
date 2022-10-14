@@ -79,26 +79,32 @@ public class GameModeController {
     DictionaryLookup dictionary = new DictionaryLookup();
 
     // Get the prompt definition
-    try {
-      String definition = dictionary.getDefinition(readyController.getPrompt());
-      readyController.setPromptLabel(definition); // Set the prompt label to the definition
-      canvasController.setPromptLabel(definition);
-
-      readyController.decreasePromptLabelSize(); // Make definition fit on screen
-      canvasController.decreasePromptLabelSize();
-
-      readyController.setDrawLabel("hidden");
-
-      // Switch to ready scene
-      Button button = (Button) event.getSource();
-      Scene buttonScene = button.getScene();
-      buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
-
-    } catch (Exception e) { // Try a new word if the definition is not found
+    String definition = null;
+    while (definition == null) {
       readyController.generatePrompt(
           App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
-      onPlayHidden(event);
+      if ((App.getJsonParser().getProperty(App.getCurrentUser(), "level")).equals("master")) {
+        definition = dictionary.getDefinition(readyController.getPrompt(), "hard");
+      } else {
+        definition =
+            dictionary.getDefinition(
+                readyController.getPrompt(),
+                (String) App.getJsonParser().getProperty(App.getCurrentUser(), "level"));
+      }
     }
+
+    readyController.setPromptLabel(definition); // Set the prompt label to the definition
+    canvasController.setPromptLabel(definition);
+
+    readyController.decreasePromptLabelSize(); // Make definition fit on screen
+    canvasController.decreasePromptLabelSize();
+
+    readyController.setDrawLabel("hidden");
+
+    // Switch to ready scene
+    Button button = (Button) event.getSource();
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
   }
 
   /**

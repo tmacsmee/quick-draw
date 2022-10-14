@@ -151,7 +151,7 @@ public class LoginController {
   private void onSelectUserOne(ActionEvent event) {
 
     // Get username and select this user
-    String username = userTwoLabel.getText();
+    String username = userOneLabel.getText();
     selectUser(username, event);
   }
 

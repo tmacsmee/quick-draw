@@ -14,7 +14,16 @@ import nz.ac.auckland.se206.util.JsonParser;
 public class CreateAccountController {
   @FXML private TextField usernameTextField;
   @FXML private Label errorMessageLabel;
-  private static String chosenAvatar;
+  @FXML private Button buttonCatAvatar;
+  @FXML private Button buttonChickenAvatar;
+  @FXML private Button buttonDogAvatar;
+  @FXML private Button buttonSnakeAvatar;
+  @FXML private Button buttonPufferFishAvatar;
+  @FXML private Button buttonRabbitAvatar;
+  @FXML private Button buttonSealionAvatar;
+  @FXML private Button buttonPandaAvatar;
+
+  private static String chosenAvatar = null;
 
   /** Initializes the createAccount scene. */
   @FXML
@@ -95,41 +104,79 @@ public class CreateAccountController {
 
   @FXML
   private void onChooseCat(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "cat");
     chosenAvatar = "cat";
   }
 
   @FXML
   private void onChooseChicken(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "chicken");
     chosenAvatar = "chicken";
   }
 
   @FXML
   private void onChooseDog(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "dog");
     chosenAvatar = "dog";
   }
 
   @FXML
   private void onChooseSnake(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "snake");
     chosenAvatar = "snake";
   }
 
   @FXML
   private void onChoosePufferFish(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "puffer-fish");
     chosenAvatar = "puffer-fish";
   }
 
   @FXML
   private void onChooseRabbit(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "rabbit");
     chosenAvatar = "rabbit";
   }
 
   @FXML
   private void onChooseSealion(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "sealion");
     chosenAvatar = "sealion";
   }
 
   @FXML
   private void onChoosePanda(ActionEvent event) {
+    setChosenAvatar(chosenAvatar, "panda");
     chosenAvatar = "panda";
+  }
+
+  public void setChosenAvatar(String avatarOld, String avatarNew) {
+    if (avatarOld != null) {
+      getAvatarButton(avatarOld).setStyle("-fx-background-color: #FFFFFF");
+    }
+    getAvatarButton(avatarNew).setStyle("-fx-background-color: #FF8E5E");
+  }
+
+  public Button getAvatarButton(String avatar) {
+    switch (avatar) {
+      case "cat":
+        return buttonCatAvatar;
+      case "chicken":
+        return buttonChickenAvatar;
+      case "dog":
+        return buttonDogAvatar;
+      case "snake":
+        return buttonSnakeAvatar;
+      case "puffer-fish":
+        return buttonPufferFishAvatar;
+      case "rabbit":
+        return buttonRabbitAvatar;
+      case "sealion":
+        return buttonSealionAvatar;
+      case "panda":
+        return buttonPandaAvatar;
+      default:
+        return null;
+    }
   }
 }

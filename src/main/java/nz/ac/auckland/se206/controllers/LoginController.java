@@ -278,7 +278,6 @@ public class LoginController {
     for (int i = 1; i <= 8; i++) {
 
       if (App.getJsonParser().getListUsernames().size() >= i) {
-        System.out.println(i);
         setUserProfile(i);
       } else {
         setVisibility(i, false);

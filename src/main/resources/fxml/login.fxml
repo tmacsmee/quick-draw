@@ -16,7 +16,7 @@
          <children>
             <VBox alignment="CENTER" maxHeight="200.0" maxWidth="730.0" minHeight="128.0" minWidth="730.0" prefHeight="128.0" prefWidth="730.0" styleClass="coloured-box">
                <children>
-                  <Label fx:id="welcomeLabel" styleClass="menu-title" text="Welcome Back Username!" />
+                  <Label fx:id="welcomeLabel" styleClass="menu-title" text="Speedy Sketchers!" />
                   <Label styleClass="header" text="Excel the artist in you!" />
                </children>
                <opaqueInsets>

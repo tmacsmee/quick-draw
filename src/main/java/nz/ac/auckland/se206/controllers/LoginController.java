@@ -349,42 +349,6 @@ public class LoginController {
   /**
    * Gets the avatar image for user profile image.
    *
-   * @param event the button click event.
-   * @throws FileNotFoundException
-   */
-  @FXML
-  private void onLogin(ActionEvent event) throws FileNotFoundException {
-    JsonParser jsonParser = App.getJsonParser();
-    String username = usernameTextField.getText();
-
-    // Check username exists, otherwise display error message.
-    if (!jsonParser.isCorrectUsername(username)) {
-      errorMessageLabel.setText("Username does not exist");
-    } else {
-      // Set user stats labels
-      App.setCurrentUser(username); // Set the current user
-
-      StatsController statsController = (StatsController) App.getController("stats");
-      WordsController wordsController = (WordsController) App.getController("wordsEncountered");
-      MenuController menuController = (MenuController) App.getController("menu");
-
-      menuController.updateWelcome();
-      statsController.updateStats();
-      statsController.checkBadges();
-      wordsController.setEncounteredListView();
-      ReadyController readyController = (ReadyController) App.getController("ready");
-      readyController.createDifficultyArrays(); // Get an array of each difficulty
-      readyController.generatePrompt(
-          App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
-
-      // Change to menu screen
-      Button button =
-          (Button) event.getSource(); // Get the scene of the button and switch its root.
-      Scene buttonScene = button.getScene();
-      buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
-    }
-
-    /**
    * @param username
    * @return image of the avatar.
    * @throws FileNotFoundException if the image file is not found.
@@ -402,6 +366,5 @@ public class LoginController {
 
     Image image = new Image(inputstream);
     return image;
-
   }
 }

@@ -23,8 +23,6 @@ public class TextToSpeechTask extends Task<Void> {
    * @return null
    */
   @Override
-  public Void call() {
-    App.voice.speak("You have 1 minute to draw" + readyController.getPromptLabel());
   protected Void call() {
     String gameMode = gameModeController.getGameMode();
     String timeAllowed =

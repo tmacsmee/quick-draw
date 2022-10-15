@@ -18,7 +18,7 @@
             <Label styleClass="header" text="How To Play" textFill="WHITE" />
             <Label styleClass="menu-screenText" text="Press play and you will be given a random word. Your goal" />
             <Label styleClass="menu-screenText" text="is to draw the word as quickly as possible! If we can guess" textFill="WHITE" />
-            <Label styleClass="menu-screenText" text="what you are drawing in 60 seconds, then you win!" textFill="WHITE" />
+            <Label styleClass="menu-screenText" text="what you are drawing in the given time, then you win!" textFill="WHITE" />
          </children>
       </VBox>
       <VBox alignment="CENTER" layoutX="50.0" layoutY="345.0" prefHeight="140.0" prefWidth="700.0" styleClass="coloured-box">

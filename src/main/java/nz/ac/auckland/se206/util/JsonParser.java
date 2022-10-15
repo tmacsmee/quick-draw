@@ -100,7 +100,24 @@ public class JsonParser {
                 "timeAllowed",
                 "60",
                 "confidence",
-                "1"));
+                "1"
+                //                "winsAgainstLosses",
+                //                "false",
+                //                "twentyEasy",
+                //                "false",
+                //                "twentyMedium",
+                //                "false",
+                //                "twentyHard",
+                //                "false",
+                //                "under5Sec",
+                //                "false",
+                //                "threeInARow",
+                //                "false",
+                //                "numberOne",
+                //                "false",
+                //                "fiveSecondsLeft",
+                //                "false"
+                ));
     // Update the map with user data
     allUserData.put(username, userData);
     // Write the map to the JSON file

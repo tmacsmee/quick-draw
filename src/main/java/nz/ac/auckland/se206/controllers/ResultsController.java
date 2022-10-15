@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,14 +34,16 @@ public class ResultsController {
    * Switches to the menu scene when the button is clicked
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSwitchToMenu(ActionEvent event) {
+  private void onSwitchToMenu(ActionEvent event) throws FileNotFoundException {
     ReadyController readyController = (ReadyController) App.getController("ready");
     readyController.reset(); // Reset the canvas.
 
     StatsController statsController = (StatsController) App.getController("stats");
     statsController.updateStats();
+    statsController.checkBadges();
 
     readyController.resetPromptLabelSize();
     canvasController.resetPromptLabelSize();

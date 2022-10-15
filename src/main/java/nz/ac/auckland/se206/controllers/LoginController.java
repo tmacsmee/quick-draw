@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.FileNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -37,9 +38,10 @@ public class LoginController {
    * Switches to the menu scene when the user logs in.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onLogin(ActionEvent event) {
+  private void onLogin(ActionEvent event) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
 
@@ -56,6 +58,7 @@ public class LoginController {
 
       menuController.updateWelcome();
       statsController.updateStats();
+      statsController.checkBadges();
       wordsController.setEncounteredListView();
       ReadyController readyController = (ReadyController) App.getController("ready");
       readyController.createDifficultyArrays(); // Get an array of each difficulty

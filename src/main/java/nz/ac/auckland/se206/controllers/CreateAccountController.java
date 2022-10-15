@@ -37,7 +37,7 @@ public class CreateAccountController {
    * error.
    *
    * @param event button click event
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onCreate(ActionEvent event) throws FileNotFoundException {
@@ -145,6 +145,12 @@ public class CreateAccountController {
     chosenAvatar = "panda";
   }
 
+  /**
+   * Changes the button colour to orange for selected avatar and white when unselected.
+   *
+   * @param avatarOld the avatar that is currently chosen.
+   * @param avatarNew the avatar that is being chosen.
+   */
   public void setChosenAvatar(String avatarOld, String avatarNew) {
     if (avatarOld != null) {
       getAvatarButton(avatarOld).setStyle("-fx-background-color: #FFFFFF");

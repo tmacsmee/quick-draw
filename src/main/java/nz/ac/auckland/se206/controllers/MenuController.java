@@ -42,13 +42,13 @@ public class MenuController {
    * Switches to the login scene when the user clicks button to switch account.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if the file is not found.
    */
   @FXML
   private void onSwitchAccount(ActionEvent event) throws FileNotFoundException {
     LoginController loginController = (LoginController) App.getController("login");
     loginController.setProfiles();
-    
+
     App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();

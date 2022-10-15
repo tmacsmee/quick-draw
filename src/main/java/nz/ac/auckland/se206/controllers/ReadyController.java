@@ -64,7 +64,7 @@ public class ReadyController {
   private void onReady(ActionEvent event) throws IOException {
     // Set the prompt on the canvas controller
     canvasController = (CanvasController) App.getController("canvas");
-    canvasController.onClear();
+    canvasController.clearCanvas();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
 
@@ -157,9 +157,9 @@ public class ReadyController {
   }
 
   /**
-   * Gets the current prompt
+   * Gets the current prompt, the word, as a string.
    *
-   * @return prompt
+   * @return the current prompt
    */
   public String getPrompt() {
     return prompt;

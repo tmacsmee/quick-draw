@@ -51,7 +51,7 @@ public class LoginController {
    * with the userNumber.
    *
    * @param userNumber the number of the user
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   public void setUserProfile(int userNumber) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
@@ -229,7 +229,7 @@ public class LoginController {
    * Sets the visibility of the button, image and name for a user.
    *
    * @param userNumber the number of the user.
-   * @param visible
+   * @param visible whether the button, image and name should be visible.
    */
   public void setVisibility(int userNumber, boolean visible) {
     switch (userNumber) {
@@ -303,7 +303,8 @@ public class LoginController {
   /**
    * Selects a user and updates current user and the scenes.
    *
-   * @param userNumber the number of the user.
+   * @param username the username of the user.
+   * @param event the button click event.
    */
   public void selectUser(String username, ActionEvent event) {
     // Login and set the current user
@@ -321,7 +322,7 @@ public class LoginController {
    * Switches to the create account scene when the button is clicked
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if the image file is not found.
    */
   @FXML
   private void onCreateAccount(ActionEvent event) throws FileNotFoundException {
@@ -334,7 +335,7 @@ public class LoginController {
   /**
    * Gets the avatar image for user profile image.
    *
-   * @param username
+   * @param username the username of the user.
    * @return image of the avatar.
    * @throws FileNotFoundException if the image file is not found.
    */

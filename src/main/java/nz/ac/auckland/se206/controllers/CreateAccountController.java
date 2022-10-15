@@ -59,6 +59,7 @@ public class CreateAccountController {
     } else {
       usernameTextField.setText("");
       errorMessageLabel.setText("");
+      getAvatarButton(chosenAvatar).setStyle("-fx-background-color: #FFFFFF");
 
       // Add account to json file
       jsonParser.addUser(username, chosenAvatar);

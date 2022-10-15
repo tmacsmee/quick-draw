@@ -85,10 +85,12 @@ public class CreateAccountController {
    * Switches to the login scene when the button is clicked
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onLogin(ActionEvent event) {
+  private void onLogin(ActionEvent event) throws FileNotFoundException {
     App.getSoundManager().playButtonClick();
+    ((LoginController) App.getController("login")).setProfiles();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));

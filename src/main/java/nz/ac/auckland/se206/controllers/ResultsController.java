@@ -22,7 +22,7 @@ public class ResultsController {
   @FXML private ImageView sketchImageView;
   private CanvasController canvasController;
 
-  /** Initializes the ResultsController. */
+  /** Initializes the ResultsController when the app is run. */
   @FXML
   private void initialize() {
     System.out.println(
@@ -48,6 +48,7 @@ public class ResultsController {
     readyController.resetPromptLabelSize();
     canvasController.resetPromptLabelSize();
 
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
@@ -58,12 +59,15 @@ public class ResultsController {
    */
   @FXML
   private void onPlayAgain(ActionEvent event) {
+    // Get ready controller
     ReadyController readyController = (ReadyController) App.getController("ready");
+
+    // Regenerate a new prompt
     readyController.generatePrompt(
         App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
+    // Get the controller specific to the game mode and play again.
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
-
     gameModeController.playAgainHandler(event);
   }
 

@@ -42,6 +42,7 @@ public class NormalModeTask extends TimerTask {
             App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed").toString());
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
     if (timeElapsed == timeLimit) { // If time runs out, move to results scene.
+      App.getSoundManager().playGameLoss();
       timer.cancel();
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
@@ -63,6 +64,7 @@ public class NormalModeTask extends TimerTask {
                           .getPredictions(canvasController.getCurrentSnapshot(), 10)));
               // Check if the prompt is in the top 3 predictions.
               if (canvasController.isCorrect()) {
+                App.getSoundManager().playGameWin();
                 timer.cancel();
                 // If so, move to results scene.
                 resultsController.setResultLabel(

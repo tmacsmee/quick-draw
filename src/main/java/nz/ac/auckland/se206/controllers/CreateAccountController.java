@@ -72,6 +72,7 @@ public class CreateAccountController {
       loginController.setProfiles();
       loginController.setVisibility(jsonParser.getListUsernames().size(), true);
 
+      App.getSoundManager().playButtonClick();
       // Switch to menu scene
       Button button =
           (Button) event.getSource(); // Get the scene of the button and switch its root.
@@ -87,6 +88,7 @@ public class CreateAccountController {
    */
   @FXML
   private void onLogin(ActionEvent event) {
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));

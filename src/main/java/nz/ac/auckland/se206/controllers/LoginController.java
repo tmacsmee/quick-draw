@@ -307,6 +307,7 @@ public class LoginController {
   public void changeToMenu(ActionEvent event) {
 
     // Get the scene of the button.
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource();
     Scene buttonScene = button.getScene();
 
@@ -325,6 +326,7 @@ public class LoginController {
     App.setCurrentUser(username);
 
     // Update the welcome message and change to main menu
+    App.getSoundManager().playButtonClick();
     MenuController menuController = (MenuController) App.getController("menu");
     menuController.updateWelcome();
     changeToMenu(event);
@@ -338,7 +340,7 @@ public class LoginController {
    */
   @FXML
   private void onCreateAccount(ActionEvent event) throws FileNotFoundException {
-
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));

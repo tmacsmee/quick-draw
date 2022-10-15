@@ -14,6 +14,7 @@ import nz.ac.auckland.se206.controllers.StatsController;
 import nz.ac.auckland.se206.controllers.WordsController;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.util.JsonParser;
+import nz.ac.auckland.se206.util.SoundManager;
 
 /** This is the entry point of the JavaFX application. */
 public class App extends Application {
@@ -24,6 +25,7 @@ public class App extends Application {
   private static final HashMap<String, Object> controllerMap = new HashMap<>();
   private static String currentUser;
   private static JsonParser jsonParser;
+  private static SoundManager soundManager;
 
   /**
    * Launches the JavaFX application.
@@ -54,6 +56,10 @@ public class App extends Application {
 
   public static JsonParser getJsonParser() {
     return jsonParser;
+  }
+
+  public static SoundManager getSoundManager() {
+    return soundManager;
   }
 
   /**
@@ -96,6 +102,7 @@ public class App extends Application {
     SceneManager.addUi(SceneManager.AppUi.WELCOME, loadFxml("welcome"));
 
     jsonParser = new JsonParser();
+    soundManager = new SoundManager();
 
     // Show the login scene.
     Scene scene = new Scene(SceneManager.getUiRoot(SceneManager.AppUi.WELCOME), 800, 600);

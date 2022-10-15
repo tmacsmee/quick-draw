@@ -39,6 +39,7 @@ public class GameModeController {
     TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
     new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
@@ -59,7 +60,11 @@ public class GameModeController {
     readyController.setPromptLabel(prompt);
     readyController.setDrawLabel("zen");
 
+    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
+    new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
+
     // Switch to ready scene
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource();
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
@@ -98,10 +103,14 @@ public class GameModeController {
 
     readyController.decreasePromptLabelSize(); // Make definition fit on screen
     canvasController.decreasePromptLabelSize();
-
+    
     readyController.setDrawLabel("hidden");
+    
+    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
+    new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
     // Switch to ready scene
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource();
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));

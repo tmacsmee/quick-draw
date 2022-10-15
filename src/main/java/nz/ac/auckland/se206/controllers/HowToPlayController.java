@@ -9,7 +9,7 @@ import nz.ac.auckland.se206.SceneManager;
 
 public class HowToPlayController {
 
-  /** Initializes the login scene. */
+  /** Initializes the login scene when the app is run. */
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising How To Play Controller *****************");

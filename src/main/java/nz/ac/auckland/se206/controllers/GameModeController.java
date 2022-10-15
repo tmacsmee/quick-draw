@@ -15,7 +15,7 @@ public class GameModeController {
   private ReadyController readyController;
   private String gameMode;
 
-  /** Initializes the createAccount scene. */
+  /** Initializes the createAccount scene when the app is run. */
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising Game Mode Controller *****************");
@@ -76,7 +76,7 @@ public class GameModeController {
    * @param event the button click event.
    */
   @FXML
-  public void onPlayHidden(ActionEvent event) throws IOException {
+  private void onPlayHidden(ActionEvent event) throws IOException {
     gameMode = "hidden";
 
     readyController = (ReadyController) App.getController("ready");
@@ -84,30 +84,36 @@ public class GameModeController {
     DictionaryLookup dictionary = new DictionaryLookup();
 
     // Get the prompt definition
-    try {
-      String definition = dictionary.getDefinition(readyController.getPrompt());
-      readyController.setPromptLabel(definition); // Set the prompt label to the definition
-      canvasController.setPromptLabel(definition);
-
-      readyController.decreasePromptLabelSize(); // Make definition fit on screen
-      canvasController.decreasePromptLabelSize();
-
-      readyController.setDrawLabel("hidden");
-
-      TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
-      new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
-
-      // Switch to ready scene
-      App.getSoundManager().playButtonClick();
-      Button button = (Button) event.getSource();
-      Scene buttonScene = button.getScene();
-      buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
-
-    } catch (Exception e) { // Try a new word if the definition is not found
+    String definition = null;
+    while (definition == null) {
       readyController.generatePrompt(
           App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
-      onPlayHidden(event);
+      if ((App.getJsonParser().getProperty(App.getCurrentUser(), "level")).equals("master")) {
+        definition = dictionary.getDefinition(readyController.getPrompt(), "hard");
+      } else {
+        definition =
+            dictionary.getDefinition(
+                readyController.getPrompt(),
+                (String) App.getJsonParser().getProperty(App.getCurrentUser(), "level"));
+      }
     }
+
+    readyController.setPromptLabel(definition); // Set the prompt label to the definition
+    canvasController.setPromptLabel(definition);
+
+    readyController.decreasePromptLabelSize(); // Make definition fit on screen
+    canvasController.decreasePromptLabelSize();
+    
+    readyController.setDrawLabel("hidden");
+    
+    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
+    new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
+
+    // Switch to ready scene
+    App.getSoundManager().playButtonClick();
+    Button button = (Button) event.getSource();
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
   }
 
   /**

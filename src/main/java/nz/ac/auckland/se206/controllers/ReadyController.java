@@ -26,7 +26,7 @@ public class ReadyController {
   private HiddenModeTask hiddenModeTask;
   private NormalModeTask normalModeTask;
   private ZenModeTask zenModeTask;
-  String prompt;
+  private String prompt;
   @FXML private Label promptLabel;
   @FXML private Label drawLabel;
 
@@ -67,6 +67,7 @@ public class ReadyController {
     canvasController.onClear();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
+
     jsonParser.addWordEncountered(App.getCurrentUser(), prompt, getPromptList(prompt));
 
     WordsController wordsController = (WordsController) App.getController("wordsEncountered");
@@ -89,10 +90,13 @@ public class ReadyController {
 
   /** Generates an array of each difficulty from the csv file. */
   public void createDifficultyArrays() {
+
+    // Creates array lists for words
     easy = new ArrayList<>();
     medium = new ArrayList<>();
     hard = new ArrayList<>();
 
+    // Get words encountered for each difficulty
     JsonParser jsonParser = App.getJsonParser();
     List<String> easyWordsEncountered =
         (List<String>) jsonParser.getProperty(App.getCurrentUser(), "easyWordsEncountered");
@@ -133,26 +137,45 @@ public class ReadyController {
     generatePrompt(App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
   }
 
+  /**
+   * Gets the text of the prompt label.
+   *
+   * @return prompt label text
+   */
   public String getPromptLabel() {
     return promptLabel.getText();
   }
 
+  /** Decreases prompt font size to 20px */
   public void decreasePromptLabelSize() {
-    promptLabel.setStyle("-fx-font-size: 20px;");
+    promptLabel.setStyle("-fx-font-size: 24px;");
   }
 
+  /** Resets prompt label font size to 48px */
   public void resetPromptLabelSize() {
     promptLabel.setStyle("-fx-font-size: 48px;");
   }
 
+  /**
+   * Gets the current prompt
+   *
+   * @return prompt
+   */
   public String getPrompt() {
     return prompt;
   }
 
+  /** Sets the prompt label to the current prompt */
   public void setPromptLabel(String prompt) {
     promptLabel.setText(prompt);
   }
 
+  /**
+   * Finds the difficulty of the prompt and returns the corresponding name of array.
+   *
+   * @param prompt The prompt to find the difficulty of.
+   * @return name of array
+   */
   public String getPromptList(String prompt) {
     if (easy.contains(prompt)) {
       return "easyWordsEncountered";
@@ -163,6 +186,11 @@ public class ReadyController {
     }
   }
 
+  /**
+   * Sets the draw label depending on game mode
+   *
+   * @param gameMode The game mode to set the draw label for.
+   */
   public void setDrawLabel(String gameMode) {
     switch (gameMode) {
       case "normal":
@@ -186,6 +214,7 @@ public class ReadyController {
    * @param difficulty The difficulty of the prompt.
    */
   public void generatePrompt(String difficulty) {
+    createDifficultyArrays();
     switch (difficulty) { // Get a random word from the correct array
       case "easy": // Generate easy prompt - easy
         prompt = easy.get((int) (Math.random() * easy.size()));
@@ -209,14 +238,29 @@ public class ReadyController {
     }
   }
 
+  /**
+   * Gets the normal game mode task
+   *
+   * @return normal game mode task
+   */
   public NormalModeTask getNormalModeTask() {
     return normalModeTask;
   }
 
+  /**
+   * Gets the zen game mode task
+   *
+   * @return zen game mode task
+   */
   public HiddenModeTask getHiddenModeTask() {
     return hiddenModeTask;
   }
 
+  /**
+   * Gets the hidden game mode task
+   *
+   * @return hidden game mode task
+   */
   public ZenModeTask getZenModeTask() {
     return zenModeTask;
   }

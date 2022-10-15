@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.FileNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -13,12 +14,13 @@ public class MenuController {
 
   @FXML private Label welcomeLabel;
 
-  /** Initializes the menu scene. */
+  /** Initializes the menu scene when the app is run. */
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising Menu Controller *****************" + this);
   }
 
+  /** Updates the welcome label to display the user's name. */
   public void updateWelcome() {
     welcomeLabel.setText("Welcome back " + App.getCurrentUser() + "!");
   }
@@ -40,9 +42,13 @@ public class MenuController {
    * Switches to the login scene when the user clicks button to switch account.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSwitchAccount(ActionEvent event) {
+  private void onSwitchAccount(ActionEvent event) throws FileNotFoundException {
+    LoginController loginController = (LoginController) App.getController("login");
+    loginController.setProfiles();
+    
     App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
@@ -68,7 +74,7 @@ public class MenuController {
    * @param event the button click event.
    */
   @FXML
-  private void onDifficulty(ActionEvent event) {
+  private void onChangeToDifficulty(ActionEvent event) {
     DifficultyController difficultyController =
         (DifficultyController) App.getController("difficulty");
     difficultyController.initialiseChoiceBox();

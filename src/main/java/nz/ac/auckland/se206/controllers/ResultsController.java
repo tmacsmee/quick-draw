@@ -21,7 +21,7 @@ public class ResultsController {
   @FXML private ImageView sketchImageView;
   private CanvasController canvasController;
 
-  /** Initializes the ResultsController. */
+  /** Initializes the ResultsController when the app is run. */
   @FXML
   private void initialize() {
     System.out.println(
@@ -56,12 +56,15 @@ public class ResultsController {
    */
   @FXML
   private void onPlayAgain(ActionEvent event) {
+    // Get ready controller
     ReadyController readyController = (ReadyController) App.getController("ready");
+
+    // Regenerate a new prompt
     readyController.generatePrompt(
         App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
+    // Get the controller specific to the game mode and play again.
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
-
     gameModeController.playAgainHandler(event);
   }
 

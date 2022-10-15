@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 
 public class SceneManager {
   public enum AppUi {
+    WELCOME,
     CREATEACCOUNT,
     LOGIN,
     HOWTOPLAY,

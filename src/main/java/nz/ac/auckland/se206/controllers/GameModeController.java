@@ -59,6 +59,9 @@ public class GameModeController {
     readyController.setPromptLabel(prompt);
     readyController.setDrawLabel("zen");
 
+    TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
+    new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
+
     // Switch to ready scene
     Button button = (Button) event.getSource();
     Scene buttonScene = button.getScene();
@@ -88,6 +91,9 @@ public class GameModeController {
       canvasController.decreasePromptLabelSize();
 
       readyController.setDrawLabel("hidden");
+
+      TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
+      new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
       // Switch to ready scene
       Button button = (Button) event.getSource();

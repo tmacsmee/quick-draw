@@ -20,7 +20,7 @@ public class TextToSpeechTask extends Task<Void> {
    * @return null
    */
   @Override
-  protected Void call() {
+  public Void call() {
     App.voice.speak("You have 1 minute to draw" + readyController.getPromptLabel());
     return null;
   }

@@ -201,7 +201,7 @@ public class StatsController {
     String time = jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString();
     int fastest = Integer.parseInt(time);
 
-    if (fastest <= 5) {
+    if (fastest <= 5 && fastest != 0) {
       return true;
     }
 

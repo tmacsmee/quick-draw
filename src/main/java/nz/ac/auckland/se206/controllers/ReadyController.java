@@ -81,6 +81,7 @@ public class ReadyController {
       hiddenReady();
     }
 
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get button scene and change its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot((SceneManager.AppUi.CANVAS)));

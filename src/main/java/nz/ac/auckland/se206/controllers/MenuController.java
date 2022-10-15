@@ -30,6 +30,7 @@ public class MenuController {
    */
   @FXML
   private void onPlay(ActionEvent event) {
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.GAMEMODE));
@@ -42,6 +43,7 @@ public class MenuController {
    */
   @FXML
   private void onSwitchAccount(ActionEvent event) {
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));
@@ -54,6 +56,7 @@ public class MenuController {
    */
   @FXML
   private void onHowToPlay(ActionEvent event) {
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.HOWTOPLAY));
@@ -69,6 +72,7 @@ public class MenuController {
     DifficultyController difficultyController =
         (DifficultyController) App.getController("difficulty");
     difficultyController.initialiseChoiceBox();
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.DIFFICULTY));
@@ -81,6 +85,7 @@ public class MenuController {
    */
   @FXML
   private void onBadges(ActionEvent event) {
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.STATS));
@@ -95,6 +100,7 @@ public class MenuController {
   private void onWordsEncountered(ActionEvent event) {
     WordsController wordsController = (WordsController) App.getController("wordsEncountered");
     wordsController.setEncounteredListView(); // Set the lists for the words encountered.
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.WORDS));

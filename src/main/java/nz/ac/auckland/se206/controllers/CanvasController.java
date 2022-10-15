@@ -357,7 +357,7 @@ public class CanvasController {
     // Generate new prompt
     readyController.generatePrompt(
         App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
-
+    App.getSoundManager().playButtonClick();
     // Cancel the task of the game mode that was being played
     switch (gameMode) {
       case "zen" -> { // Cancel zen mode task and take user to results screen

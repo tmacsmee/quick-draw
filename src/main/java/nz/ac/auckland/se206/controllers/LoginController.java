@@ -28,6 +28,7 @@ public class LoginController {
    */
   @FXML
   private void onCreateAccount(ActionEvent event) {
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));
@@ -62,6 +63,7 @@ public class LoginController {
       readyController.generatePrompt(
           App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
 
+      App.getSoundManager().playButtonClick();
       // Change to menu screen
       Button button =
           (Button) event.getSource(); // Get the scene of the button and switch its root.

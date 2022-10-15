@@ -39,6 +39,7 @@ public class GameModeController {
     TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
     new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
@@ -63,6 +64,7 @@ public class GameModeController {
     new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
     // Switch to ready scene
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource();
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));
@@ -96,6 +98,7 @@ public class GameModeController {
       new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
       // Switch to ready scene
+      App.getSoundManager().playButtonClick();
       Button button = (Button) event.getSource();
       Scene buttonScene = button.getScene();
       buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.READY));

@@ -16,9 +16,10 @@ public class StatsController {
   @FXML private Label numLossesLabel;
   @FXML private Label fastestTimeLabel;
   @FXML private Text txtBadgeDescription;
-  
+
   @FXML
   private void onSwitchToMenu(ActionEvent event) {
+    App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));

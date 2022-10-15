@@ -152,23 +152,44 @@ public class CreateAccountController {
     getAvatarButton(avatarNew).setStyle("-fx-background-color: #FF8E5E");
   }
 
+  /**
+   * Gets the button of the avatar
+   *
+   * @param avatar the avatar animal
+   * @return the button of the avatar
+   */
   public Button getAvatarButton(String avatar) {
     switch (avatar) {
       case "cat":
+        // If the avatar is a cat, return the cat button
         return buttonCatAvatar;
+
       case "chicken":
+        // If the avatar is a chicken, return the chicken button
         return buttonChickenAvatar;
+
       case "dog":
+        // If the avatar is a dog, return the dog button
         return buttonDogAvatar;
+
       case "snake":
+        // If the avatar is a snake, return the snake button
         return buttonSnakeAvatar;
+
       case "puffer-fish":
+        // If the avatar is a puffer-fish, return the puffer-fish button
         return buttonPufferFishAvatar;
+
       case "rabbit":
+        // If the avatar is a rabbit, return the rabbit button
         return buttonRabbitAvatar;
+
       case "sealion":
+        // If the avatar is a sealion, return the sealion button
         return buttonSealionAvatar;
+
       case "panda":
+        // If the avatar is a panda, return the panda button
         return buttonPandaAvatar;
       default:
         return null;

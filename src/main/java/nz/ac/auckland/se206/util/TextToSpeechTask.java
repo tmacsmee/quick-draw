@@ -28,9 +28,15 @@ public class TextToSpeechTask extends Task<Void> {
     String timeAllowed =
         App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed").toString();
     switch (gameMode) {
+
+        // Let users know the time allowed and what to draw
       case "normal" -> App.voice.speak(
           "You have" + timeAllowed + "seconds to draw" + readyController.getPrompt());
+
+        // Let users know what to draw
       case "zen" -> App.voice.speak("Draw" + readyController.getPrompt());
+
+        // Let users know the time allowed
       case "hidden" -> App.voice.speak("You have" + timeAllowed + "seconds to draw this word");
     }
     return null;

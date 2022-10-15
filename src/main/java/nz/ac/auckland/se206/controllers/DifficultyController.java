@@ -31,9 +31,17 @@ public class DifficultyController {
   @FXML
   public void initialize() {
     System.out.println("***************** Initialising Difficulty Controller *****************");
+
+    // Set the choice box options for the top guess - 1, 2, 3
     cbTopGuess.getItems().addAll(topGuess);
+
+    // Set the choice box options for the level - easy, medium, hard, master
     cbLevel.getItems().addAll(level);
+
+    // Set the choice box options for the time allowed - 60, 45, 30, 15
     cbTimeAllowed.getItems().addAll(timeAllowed);
+
+    // Set the choice box options for the confidence percentage - 1, 10, 25, 50
     cbHowConfident.getItems().addAll(confidence);
   }
 

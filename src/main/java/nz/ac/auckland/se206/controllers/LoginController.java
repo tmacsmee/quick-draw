@@ -111,6 +111,7 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserOne(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userOneLabel.getText();
@@ -124,6 +125,7 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserTwo(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userTwoLabel.getText();
@@ -137,6 +139,7 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserThree(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userThreeLabel.getText();
@@ -150,6 +153,7 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserFour(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userFourLabel.getText();
@@ -163,6 +167,7 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserFive(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userFiveLabel.getText();
@@ -176,6 +181,7 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserSix(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userSixLabel.getText();
@@ -189,6 +195,7 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserSeven(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userSevenLabel.getText();
@@ -202,10 +209,25 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserEight(ActionEvent event) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
 
     // Get username and select this user
     String username = userEightLabel.getText();
     selectUser(username, event);
+  }
+
+  /**
+   * Switches to the create account scene when the button is clicked
+   *
+   * @param event the button click event.
+   * @throws FileNotFoundException if the image file is not found.
+   */
+  @FXML
+  private void onAddNewUser(ActionEvent event) throws FileNotFoundException {
+    App.getSoundManager().playButtonClick();
+    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));
   }
 
   /**
@@ -317,20 +339,6 @@ public class LoginController {
     MenuController menuController = (MenuController) App.getController("menu");
     menuController.updateWelcome();
     changeToMenu(event);
-  }
-
-  /**
-   * Switches to the create account scene when the button is clicked
-   *
-   * @param event the button click event.
-   * @throws FileNotFoundException if the image file is not found.
-   */
-  @FXML
-  private void onAddNewUser(ActionEvent event) throws FileNotFoundException {
-    App.getSoundManager().playButtonClick();
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));
   }
 
   /**

@@ -39,6 +39,7 @@ public class LoginController {
   @FXML private ImageView userSixImage;
   @FXML private ImageView userSevenImage;
   @FXML private ImageView userEightImage;
+  @FXML private Button newUserButton;
 
   /** Initializes the login scene when app is run. */
   @FXML
@@ -51,7 +52,7 @@ public class LoginController {
    * with the userNumber.
    *
    * @param userNumber the number of the user
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   public void setUserProfile(int userNumber) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
@@ -60,56 +61,41 @@ public class LoginController {
     String username = jsonParser.getListUsernames().get(userNumber - 1);
 
     switch (userNumber) {
-        // For user 1
       case 1 -> {
         // Set username and avatar image
         userOneLabel.setText(username);
         userOneImage.setImage(getAvatarImage(username));
       }
-
-        // For user 2
       case 2 -> {
         // Set username and avatar image
         userTwoLabel.setText(username);
         userTwoImage.setImage(getAvatarImage(username));
       }
-
-        // For user 3
       case 3 -> {
         // Set username and avatar image
         userThreeLabel.setText(username);
         userThreeImage.setImage(getAvatarImage(username));
       }
-
-        // For user 4
       case 4 -> {
         // Set username and avatar image
         userFourLabel.setText(username);
         userFourImage.setImage(getAvatarImage(username));
       }
-
-        // For user 5
       case 5 -> {
         // Set username and avatar image
         userFiveLabel.setText(username);
         userFiveImage.setImage(getAvatarImage(username));
       }
-
-        // For user 6
       case 6 -> {
         // Set username and avatar image
         userSixLabel.setText(username);
         userSixImage.setImage(getAvatarImage(username));
       }
-
-        // For user 7
       case 7 -> {
         // Set username and avatar image
         userSevenLabel.setText(username);
         userSevenImage.setImage(getAvatarImage(username));
       }
-
-        // For user 8
       case 8 -> {
         // Set username and avatar image
         userEightLabel.setText(username);
@@ -223,6 +209,20 @@ public class LoginController {
   }
 
   /**
+   * Switches to the create account scene when the button is clicked
+   *
+   * @param event the button click event.
+   * @throws FileNotFoundException if the image file is not found.
+   */
+  @FXML
+  private void onAddNewUser(ActionEvent event) throws FileNotFoundException {
+    App.getSoundManager().playButtonClick();
+    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
+    Scene buttonScene = button.getScene();
+    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));
+  }
+
+  /**
    * Sets the buttons for all the profiles of existing users.
    *
    * @throws FileNotFoundException if the image file is not found.
@@ -244,54 +244,54 @@ public class LoginController {
    * Sets the visibility of the button, image and name for a user.
    *
    * @param userNumber the number of the user.
-   * @param visible
+   * @param visible whether the button, image and name should be visible.
    */
   public void setVisibility(int userNumber, boolean visible) {
     switch (userNumber) {
-        // User one
       case 1 -> {
+        // Set visibility of button, image and name of user 1
         userOneLabel.setVisible(visible);
         userOneImage.setVisible(visible);
         userOneButton.setVisible(visible);
       }
-        // User two
       case 2 -> {
+        // Set visibility of button, image and name of user 2
         userTwoLabel.setVisible(visible);
         userTwoImage.setVisible(visible);
         userTwoButton.setVisible(visible);
       }
-        // User three
       case 3 -> {
+        // Set visibility of button, image and name of user 3
         userThreeLabel.setVisible(visible);
         userThreeImage.setVisible(visible);
         userThreeButton.setVisible(visible);
       }
-        // User four
       case 4 -> {
+        // Set visibility of button, image and name of user 4
         userFourLabel.setVisible(visible);
         userFourImage.setVisible(visible);
         userFourButton.setVisible(visible);
       }
-        // User five
       case 5 -> {
+        // Set visibility of button, image and name of user 5
         userFiveLabel.setVisible(visible);
         userFiveImage.setVisible(visible);
         userFiveButton.setVisible(visible);
       }
-        // User six
       case 6 -> {
+        // Set visibility of button, image and name of user 6
         userSixLabel.setVisible(visible);
         userSixImage.setVisible(visible);
         userSixButton.setVisible(visible);
       }
-        // User seven
       case 7 -> {
+        // Set visibility of button, image and name of user 7
         userSevenLabel.setVisible(visible);
         userSevenImage.setVisible(visible);
         userSevenButton.setVisible(visible);
       }
-        // User eight
       case 8 -> {
+        // Set visibility of button, image and name of user 8
         userEightLabel.setVisible(visible);
         userEightImage.setVisible(visible);
         userEightButton.setVisible(visible);
@@ -318,7 +318,8 @@ public class LoginController {
   /**
    * Selects a user and updates current user and the scenes.
    *
-   * @param userNumber the number of the user.
+   * @param username the username of the user.
+   * @param event the button click event.
    */
   public void selectUser(String username, ActionEvent event) {
     // Login and set the current user
@@ -333,23 +334,9 @@ public class LoginController {
   }
 
   /**
-   * Switches to the create account scene when the button is clicked
-   *
-   * @param event the button click event.
-   * @throws FileNotFoundException
-   */
-  @FXML
-  private void onCreateAccount(ActionEvent event) throws FileNotFoundException {
-    App.getSoundManager().playButtonClick();
-    Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
-    Scene buttonScene = button.getScene();
-    buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));
-  }
-
-  /**
    * Gets the avatar image for user profile image.
    *
-   * @param username
+   * @param username the username of the user.
    * @return image of the avatar.
    * @throws FileNotFoundException if the image file is not found.
    */

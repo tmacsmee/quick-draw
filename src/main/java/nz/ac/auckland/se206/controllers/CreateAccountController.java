@@ -12,8 +12,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
 public class CreateAccountController {
-  @FXML private TextField usernameTextField;
-  @FXML private Label errorMessageLabel;
+
   @FXML private Button buttonCatAvatar;
   @FXML private Button buttonChickenAvatar;
   @FXML private Button buttonDogAvatar;
@@ -22,6 +21,10 @@ public class CreateAccountController {
   @FXML private Button buttonRabbitAvatar;
   @FXML private Button buttonSealionAvatar;
   @FXML private Button buttonPandaAvatar;
+  @FXML private TextField usernameTextField;
+  @FXML private Label errorMessageLabel;
+  @FXML private Button addUserButton;
+  @FXML private Button findUserButton;
 
   private static String chosenAvatar = null;
 
@@ -37,10 +40,10 @@ public class CreateAccountController {
    * error.
    *
    * @param event button click event
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
-  private void onCreate(ActionEvent event) throws FileNotFoundException {
+  private void onAddUser(ActionEvent event) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
 
@@ -59,6 +62,7 @@ public class CreateAccountController {
     } else {
       usernameTextField.setText("");
       errorMessageLabel.setText("");
+      getAvatarButton(chosenAvatar).setStyle("-fx-background-color: #FFFFFF");
 
       // Add account to json file
       jsonParser.addUser(username, chosenAvatar);
@@ -85,10 +89,12 @@ public class CreateAccountController {
    * Switches to the login scene when the button is clicked
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onLogin(ActionEvent event) {
+  private void onFindUser(ActionEvent event) throws FileNotFoundException {
     App.getSoundManager().playButtonClick();
+    ((LoginController) App.getController("login")).setProfiles();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.LOGIN));
@@ -142,30 +148,58 @@ public class CreateAccountController {
     chosenAvatar = "panda";
   }
 
+  /**
+   * Changes the button colour to orange for selected avatar and white when unselected.
+   *
+   * @param avatarOld the avatar that is currently chosen.
+   * @param avatarNew the avatar that is being chosen.
+   */
   public void setChosenAvatar(String avatarOld, String avatarNew) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
     if (avatarOld != null) {
       getAvatarButton(avatarOld).setStyle("-fx-background-color: #FFFFFF");
     }
     getAvatarButton(avatarNew).setStyle("-fx-background-color: #FF8E5E");
   }
 
+  /**
+   * Gets the button of the avatar
+   *
+   * @param avatar the avatar animal
+   * @return the button of the avatar
+   */
   public Button getAvatarButton(String avatar) {
     switch (avatar) {
       case "cat":
+        // If the avatar is a cat, return the cat button
         return buttonCatAvatar;
+
       case "chicken":
+        // If the avatar is a chicken, return the chicken button
         return buttonChickenAvatar;
+
       case "dog":
+        // If the avatar is a dog, return the dog button
         return buttonDogAvatar;
+
       case "snake":
+        // If the avatar is a snake, return the snake button
         return buttonSnakeAvatar;
+
       case "puffer-fish":
+        // If the avatar is a puffer-fish, return the puffer-fish button
         return buttonPufferFishAvatar;
+
       case "rabbit":
+        // If the avatar is a rabbit, return the rabbit button
         return buttonRabbitAvatar;
+
       case "sealion":
+        // If the avatar is a sealion, return the sealion button
         return buttonSealionAvatar;
+
       case "panda":
+        // If the avatar is a panda, return the panda button
         return buttonPandaAvatar;
       default:
         return null;

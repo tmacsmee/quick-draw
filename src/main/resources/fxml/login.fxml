@@ -195,7 +195,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#onCreateAccount" prefHeight="54.0" prefWidth="207.0" text="Add a user">
+            <Button fx:id="addNewUserButton" mnemonicParsing="false" onAction="#onAddNewUser" prefHeight="54.0" prefWidth="207.0" text="Add new user">
                <styleClass>
                   <String fx:value="create-account-button" />
                   <String fx:value="rounded-corners" />

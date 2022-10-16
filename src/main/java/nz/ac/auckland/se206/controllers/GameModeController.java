@@ -103,9 +103,9 @@ public class GameModeController {
 
     readyController.decreasePromptLabelSize(); // Make definition fit on screen
     canvasController.decreasePromptLabelSize();
-    
+
     readyController.setDrawLabel("hidden");
-    
+
     TextToSpeechTask textToSpeechTask = new TextToSpeechTask();
     new Thread(textToSpeechTask).start(); // Run the text to speech task on a new thread.
 
@@ -123,18 +123,18 @@ public class GameModeController {
    */
   public void playAgainHandler(ActionEvent event) {
     switch (gameMode) {
-        // Play in normal mode
       case "normal":
+        // Play in normal mode
         onPlayNormal(event);
         break;
 
-        // Play in zen mode
       case "zen":
+        // Play in zen mode
         onPlayZen(event);
         break;
 
-        // Play in hidden mode
       case "hidden":
+        // Play in hidden mode
         try {
           onPlayHidden(event);
         } catch (IOException e) {

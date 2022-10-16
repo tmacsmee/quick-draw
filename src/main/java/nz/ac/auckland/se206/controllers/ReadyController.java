@@ -64,7 +64,7 @@ public class ReadyController {
   private void onReady(ActionEvent event) throws IOException {
     // Set the prompt on the canvas controller
     canvasController = (CanvasController) App.getController("canvas");
-    canvasController.onClear();
+    canvasController.clearCanvas();
 
     JsonParser jsonParser = App.getJsonParser(); // Add word to json file
 
@@ -157,9 +157,9 @@ public class ReadyController {
   }
 
   /**
-   * Gets the current prompt
+   * Gets the current prompt, the word, as a string.
    *
-   * @return prompt
+   * @return the current prompt
    */
   public String getPrompt() {
     return prompt;
@@ -171,17 +171,23 @@ public class ReadyController {
   }
 
   /**
-   * Finds the difficulty of the prompt and returns the corresponding name of array.
+   * Finds the difficulty of the prompt and returns the corresponding name of property for user data
+   * json.
    *
    * @param prompt The prompt to find the difficulty of.
    * @return name of array
    */
   public String getPromptList(String prompt) {
     if (easy.contains(prompt)) {
+      // If the list of easy words contain the prompt, return the name of property
       return "easyWordsEncountered";
+
     } else if (medium.contains(prompt)) {
+      // If the list of medium words contain the prompt, return the name of property
       return "mediumWordsEncountered";
+
     } else {
+      // If the list of hard words contain the prompt, return the name of property
       return "hardWordsEncountered";
     }
   }
@@ -194,15 +200,20 @@ public class ReadyController {
   public void setDrawLabel(String gameMode) {
     switch (gameMode) {
       case "normal":
+        // Set label for normal mode
         drawLabel.setText(
             "You have "
                 + App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed")
                 + " seconds to draw:");
         break;
+
       case "zen":
+        // Set label for zen mode
         drawLabel.setText("Draw:");
         break;
+
       case "hidden":
+        // Set label for hidden mode
         drawLabel.setText("The word's definition is:");
         break;
     }

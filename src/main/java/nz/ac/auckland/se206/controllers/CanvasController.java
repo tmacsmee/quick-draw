@@ -120,7 +120,7 @@ public class CanvasController {
   /**
    * Called when the eraser button is pressed, sets the eraser to be used.
    *
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException If the eraser image cannot be found on the file system.
    */
   @FXML
   private void onSwitchToEraser() throws FileNotFoundException {
@@ -145,8 +145,14 @@ public class CanvasController {
         });
   }
 
-  /** Clears the entire canvas when called. */
-  public void onClear() {
+  /** Clears the entire canvas when the button is clicked */
+  @FXML
+  private void onClear() {
+    clearCanvas();
+  }
+
+  /** This method clears the canvas to be empty when called. */
+  public void clearCanvas() {
     graphic.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
     // when canvas is cleared, canvas declared as empty and predictionList no longer displays

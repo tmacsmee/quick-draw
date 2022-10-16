@@ -12,8 +12,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
 public class CreateAccountController {
-  @FXML private TextField usernameTextField;
-  @FXML private Label errorMessageLabel;
+
   @FXML private Button buttonCatAvatar;
   @FXML private Button buttonChickenAvatar;
   @FXML private Button buttonDogAvatar;
@@ -22,6 +21,10 @@ public class CreateAccountController {
   @FXML private Button buttonRabbitAvatar;
   @FXML private Button buttonSealionAvatar;
   @FXML private Button buttonPandaAvatar;
+  @FXML private TextField usernameTextField;
+  @FXML private Label errorMessageLabel;
+  @FXML private Button addUserButton;
+  @FXML private Button findUserButton;
 
   private static String chosenAvatar = null;
 
@@ -40,7 +43,7 @@ public class CreateAccountController {
    * @throws FileNotFoundException if file not found
    */
   @FXML
-  private void onCreate(ActionEvent event) throws FileNotFoundException {
+  private void onAddUser(ActionEvent event) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
     String username = usernameTextField.getText();
 
@@ -89,7 +92,7 @@ public class CreateAccountController {
    * @throws FileNotFoundException
    */
   @FXML
-  private void onLogin(ActionEvent event) throws FileNotFoundException {
+  private void onFindUser(ActionEvent event) throws FileNotFoundException {
     App.getSoundManager().playButtonClick();
     ((LoginController) App.getController("login")).setProfiles();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.

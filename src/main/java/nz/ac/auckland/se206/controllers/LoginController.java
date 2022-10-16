@@ -39,6 +39,7 @@ public class LoginController {
   @FXML private ImageView userSixImage;
   @FXML private ImageView userSevenImage;
   @FXML private ImageView userEightImage;
+  @FXML private Button newUserButton;
 
   /** Initializes the login scene when app is run. */
   @FXML
@@ -325,7 +326,7 @@ public class LoginController {
    * @throws FileNotFoundException if the image file is not found.
    */
   @FXML
-  private void onCreateAccount(ActionEvent event) throws FileNotFoundException {
+  private void onAddNewUser(ActionEvent event) throws FileNotFoundException {
     App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();

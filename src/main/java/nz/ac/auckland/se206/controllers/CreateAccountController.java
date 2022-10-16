@@ -155,6 +155,7 @@ public class CreateAccountController {
    * @param avatarNew the avatar that is being chosen.
    */
   public void setChosenAvatar(String avatarOld, String avatarNew) {
+    App.getSoundManager().playButtonClick(); // Play button click sound
     if (avatarOld != null) {
       getAvatarButton(avatarOld).setStyle("-fx-background-color: #FFFFFF");
     }

@@ -7,8 +7,6 @@ import java.util.HashMap;
 
 public class DictionaryLookup {
 
-  public static final String API_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
-
   /**
    * Returns the definition of the given word.
    *

@@ -42,7 +42,7 @@
                      <children>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeOne" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeOne" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>
@@ -50,7 +50,7 @@
                            </graphic></Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeFive" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeFive" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>
@@ -63,7 +63,7 @@
                      <children>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeTwo" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeTwo" fitHeight="50.0" fitWidth="50.0">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>
@@ -72,7 +72,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeSix" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeSix" fitHeight="50.0" fitWidth="50.0">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>
@@ -85,7 +85,7 @@
                      <children>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeThree" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeThree" fitHeight="50.0" fitWidth="50.0">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>
@@ -94,7 +94,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeSeven" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeSeven" fitHeight="50.0" fitWidth="50.0">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>
@@ -107,7 +107,7 @@
                      <children>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeFour" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeFour" fitHeight="50.0" fitWidth="50.0">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>
@@ -116,7 +116,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onBadgeEight" prefHeight="70.0" prefWidth="70.0" styleClass="round-button">
                            <graphic>
-                              <ImageView fx:id="imgBadgeEight" fitHeight="50.0" fitWidth="50.0">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../images/doubts-button.png" />
                                  </image>

@@ -32,7 +32,7 @@ public class TextToSpeech {
     textToSpeech.terminate();
   }
 
-  public final Synthesizer synthesizer;
+  private final Synthesizer synthesizer;
 
   /**
    * Constructs the TextToSpeech object creating and allocating the speech synthesizer. English

@@ -19,7 +19,7 @@ public class SceneManager {
     WORDS
   }
 
-  public static final HashMap<AppUi, Parent> sceneMap = new HashMap<>();
+  private static final HashMap<AppUi, Parent> sceneMap = new HashMap<>();
 
   public static void addUi(AppUi appUi, Parent uiRoot) {
     sceneMap.put(appUi, uiRoot);

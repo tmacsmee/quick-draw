@@ -108,9 +108,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user one when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserOne(ActionEvent event) {
+  private void onSelectUserOne(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userOneLabel.getText();
@@ -121,9 +122,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user two when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserTwo(ActionEvent event) {
+  private void onSelectUserTwo(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userTwoLabel.getText();
@@ -134,9 +136,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user three when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserThree(ActionEvent event) {
+  private void onSelectUserThree(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userThreeLabel.getText();
@@ -147,9 +150,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user four when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserFour(ActionEvent event) {
+  private void onSelectUserFour(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userFourLabel.getText();
@@ -160,9 +164,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user five when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserFive(ActionEvent event) {
+  private void onSelectUserFive(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userFiveLabel.getText();
@@ -173,9 +178,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user six when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserSix(ActionEvent event) {
+  private void onSelectUserSix(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userSixLabel.getText();
@@ -186,9 +192,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user seven when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserSeven(ActionEvent event) {
+  private void onSelectUserSeven(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userSevenLabel.getText();
@@ -199,9 +206,10 @@ public class LoginController {
    * Switches to the main menu scene and logs into user eight when the button is clicked.
    *
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
   @FXML
-  private void onSelectUserEight(ActionEvent event) {
+  private void onSelectUserEight(ActionEvent event) throws FileNotFoundException {
 
     // Get username and select this user
     String username = userEightLabel.getText();
@@ -320,8 +328,9 @@ public class LoginController {
    *
    * @param username the username of the user.
    * @param event the button click event.
+   * @throws FileNotFoundException
    */
-  public void selectUser(String username, ActionEvent event) {
+  public void selectUser(String username, ActionEvent event) throws FileNotFoundException {
     // Login and set the current user
     App.changeUser(username);
     App.setCurrentUser(username);

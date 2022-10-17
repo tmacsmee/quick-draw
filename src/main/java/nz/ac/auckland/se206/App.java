@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.application.Application;
@@ -124,8 +125,9 @@ public class App extends Application {
    * This method changes the current user of the application and updates labels to be user specific.
    *
    * @param username the username of the user
+   * @throws FileNotFoundException
    */
-  public static void changeUser(String username) {
+  public static void changeUser(String username) throws FileNotFoundException {
     App.setCurrentUser(username);
 
     // Get all controllers
@@ -136,6 +138,7 @@ public class App extends Application {
 
     menuController.updateWelcome(); // Update welcome label
     statsController.updateStats(); // Update users stats
+    statsController.checkBadges();
     wordsController.setEncounteredListView(); // Updates users encountered lists
 
     readyController.createDifficultyArrays(); // Get an array of each difficulty

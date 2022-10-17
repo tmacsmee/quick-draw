@@ -96,6 +96,11 @@ public class StatsController {
     txtBadgeDescription.setText("Win with less than 5 seconds left on the clock");
   }
 
+  /**
+   * checks which badges the user has earned and awards them accordingly
+   *
+   * @throws FileNotFoundException
+   */
   public void checkBadges() throws FileNotFoundException {
 
     FileInputStream badgeInput =
@@ -108,6 +113,7 @@ public class StatsController {
             System.getProperty("user.dir") + "/src/main/resources/images/doubts-button.png");
     Image hidden = new Image(hiddenInput);
 
+    // checking whether a badge has been won or not
     if (isBadgeOne()) {
       imgBadgeOne.setImage(badge);
     } else {
@@ -140,6 +146,11 @@ public class StatsController {
     }
   }
 
+  /**
+   * checks if badgeOne has been earned, if so return true else return false
+   *
+   * @return
+   */
   public boolean isBadgeOne() {
 
     JsonParser jsonParser = App.getJsonParser();
@@ -156,6 +167,11 @@ public class StatsController {
     return false;
   }
 
+  /**
+   * checks if badgeTwo has been earned, if so return true else return false
+   *
+   * @return
+   */
   public boolean isBadgeTwo() {
 
     JsonParser jsonParser = App.getJsonParser();
@@ -169,6 +185,11 @@ public class StatsController {
     return false;
   }
 
+  /**
+   * checks if badgeThree has been earned, if so return true else return false
+   *
+   * @return
+   */
   public boolean isBadgeThree() {
 
     JsonParser jsonParser = App.getJsonParser();
@@ -183,6 +204,11 @@ public class StatsController {
     return false;
   }
 
+  /**
+   * checks if badgeFour has been earned, if so return true else return false
+   *
+   * @return
+   */
   public boolean isBadgeFour() {
 
     JsonParser jsonParser = App.getJsonParser();
@@ -196,6 +222,11 @@ public class StatsController {
     return false;
   }
 
+  /**
+   * checks if badgeFive has been earned, if so return true else return false
+   *
+   * @return
+   */
   public boolean isBadgeFive() {
 
     JsonParser jsonParser = App.getJsonParser();

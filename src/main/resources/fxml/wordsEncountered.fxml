@@ -42,6 +42,6 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="321.0" layoutY="519.0" mnemonicParsing="false" onAction="#onSwitchToMenu" text="Main Menu" />
+      <Button layoutX="321.0" layoutY="519.0" mnemonicParsing="false" onAction="#onSwitchToMenu" styleClass="rounded-corners" text="Main Menu" />
    </children>
 </Pane>

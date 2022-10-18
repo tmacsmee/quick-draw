@@ -24,7 +24,7 @@
                   <Font size="54.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPlayNormal" prefHeight="56.0" prefWidth="185.0" text="Play" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPlayNormal" prefHeight="56.0" prefWidth="185.0" styleClass="rounded-corners" text="Play" textAlignment="CENTER" />
             <HBox prefHeight="10.0" prefWidth="215.0" />
          </children>
       </VBox>
@@ -41,7 +41,7 @@
                   <Font size="54.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPlayZen" prefHeight="56.0" prefWidth="185.0" text="Play" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPlayZen" prefHeight="56.0" prefWidth="185.0" styleClass="rounded-corners" text="Play" textAlignment="CENTER" />
             <HBox prefHeight="10.0" prefWidth="215.0" />
          </children>
       </VBox>
@@ -58,7 +58,7 @@
                   <Font size="54.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#onPlayHidden" prefHeight="56.0" prefWidth="185.0" text="Play" textAlignment="CENTER" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#onPlayHidden" prefHeight="56.0" prefWidth="185.0" styleClass="rounded-corners" text="Play" textAlignment="CENTER" />
             <HBox prefHeight="10.0" prefWidth="215.0" />
          </children>
       </VBox>

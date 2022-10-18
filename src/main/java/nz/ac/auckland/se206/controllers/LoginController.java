@@ -314,6 +314,10 @@ public class LoginController {
    */
   public void changeToMenu(ActionEvent event) {
 
+    // Allow the play button on the how to play scene
+    HowToPlayController howToPlayController = (HowToPlayController) App.getController("howToPlay");
+    howToPlayController.showPlayButton(true);
+
     // Get the scene of the button.
     App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource();

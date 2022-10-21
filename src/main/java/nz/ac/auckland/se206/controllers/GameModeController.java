@@ -32,7 +32,7 @@ public class GameModeController {
 
     readyController = (ReadyController) App.getController("ready");
     String prompt = readyController.getPrompt();
-    readyController.setPromptLabel(prompt);
+    readyController.setPromptLabel(prompt); // set prompt label
 
     readyController.setDrawLabel("normal");
 
@@ -85,11 +85,13 @@ public class GameModeController {
 
     // Get the prompt definition
     String definition = null;
-    while (definition == null) {
+    while (definition == null) { // Keep getting a new prompt until a valid one is found
       readyController.generatePrompt(
           App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
       if ((App.getJsonParser().getProperty(App.getCurrentUser(), "level")).equals("master")) {
-        definition = dictionary.getDefinition(readyController.getPrompt(), "hard");
+        definition =
+            dictionary.getDefinition(
+                readyController.getPrompt(), "hard"); // Use hard words for master
       } else {
         definition =
             dictionary.getDefinition(

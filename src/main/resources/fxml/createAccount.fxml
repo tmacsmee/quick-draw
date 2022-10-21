@@ -180,13 +180,13 @@
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" maxHeight="100.0" maxWidth="780.0" minHeight="100.0" minWidth="780.0" prefHeight="100.0" prefWidth="780.0">
                <children>
-                  <Button fx:id="addUserButton" maxHeight="65.0" maxWidth="160.0" minHeight="65.0" minWidth="160.0" mnemonicParsing="false" onAction="#onAddUser" prefHeight="65.0" prefWidth="160.0" styleClass="rounded-corners" text="Add user" />
+                  <Button maxHeight="65.0" maxWidth="160.0" minHeight="65.0" minWidth="160.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="160.0" styleClass="rounded-corners" text="Add user" />
                   <VBox prefHeight="127.0" prefWidth="50.0" />
                   <VBox alignment="CENTER" maxHeight="90.0" maxWidth="230.0" minHeight="90.0" minWidth="230.0" prefHeight="90.0" prefWidth="422.0">
                      <children>
                         <Label styleClass="menu-screenText" text="Already have" textFill="WHITE" />
                         <Label styleClass="menu-screenText" text="a profile?" textFill="WHITE" />
-                        <Button fx:id="findUserButton" mnemonicParsing="false" onAction="#onFindUser" prefHeight="52.0" prefWidth="127.0" text="Find User">
+                        <Button fx:id="findUserButton" mnemonicParsing="false" prefHeight="52.0" prefWidth="127.0" text="Find User">
                            <styleClass>
                               <String fx:value="create-account-button" />
                               <String fx:value="rounded-corners" />

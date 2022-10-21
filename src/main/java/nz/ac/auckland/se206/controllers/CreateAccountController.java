@@ -23,8 +23,6 @@ public class CreateAccountController {
   @FXML private Button buttonPandaAvatar;
   @FXML private TextField usernameTextField;
   @FXML private Label errorMessageLabel;
-  @FXML private Button addUserButton;
-  @FXML private Button findUserButton;
 
   private static String chosenAvatar = null;
 
@@ -89,7 +87,7 @@ public class CreateAccountController {
    * Switches to the login scene when the button is clicked
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onFindUser(ActionEvent event) throws FileNotFoundException {
@@ -101,49 +99,49 @@ public class CreateAccountController {
   }
 
   @FXML
-  private void onChooseCat(ActionEvent event) {
+  private void onChooseCat() {
     setChosenAvatar(chosenAvatar, "cat");
     chosenAvatar = "cat";
   }
 
   @FXML
-  private void onChooseChicken(ActionEvent event) {
+  private void onChooseChicken() {
     setChosenAvatar(chosenAvatar, "chicken");
     chosenAvatar = "chicken";
   }
 
   @FXML
-  private void onChooseDog(ActionEvent event) {
+  private void onChooseDog() {
     setChosenAvatar(chosenAvatar, "dog");
     chosenAvatar = "dog";
   }
 
   @FXML
-  private void onChooseSnake(ActionEvent event) {
+  private void onChooseSnake() {
     setChosenAvatar(chosenAvatar, "snake");
     chosenAvatar = "snake";
   }
 
   @FXML
-  private void onChoosePufferFish(ActionEvent event) {
+  private void onChoosePufferFish() {
     setChosenAvatar(chosenAvatar, "puffer-fish");
     chosenAvatar = "puffer-fish";
   }
 
   @FXML
-  private void onChooseRabbit(ActionEvent event) {
+  private void onChooseRabbit() {
     setChosenAvatar(chosenAvatar, "rabbit");
     chosenAvatar = "rabbit";
   }
 
   @FXML
-  private void onChooseSealion(ActionEvent event) {
+  private void onChooseSealion() {
     setChosenAvatar(chosenAvatar, "sealion");
     chosenAvatar = "sealion";
   }
 
   @FXML
-  private void onChoosePanda(ActionEvent event) {
+  private void onChoosePanda() {
     setChosenAvatar(chosenAvatar, "panda");
     chosenAvatar = "panda";
   }
@@ -169,40 +167,32 @@ public class CreateAccountController {
    * @return the button of the avatar
    */
   public Button getAvatarButton(String avatar) {
-    switch (avatar) {
-      case "cat":
-        // If the avatar is a cat, return the cat button
-        return buttonCatAvatar;
-
-      case "chicken":
-        // If the avatar is a chicken, return the chicken button
-        return buttonChickenAvatar;
-
-      case "dog":
-        // If the avatar is a dog, return the dog button
-        return buttonDogAvatar;
-
-      case "snake":
-        // If the avatar is a snake, return the snake button
-        return buttonSnakeAvatar;
-
-      case "puffer-fish":
-        // If the avatar is a puffer-fish, return the puffer-fish button
-        return buttonPufferFishAvatar;
-
-      case "rabbit":
-        // If the avatar is a rabbit, return the rabbit button
-        return buttonRabbitAvatar;
-
-      case "sealion":
-        // If the avatar is a sealion, return the sealion button
-        return buttonSealionAvatar;
-
-      case "panda":
-        // If the avatar is a panda, return the panda button
-        return buttonPandaAvatar;
-      default:
-        return null;
-    }
+    return switch (avatar) {
+      case "cat" ->
+      // If the avatar is a cat, return the cat button
+      buttonCatAvatar;
+      case "chicken" ->
+      // If the avatar is a chicken, return the chicken button
+      buttonChickenAvatar;
+      case "dog" ->
+      // If the avatar is a dog, return the dog button
+      buttonDogAvatar;
+      case "snake" ->
+      // If the avatar is a snake, return the snake button
+      buttonSnakeAvatar;
+      case "puffer-fish" ->
+      // If the avatar is a puffer-fish, return the puffer-fish button
+      buttonPufferFishAvatar;
+      case "rabbit" ->
+      // If the avatar is a rabbit, return the rabbit button
+      buttonRabbitAvatar;
+      case "sealion" ->
+      // If the avatar is a sealion, return the sealion button
+      buttonSealionAvatar;
+      case "panda" ->
+      // If the avatar is a panda, return the panda button
+      buttonPandaAvatar;
+      default -> null;
+    };
   }
 }

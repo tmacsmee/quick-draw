@@ -2,7 +2,6 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +29,12 @@ public class StatsController {
   @FXML private ImageView imgBadgeSix;
   @FXML private ImageView imgBadgeSeven;
   @FXML private ImageView imgBadgeEight;
+
+  /** Initializes the stats controller class. */
+  @FXML
+  private void initialize() {
+    System.out.println("***************** Initialising Stats Controller *****************");
+  }
 
   @FXML
   private void onSwitchToMenu(ActionEvent event) {
@@ -88,7 +93,7 @@ public class StatsController {
 
   @FXML
   private void onBadgeSeven() {
-    txtBadgeDescription.setText("Win with your drawing as the number one guess");
+    txtBadgeDescription.setText("Win 10 times in a row");
   }
 
   @FXML
@@ -97,9 +102,9 @@ public class StatsController {
   }
 
   /**
-   * checks which badges the user has earned and awards them accordingly
+   * Checks which badges the user has earned and awards them accordingly
    *
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if the image file is not found
    */
   public void checkBadges() throws FileNotFoundException {
 
@@ -144,12 +149,27 @@ public class StatsController {
     } else {
       imgBadgeFive.setImage(hidden);
     }
+    if (isBadgeSix()) {
+      imgBadgeSix.setImage(badge);
+    } else {
+      imgBadgeSix.setImage(hidden);
+    }
+    if (isBadgeSeven()) {
+      imgBadgeSeven.setImage(badge);
+    } else {
+      imgBadgeSeven.setImage(hidden);
+    }
+    if (isBadgeEight()) {
+      imgBadgeEight.setImage(badge);
+    } else {
+      imgBadgeEight.setImage(hidden);
+    }
   }
 
   /**
    * checks if badgeOne has been earned, if so return true else return false
    *
-   * @return
+   * @return true if badgeOne has been earned, else false
    */
   public boolean isBadgeOne() {
 
@@ -160,72 +180,56 @@ public class StatsController {
     int wins = Integer.parseInt(winString);
     int losses = Integer.parseInt(lossString);
 
-    if (wins > losses) {
-      return true;
-    }
-
-    return false;
+    return wins > losses;
   }
 
   /**
    * checks if badgeTwo has been earned, if so return true else return false
    *
-   * @return
+   * @return true if badgeTwo has been earned, else false
    */
   public boolean isBadgeTwo() {
 
     JsonParser jsonParser = App.getJsonParser();
-    List<String> easyWords = new ArrayList();
+    List<String> easyWords;
     easyWords = (List<String>) jsonParser.getProperty(App.getCurrentUser(), "easyWordsEncountered");
 
-    if (easyWords.size() > 19) {
-      return true;
-    }
-
-    return false;
+    return easyWords.size() > 19;
   }
 
   /**
    * checks if badgeThree has been earned, if so return true else return false
    *
-   * @return
+   * @return true if badgeThree has been earned, else false
    */
   public boolean isBadgeThree() {
 
     JsonParser jsonParser = App.getJsonParser();
-    List<String> mediumWords = new ArrayList();
+    List<String> mediumWords;
     mediumWords =
         (List<String>) jsonParser.getProperty(App.getCurrentUser(), "mediumWordsEncountered");
 
-    if (mediumWords.size() > 19) {
-      return true;
-    }
-
-    return false;
+    return mediumWords.size() > 19;
   }
 
   /**
    * checks if badgeFour has been earned, if so return true else return false
    *
-   * @return
+   * @return true if badgeFour has been earned, else false
    */
   public boolean isBadgeFour() {
 
     JsonParser jsonParser = App.getJsonParser();
-    List<String> hardWords = new ArrayList();
+    List<String> hardWords;
     hardWords = (List<String>) jsonParser.getProperty(App.getCurrentUser(), "hardWordsEncountered");
 
-    if (hardWords.size() > 19) {
-      return true;
-    }
-
-    return false;
+    return hardWords.size() > 19;
   }
 
   /**
    * checks if badgeFive has been earned, if so return true else return false
    *
-   * @return
+   * @return true if badgeFive has been earned, else false
    */
   public boolean isBadgeFive() {
 
@@ -233,10 +237,41 @@ public class StatsController {
     String time = jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString();
     int fastest = Integer.parseInt(time);
 
-    if (fastest <= 5 && fastest != 0) {
-      return true;
-    }
+    return fastest <= 5 && fastest != 0;
+  }
 
-    return false;
+  /**
+   * checks if badgeSix has been earned, if so return true else return false
+   *
+   * @return true if badgeSix has been earned, else false
+   */
+  public boolean isBadgeSix() {
+    JsonParser jsonParser = App.getJsonParser();
+    String winStreak = jsonParser.getProperty(App.getCurrentUser(), "winStreak").toString();
+    return Integer.parseInt(winStreak) > 2;
+  }
+
+  /**
+   * checks if badgeSeven has been earned, if so return true else return false
+   *
+   * @return true if badgeSeven has been earned, else false
+   */
+  public boolean isBadgeSeven() {
+    JsonParser jsonParser = App.getJsonParser();
+    String winStreak = jsonParser.getProperty(App.getCurrentUser(), "winStreak").toString();
+    return Integer.parseInt(winStreak) > 9;
+  }
+
+  /**
+   * checks if badgeEight has been earned, if so return true else return false
+   *
+   * @return true if badgeEight has been earned, else false
+   */
+  public boolean isBadgeEight() {
+    JsonParser jsonParser = App.getJsonParser();
+    String time = jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString();
+    int fastest = Integer.parseInt(time);
+
+    return fastest <= 5 && fastest != 0;
   }
 }

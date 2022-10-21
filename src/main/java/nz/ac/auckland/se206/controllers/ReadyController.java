@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -61,7 +60,7 @@ public class ReadyController {
    * timer.
    */
   @FXML
-  private void onReady(ActionEvent event) throws IOException {
+  private void onReady(ActionEvent event) {
     // Set the prompt on the canvas controller
     canvasController = (CanvasController) App.getController("canvas");
     canvasController.clearCanvas();
@@ -74,12 +73,10 @@ public class ReadyController {
     wordsController.setEncounteredListView();
     GameModeController gameModeController = (GameModeController) App.getController("gameMode");
     String gameMode = gameModeController.getGameMode();
-    if (gameMode.equals("normal")) {
-      normalReady();
-    } else if (gameMode.equals("zen")) {
-      zenReady();
-    } else if (gameMode.equals("hidden")) {
-      hiddenReady();
+    switch (gameMode) {
+      case "normal" -> normalReady();
+      case "zen" -> zenReady();
+      case "hidden" -> hiddenReady();
     }
 
     App.getSoundManager().playButtonClick();
@@ -137,15 +134,6 @@ public class ReadyController {
     generatePrompt(App.getJsonParser().getProperty(App.getCurrentUser(), "level").toString());
   }
 
-  /**
-   * Gets the text of the prompt label.
-   *
-   * @return prompt label text
-   */
-  public String getPromptLabel() {
-    return promptLabel.getText();
-  }
-
   /** Decreases prompt font size to 20px */
   public void decreasePromptLabelSize() {
     promptLabel.setStyle("-fx-font-size: 24px;");
@@ -156,16 +144,10 @@ public class ReadyController {
     promptLabel.setStyle("-fx-font-size: 48px;");
   }
 
-  /**
-   * Gets the current prompt, the word, as a string.
-   *
-   * @return the current prompt
-   */
   public String getPrompt() {
     return prompt;
   }
 
-  /** Sets the prompt label to the current prompt */
   public void setPromptLabel(String prompt) {
     promptLabel.setText(prompt);
   }
@@ -199,23 +181,18 @@ public class ReadyController {
    */
   public void setDrawLabel(String gameMode) {
     switch (gameMode) {
-      case "normal":
-        // Set label for normal mode
-        drawLabel.setText(
-            "You have "
-                + App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed")
-                + " seconds to draw:");
-        break;
-
-      case "zen":
-        // Set label for zen mode
-        drawLabel.setText("Draw:");
-        break;
-
-      case "hidden":
-        // Set label for hidden mode
-        drawLabel.setText("The word's definition is:");
-        break;
+      case "normal" ->
+      // Set label for normal mode
+      drawLabel.setText(
+          "You have "
+              + App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed")
+              + " seconds to draw:");
+      case "zen" ->
+      // Set label for zen mode
+      drawLabel.setText("Draw:");
+      case "hidden" ->
+      // Set label for hidden mode
+      drawLabel.setText("The word's definition is:");
     }
   }
 
@@ -227,51 +204,34 @@ public class ReadyController {
   public void generatePrompt(String difficulty) {
     createDifficultyArrays();
     switch (difficulty) { // Get a random word from the correct array
-      case "easy": // Generate easy prompt - easy
-        prompt = easy.get((int) (Math.random() * easy.size()));
-        break;
-      case "medium": // Generate medium prompt - easy/medium
+      case "easy" -> // Generate easy prompt - easy
+      prompt = easy.get((int) (Math.random() * easy.size()));
+      case "medium" -> { // Generate medium prompt - easy/medium
         List<String> easyAndMedium = new ArrayList<>();
         easyAndMedium.addAll(easy);
         easyAndMedium.addAll(medium);
         prompt = easyAndMedium.get((int) (Math.random() * easyAndMedium.size()));
-        break;
-      case "hard": // Generate hard prompt - easy/medium/hard
+      }
+      case "hard" -> { // Generate hard prompt - easy/medium/hard
         List<String> all = new ArrayList<>();
         all.addAll(easy);
         all.addAll(medium);
         all.addAll(hard);
         prompt = all.get((int) (Math.random() * all.size()));
-        break;
-      case "master": // Generate master prompt - hard
-        prompt = hard.get((int) (Math.random() * hard.size()));
-        break;
+      }
+      case "master" -> // Generate master prompt - hard
+      prompt = hard.get((int) (Math.random() * hard.size()));
     }
   }
 
-  /**
-   * Gets the normal game mode task
-   *
-   * @return normal game mode task
-   */
   public NormalModeTask getNormalModeTask() {
     return normalModeTask;
   }
 
-  /**
-   * Gets the zen game mode task
-   *
-   * @return zen game mode task
-   */
   public HiddenModeTask getHiddenModeTask() {
     return hiddenModeTask;
   }
 
-  /**
-   * Gets the hidden game mode task
-   *
-   * @return hidden game mode task
-   */
   public ZenModeTask getZenModeTask() {
     return zenModeTask;
   }

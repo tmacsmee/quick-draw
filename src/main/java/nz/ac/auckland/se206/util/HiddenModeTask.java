@@ -49,6 +49,7 @@ public class HiddenModeTask extends TimerTask {
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
       jsonParser.incrementLosses(App.getCurrentUser());
+      jsonParser.resetWinStreak(App.getCurrentUser());
       canvasController.results();
 
     } else if (timeElapsed
@@ -75,6 +76,7 @@ public class HiddenModeTask extends TimerTask {
                 jsonParser.incrementWins(App.getCurrentUser());
                 final long time = timeElapsed;
                 jsonParser.setFastestTime(App.getCurrentUser(), Long.toString(time));
+                jsonParser.incrementWinStreak(App.getCurrentUser());
                 canvasController.results();
               }
             } catch (TranslateException e) {

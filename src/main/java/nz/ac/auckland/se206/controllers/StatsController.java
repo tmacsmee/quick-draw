@@ -144,6 +144,11 @@ public class StatsController {
     } else {
       imgBadgeFive.setImage(hidden);
     }
+    if (isBadgeSix()) {
+      imgBadgeSix.setImage(badge);
+    } else {
+      imgBadgeSix.setImage(hidden);
+    }
   }
 
   /**
@@ -237,6 +242,15 @@ public class StatsController {
       return true;
     }
 
+    return false;
+  }
+
+  public boolean isBadgeSix() {
+    JsonParser jsonParser = App.getJsonParser();
+    String winStreak = jsonParser.getProperty(App.getCurrentUser(), "winStreak").toString();
+    if (Integer.parseInt(winStreak) > 2) {
+      return true;
+    }
     return false;
   }
 }

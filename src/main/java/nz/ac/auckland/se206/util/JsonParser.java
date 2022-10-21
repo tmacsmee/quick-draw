@@ -89,6 +89,7 @@ public class JsonParser {
                 Map.entry("hardWordsEncountered", new ArrayList<String>()),
                 Map.entry("gamesWon", "0"),
                 Map.entry("gamesLost", "0"),
+                Map.entry("winStreak", "0"),
                 Map.entry("fastestTime", "0"),
                 Map.entry("topGuess", "3"),
                 Map.entry("level", "easy"),
@@ -176,5 +177,16 @@ public class JsonParser {
 
   public ArrayList<String> getListUsernames() {
     return new ArrayList<>(allUserData.keySet());
+  }
+
+  public void resetWinStreak(String username) {
+    allUserData.get(username).replace("winStreak", "0");
+    mapToJson();
+  }
+
+  public void incrementWinStreak(String username) {
+    int winStreak = Integer.parseInt((String) getProperty(username, "winStreak"));
+    allUserData.get(username).replace("winStreak", Integer.toString(winStreak + 1));
+    mapToJson();
   }
 }

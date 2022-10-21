@@ -127,7 +127,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="181.0" prefWidth="290.0" styleClass="list-box">
                      <children>
-                        <Label prefWidth="194.0" styleClass="menu-screenText" text="Badge Description" />
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="213.0" styleClass="menu-screenText" text="Badge Description" />
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Text fx:id="txtBadgeDescription" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menu-screenText" textAlignment="CENTER" wrappingWidth="250.0" />

@@ -88,7 +88,7 @@ public class StatsController {
 
   @FXML
   private void onBadgeSeven() {
-    txtBadgeDescription.setText("Win with your drawing as the number one guess");
+    txtBadgeDescription.setText("Win 10 times in a row");
   }
 
   @FXML
@@ -148,6 +148,16 @@ public class StatsController {
       imgBadgeSix.setImage(badge);
     } else {
       imgBadgeSix.setImage(hidden);
+    }
+    if (isBadgeSeven()) {
+      imgBadgeSeven.setImage(badge);
+    } else {
+      imgBadgeSeven.setImage(hidden);
+    }
+    if (isBadgeEight()) {
+      imgBadgeEight.setImage(badge);
+    } else {
+      imgBadgeEight.setImage(hidden);
     }
   }
 
@@ -249,6 +259,26 @@ public class StatsController {
     JsonParser jsonParser = App.getJsonParser();
     String winStreak = jsonParser.getProperty(App.getCurrentUser(), "winStreak").toString();
     if (Integer.parseInt(winStreak) > 2) {
+      return true;
+    }
+    return false;
+  }
+
+  public boolean isBadgeSeven() {
+    JsonParser jsonParser = App.getJsonParser();
+    String winStreak = jsonParser.getProperty(App.getCurrentUser(), "winStreak").toString();
+    if (Integer.parseInt(winStreak) > 9) {
+      return true;
+    }
+    return false;
+  }
+
+  public boolean isBadgeEight() {
+    JsonParser jsonParser = App.getJsonParser();
+    String time = jsonParser.getProperty(App.getCurrentUser(), "fastestTime").toString();
+    int fastest = Integer.parseInt(time);
+
+    if (fastest <= 5 && fastest != 0) {
       return true;
     }
     return false;

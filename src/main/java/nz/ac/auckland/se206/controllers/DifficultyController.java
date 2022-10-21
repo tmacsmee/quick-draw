@@ -19,13 +19,13 @@ public class DifficultyController {
 
   @FXML private ChoiceBox<String> cbHowConfident;
 
-  private String[] topGuess = {"3", "2", "1"};
+  private final String[] topGuess = {"3", "2", "1"};
 
-  private String[] level = {"easy", "medium", "hard", "master"};
+  private final String[] level = {"easy", "medium", "hard", "master"};
 
-  private String[] timeAllowed = {"60", "45", "30", "15"};
+  private final String[] timeAllowed = {"60", "45", "30", "15"};
 
-  private String[] confidence = {"1", "10", "25", "50"};
+  private final String[] confidence = {"1", "10", "25", "50"};
 
   /** Initializes the difficulty scene when the app is run. */
   @FXML
@@ -70,48 +70,40 @@ public class DifficultyController {
    * Gets the top guess value from the choice box.
    *
    * @param event change in the choice box
-   * @return topGuess
    */
-  public String getTopGuess(ActionEvent event) {
+  public void getTopGuess(ActionEvent event) {
     String currentTopGuess = cbTopGuess.getValue();
     App.getJsonParser().setDifficulty(App.getCurrentUser(), "topGuess", currentTopGuess);
-    return (currentTopGuess);
   }
 
   /**
    * Gets the level value from the choice box.
    *
    * @param event change in the choice box
-   * @return level
    */
-  public String getLevel(ActionEvent event) {
+  public void getLevel(ActionEvent event) {
     String currentLevel = cbLevel.getValue();
     App.getJsonParser().setDifficulty(App.getCurrentUser(), "level", currentLevel);
-    return (currentLevel);
   }
 
   /**
    * Gets the time allowed value from the choice box.
    *
    * @param event change in the choice box
-   * @return timeAllowed
    */
-  public String getTimeAllowed(ActionEvent event) {
+  public void getTimeAllowed(ActionEvent event) {
     String currentTimeAllowed = cbTimeAllowed.getValue();
     App.getJsonParser().setDifficulty(App.getCurrentUser(), "timeAllowed", currentTimeAllowed);
-    return (currentTimeAllowed);
   }
 
   /**
    * Gets the confidence value from the choice box.
    *
    * @param event change in the choice box
-   * @return confidence
    */
-  public String getHowConfident(ActionEvent event) {
+  public void getHowConfident(ActionEvent event) {
     String currentConfidence = cbHowConfident.getValue();
     App.getJsonParser().setDifficulty(App.getCurrentUser(), "confidence", currentConfidence);
-    return (currentConfidence);
   }
 
   /**

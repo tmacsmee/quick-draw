@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,14 +24,15 @@ public class JsonParser {
   /** This method constructs a new JsonParser. */
   public JsonParser() {
     try {
-      if (!Paths.get(".user_files/user_data.json").toFile().exists()) {
+      Path path = Paths.get(".user_files/user_data.json");
+      if (!path.toFile().exists()) {
         Paths.get(".user_files").toFile().mkdir(); // Create the directory if it doesn't exist.
         File file =
             new File(".user_files/user_data.json"); // Create the file and populate with empty node
         ObjectNode node = mapper.createObjectNode();
         mapper.writeValue(file, node);
       }
-      allUserData = mapper.readValue(Paths.get(".user_files/user_data.json").toFile(), Map.class);
+      allUserData = mapper.readValue(path.toFile(), Map.class);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -83,7 +85,7 @@ public class JsonParser {
     Map<String, Object> userData =
         new HashMap<>(
             Map.ofEntries(
-                Map.entry("userNum", allUserData.size() + 1),
+                Map.entry("userNum", allUserData.size() + 1), // map all data as entries
                 Map.entry("easyWordsEncountered", new ArrayList<String>()),
                 Map.entry("mediumWordsEncountered", new ArrayList<String>()),
                 Map.entry("hardWordsEncountered", new ArrayList<String>()),
@@ -179,11 +181,21 @@ public class JsonParser {
     return new ArrayList<>(allUserData.keySet());
   }
 
+  /**
+   * Resets the user's win streak to 0
+   *
+   * @param username the username of the user
+   */
   public void resetWinStreak(String username) {
     allUserData.get(username).replace("winStreak", "0");
     mapToJson();
   }
 
+  /**
+   * Increments the user's win streak by 1
+   *
+   * @param username the username of the user
+   */
   public void incrementWinStreak(String username) {
     int winStreak = Integer.parseInt((String) getProperty(username, "winStreak"));
     allUserData.get(username).replace("winStreak", Integer.toString(winStreak + 1));

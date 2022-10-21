@@ -125,7 +125,7 @@ public class App extends Application {
    * This method changes the current user of the application and updates labels to be user specific.
    *
    * @param username the username of the user
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if the user file is not found
    */
   public static void changeUser(String username) throws FileNotFoundException {
     App.setCurrentUser(username);

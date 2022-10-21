@@ -38,7 +38,7 @@ public class NormalModeTask extends TimerTask {
    */
   public void run() {
     int timeLimit =
-        Integer.valueOf(
+        Integer.parseInt(
             App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed").toString());
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
     if (timeElapsed == timeLimit) { // If time runs out, move to results scene.

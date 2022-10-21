@@ -30,6 +30,12 @@ public class StatsController {
   @FXML private ImageView imgBadgeSeven;
   @FXML private ImageView imgBadgeEight;
 
+  /** Initializes the stats controller class. */
+  @FXML
+  private void initialize() {
+    System.out.println("***************** Initialising Stats Controller *****************");
+  }
+
   @FXML
   private void onSwitchToMenu(ActionEvent event) {
     App.getSoundManager().playButtonClick();

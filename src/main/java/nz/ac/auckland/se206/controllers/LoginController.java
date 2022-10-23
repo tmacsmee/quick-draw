@@ -14,7 +14,6 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.util.JsonParser;
 
 public class LoginController {
-
   @FXML private Label userOneLabel;
   @FXML private Label userTwoLabel;
   @FXML private Label userThreeLabel;
@@ -39,13 +38,12 @@ public class LoginController {
   @FXML private ImageView userSixImage;
   @FXML private ImageView userSevenImage;
   @FXML private ImageView userEightImage;
-
+  @FXML private Button newUserButton;
   /** Initializes the login scene when app is run. */
   @FXML
   private void initialize() {
     System.out.println("***************** Initialising Login Controller *****************");
   }
-
   /**
    * Sets the username and avatar of the user in the login scene, displaying profiles of the user
    * with the userNumber.
@@ -55,10 +53,8 @@ public class LoginController {
    */
   public void setUserProfile(int userNumber) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
-
     // Get the username of the user with the userNumber from array of usernames
     String username = jsonParser.getListUsernames().get(userNumber - 1);
-
     switch (userNumber) {
       case 1 -> {
         // Set username and avatar image
@@ -102,7 +98,6 @@ public class LoginController {
       }
     }
   }
-
   /**
    * Switches to the main menu scene and logs into user one when the button is clicked.
    *
@@ -111,12 +106,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserOne(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userOneLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the main menu scene and logs into user two when the button is clicked.
    *
@@ -125,12 +118,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserTwo(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userTwoLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the main menu scene and logs into user three when the button is clicked.
    *
@@ -139,12 +130,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserThree(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userThreeLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the main menu scene and logs into user four when the button is clicked.
    *
@@ -153,12 +142,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserFour(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userFourLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the main menu scene and logs into user five when the button is clicked.
    *
@@ -167,12 +154,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserFive(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userFiveLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the main menu scene and logs into user six when the button is clicked.
    *
@@ -181,12 +166,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserSix(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userSixLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the main menu scene and logs into user seven when the button is clicked.
    *
@@ -195,12 +178,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserSeven(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userSevenLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the main menu scene and logs into user eight when the button is clicked.
    *
@@ -209,12 +190,10 @@ public class LoginController {
    */
   @FXML
   private void onSelectUserEight(ActionEvent event) throws FileNotFoundException {
-
     // Get username and select this user
     String username = userEightLabel.getText();
     selectUser(username, event);
   }
-
   /**
    * Switches to the create account scene when the button is clicked
    *
@@ -227,7 +206,6 @@ public class LoginController {
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.CREATEACCOUNT));
   }
-
   /**
    * Sets the buttons for all the profiles of existing users.
    *
@@ -235,7 +213,6 @@ public class LoginController {
    */
   public void setProfiles() throws FileNotFoundException {
     for (int i = 1; i <= 8; i++) {
-
       // If a user exists, set their profile
       if (App.getJsonParser().getListUsernames().size() >= i) {
         setUserProfile(i);
@@ -245,7 +222,6 @@ public class LoginController {
       }
     }
   }
-
   /**
    * Sets the visibility of the button, image and name for a user.
    *
@@ -304,7 +280,6 @@ public class LoginController {
       }
     }
   }
-
   /**
    * Changes the scene to the main menu.
    *
@@ -312,15 +287,17 @@ public class LoginController {
    */
   public void changeToMenu(ActionEvent event) {
 
+    // Allow the play button on the how to play scene
+    HowToPlayController howToPlayController = (HowToPlayController) App.getController("howToPlay");
+    howToPlayController.showPlayButton(true);
+
     // Get the scene of the button.
     App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource();
     Scene buttonScene = button.getScene();
-
     // Switch its root.
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.MENU));
   }
-
   /**
    * Selects a user and updates current user and the scenes.
    *
@@ -332,14 +309,12 @@ public class LoginController {
     // Login and set the current user
     App.changeUser(username);
     App.setCurrentUser(username);
-
     // Update the welcome message and change to main menu
     App.getSoundManager().playButtonClick();
     MenuController menuController = (MenuController) App.getController("menu");
     menuController.updateWelcome();
     changeToMenu(event);
   }
-
   /**
    * Gets the avatar image for user profile image.
    *
@@ -349,7 +324,6 @@ public class LoginController {
    */
   private Image getAvatarImage(String username) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
-
     // Get user directory and png of avatar in images folder
     FileInputStream inputStream =
         new FileInputStream(
@@ -357,7 +331,6 @@ public class LoginController {
                 + "/src/main/resources/images/"
                 + jsonParser.getProperty(username, "avatar")
                 + ".png");
-
     return new Image(inputStream);
   }
 }

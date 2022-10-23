@@ -102,7 +102,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user one when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserOne(ActionEvent event) throws FileNotFoundException {
@@ -114,7 +114,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user two when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserTwo(ActionEvent event) throws FileNotFoundException {
@@ -126,7 +126,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user three when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserThree(ActionEvent event) throws FileNotFoundException {
@@ -138,7 +138,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user four when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserFour(ActionEvent event) throws FileNotFoundException {
@@ -150,7 +150,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user five when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserFive(ActionEvent event) throws FileNotFoundException {
@@ -162,7 +162,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user six when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserSix(ActionEvent event) throws FileNotFoundException {
@@ -174,7 +174,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user seven when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserSeven(ActionEvent event) throws FileNotFoundException {
@@ -186,7 +186,7 @@ public class LoginController {
    * Switches to the main menu scene and logs into user eight when the button is clicked.
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   @FXML
   private void onSelectUserEight(ActionEvent event) throws FileNotFoundException {
@@ -198,10 +198,9 @@ public class LoginController {
    * Switches to the create account scene when the button is clicked
    *
    * @param event the button click event.
-   * @throws FileNotFoundException if the image file is not found.
    */
   @FXML
-  private void onAddNewUser(ActionEvent event) throws FileNotFoundException {
+  private void onAddNewUser(ActionEvent event) {
     App.getSoundManager().playButtonClick();
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
@@ -304,7 +303,7 @@ public class LoginController {
    *
    * @param username the username of the user.
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if file not found
    */
   public void selectUser(String username, ActionEvent event) throws FileNotFoundException {
     // Login and set the current user
@@ -326,13 +325,12 @@ public class LoginController {
   private Image getAvatarImage(String username) throws FileNotFoundException {
     JsonParser jsonParser = App.getJsonParser();
     // Get user directory and png of avatar in images folder
-    FileInputStream inputstream =
+    FileInputStream inputStream =
         new FileInputStream(
             System.getProperty("user.dir")
                 + "/src/main/resources/images/"
                 + jsonParser.getProperty(username, "avatar")
                 + ".png");
-    Image image = new Image(inputstream);
-    return image;
+    return new Image(inputStream);
   }
 }

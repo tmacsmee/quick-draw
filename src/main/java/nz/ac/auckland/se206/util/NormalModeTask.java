@@ -38,7 +38,7 @@ public class NormalModeTask extends TimerTask {
    */
   public void run() {
     int timeLimit =
-        Integer.valueOf(
+        Integer.parseInt(
             App.getJsonParser().getProperty(App.getCurrentUser(), "timeAllowed").toString());
     timeElapsed = (System.currentTimeMillis() - startTime) / 1000; // time elapsed in seconds
     if (timeElapsed == timeLimit) { // If time runs out, move to results scene.
@@ -47,6 +47,7 @@ public class NormalModeTask extends TimerTask {
       resultsController.setResultLabel("You ran out of time.");
       Platform.runLater(resultsController::setSketchImage);
       jsonParser.incrementLosses(App.getCurrentUser());
+      jsonParser.resetWinStreak(App.getCurrentUser());
       canvasController.results();
 
     } else if (timeElapsed
@@ -73,6 +74,7 @@ public class NormalModeTask extends TimerTask {
                 jsonParser.incrementWins(App.getCurrentUser());
                 final long time = timeElapsed;
                 jsonParser.setFastestTime(App.getCurrentUser(), Long.toString(time));
+                jsonParser.incrementWinStreak(App.getCurrentUser());
                 canvasController.results();
               }
             } catch (TranslateException e) {

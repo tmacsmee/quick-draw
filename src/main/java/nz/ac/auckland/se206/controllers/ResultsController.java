@@ -34,7 +34,7 @@ public class ResultsController {
    * Switches to the menu scene when the button is clicked
    *
    * @param event the button click event.
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException if the file is not found.
    */
   @FXML
   private void onSwitchToMenu(ActionEvent event) throws FileNotFoundException {

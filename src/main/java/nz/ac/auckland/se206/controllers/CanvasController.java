@@ -82,7 +82,7 @@ public class CanvasController {
   /**
    * Called when the brush button is pressed, sets the brush to be used for drawing.
    *
-   * @throws FileNotFoundException
+   * @throws FileNotFoundException If the brush image cannot be found on the file system.
    */
   @FXML
   private void onSwitchToBrush() throws FileNotFoundException {
@@ -90,10 +90,10 @@ public class CanvasController {
     eraserButton.setDisable(false);
 
     // Passing FileInputStream object as a parameter
-    FileInputStream inputstream =
+    FileInputStream inputStream =
         new FileInputStream(
-            System.getProperty("user.dir") + "/src/main/resources/images/curser_image.png");
-    Image image = new Image(inputstream);
+            System.getProperty("user.dir") + "/src/main/resources/images/cursor_image.png");
+    Image image = new Image(inputStream);
 
     canvas.setCursor(new ImageCursor(image));
 
@@ -128,10 +128,10 @@ public class CanvasController {
     brushButton.setDisable(false);
 
     // Passing FileInputStream object as a parameter
-    FileInputStream inputstream =
+    FileInputStream inputStream =
         new FileInputStream(
             System.getProperty("user.dir") + "/src/main/resources/images/eraser_cursor.png");
-    Image image = new Image(inputstream);
+    Image image = new Image(inputStream);
 
     canvas.setCursor(new ImageCursor(image));
 
@@ -329,18 +329,15 @@ public class CanvasController {
    * Save the current snapshot on a bitmap file.
    *
    * @param image the image to save
-   * @return the file where the image was saved
    * @throws IOException If the image cannot be saved.
    */
-  public File saveCurrentSnapshotOnFile(File file, BufferedImage image) throws IOException {
+  public void saveCurrentSnapshotOnFile(File file, BufferedImage image) throws IOException {
 
     // We save the image to a file in the tmp folder.
     final File imageToClassify = new File(file.getAbsolutePath() + ".bmp");
 
     // Save the image to a file.
     ImageIO.write(image, "bmp", imageToClassify);
-
-    return imageToClassify;
   }
 
   /**

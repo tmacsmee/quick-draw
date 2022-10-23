@@ -63,11 +63,6 @@ public class MenuController {
   @FXML
   private void onHowToPlay(ActionEvent event) {
     App.getSoundManager().playButtonClick();
-
-    // Enable the play button on the how to play scene.
-    HowToPlayController howToPlayController = (HowToPlayController) App.getController("howToPlay");
-    howToPlayController.showPlayButton(true);
-
     Button button = (Button) event.getSource(); // Get the scene of the button and switch its root.
     Scene buttonScene = button.getScene();
     buttonScene.setRoot(SceneManager.getUiRoot(SceneManager.AppUi.HOWTOPLAY));

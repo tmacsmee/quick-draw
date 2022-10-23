@@ -118,6 +118,7 @@ public class App extends Application {
         e -> {
           Platform.exit();
           voice.terminate();
+          System.exit(0);
         });
   }
 

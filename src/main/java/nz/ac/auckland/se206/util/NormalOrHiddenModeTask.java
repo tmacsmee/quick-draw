@@ -2,7 +2,10 @@ package nz.ac.auckland.se206.util;
 
 import static nz.ac.auckland.se206.ml.DoodlePrediction.printPredictions;
 
+import ai.djl.modality.Classifications;
 import ai.djl.translate.TranslateException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -10,6 +13,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.controllers.CanvasController;
 import nz.ac.auckland.se206.controllers.ReadyController;
 import nz.ac.auckland.se206.controllers.ResultsController;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Handles the clock and time limit functionality. */
 public class NormalOrHiddenModeTask extends TimerTask {
@@ -20,14 +24,18 @@ public class NormalOrHiddenModeTask extends TimerTask {
   private final ResultsController resultsController;
   private final ReadyController readyController;
   private final JsonParser jsonParser;
-
+  private int wordPos;
+  private int prevWordPos;
+  private TextToSpeech tts;
   /** Constructs the NormalModeTask object. */
   public NormalOrHiddenModeTask() {
     canvasController = (CanvasController) App.getController("canvas");
     startTime = System.currentTimeMillis(); // Get the current time in milliseconds.
     resultsController = (ResultsController) App.getController("results");
     readyController = (ReadyController) App.getController("ready");
+    tts = new TextToSpeech();
     jsonParser = App.getJsonParser();
+    wordPos = 100;
     timer = new Timer();
   }
 
@@ -62,11 +70,34 @@ public class NormalOrHiddenModeTask extends TimerTask {
                 String.valueOf(((long) (timeLimit - 1) - timeElapsed) % timeLimit));
             try {
               // Set the prediction list
-              canvasController.setPredictionList(
-                  printPredictions(
-                      canvasController
-                          .getModel()
-                          .getPredictions(canvasController.getCurrentSnapshot(), 10)));
+              List<String> stringPredictions = new ArrayList<>();
+              List<Classifications.Classification> predictions =
+                  canvasController
+                      .getModel()
+                      .getPredictions(canvasController.getCurrentSnapshot(), 100);
+
+              for (Classifications.Classification prediction : predictions) {
+                stringPredictions.add(prediction.getClassName());
+              }
+              List<String> topTen = stringPredictions.subList(0, 10);
+              List<String> tenToThirty = stringPredictions.subList(10, 100);
+
+              prevWordPos = wordPos;
+              wordPos = stringPredictions.indexOf(readyController.getPrompt());
+
+              if (!topTen.contains(readyController.getPrompt())
+                  && prevWordPos != 100
+                  && timeElapsed % 3 == 0) {
+                if (wordPos < prevWordPos) {
+                  tts.speak("Getting closer");
+                  System.out.println("Getting closer");
+                } else if (wordPos > prevWordPos) {
+                  tts.speak("You're going the wrong way");
+                  System.out.println("You're going the wrong way");
+                }
+              }
+              canvasController.setPredictionList(printPredictions(predictions.subList(0, 10)));
+
               // Check if the prompt is in the top 3 predictions.
               if (canvasController.isCorrect()) {
                 App.getSoundManager().playGameWin();

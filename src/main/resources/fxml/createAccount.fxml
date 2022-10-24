@@ -38,7 +38,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/cat.png" />
+                                    <Image url="@../images/cat.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Cat free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>
@@ -54,7 +54,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/chicken.png" />
+                                    <Image url="@../images/chicken.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Chicken free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>
@@ -70,7 +70,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/dog.png" />
+                                    <Image url="@../images/dog.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Dog free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>
@@ -86,7 +86,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/snake.png" />
+                                    <Image url="@../images/snake.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Snake free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>
@@ -102,7 +102,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/puffer-fish.png" />
+                                    <Image url="@../images/puffer-fish.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Pufferfish free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>
@@ -118,7 +118,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/rabbit.png" />
+                                    <Image url="@../images/rabbit.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Rabbit free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>
@@ -134,7 +134,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/sea-lion.png" />
+                                    <Image url="@../images/sea-lion.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Sealion free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>
@@ -150,7 +150,7 @@
                            <graphic>
                               <ImageView fitHeight="60.0" fitWidth="60.0">
                                  <image>
-                                    <Image url="@../images/panda.png" />
+                                    <Image url="@../images/panda.png" /> <!-- "https://www.flaticon.com/free-icons/user-avatar-animal/" title="Panda free icon"> Family Members Avatars created by Freepik - Flaticon -->
                                  </image>
                               </ImageView>
                            </graphic>

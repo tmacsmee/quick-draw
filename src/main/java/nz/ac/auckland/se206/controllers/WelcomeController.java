@@ -10,7 +10,7 @@ import nz.ac.auckland.se206.SceneManager;
 
 public class WelcomeController {
   /**
-   * Initializes the login scene.
+   * Initializes the welcome scene when the user first opens the application.
    *
    * @throws FileNotFoundException if the file is not found.
    */

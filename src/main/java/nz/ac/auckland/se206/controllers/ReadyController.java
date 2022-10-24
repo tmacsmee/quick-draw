@@ -11,9 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
-import nz.ac.auckland.se206.util.HiddenModeTask;
 import nz.ac.auckland.se206.util.JsonParser;
-import nz.ac.auckland.se206.util.NormalModeTask;
+import nz.ac.auckland.se206.util.NormalOrHiddenModeTask;
 import nz.ac.auckland.se206.util.ZenModeTask;
 
 public class ReadyController {
@@ -22,8 +21,8 @@ public class ReadyController {
   private List<String> medium;
   private List<String> hard;
   private CanvasController canvasController;
-  private HiddenModeTask hiddenModeTask;
-  private NormalModeTask normalModeTask;
+  private NormalOrHiddenModeTask hiddenModeTask;
+  private NormalOrHiddenModeTask normalModeTask;
   private ZenModeTask zenModeTask;
   private String prompt;
   @FXML private Label promptLabel;
@@ -38,7 +37,7 @@ public class ReadyController {
   /** Prepares the ready screen for normal mode */
   private void normalReady() {
     canvasController.setPromptLabel(prompt);
-    normalModeTask = new NormalModeTask();
+    normalModeTask = new NormalOrHiddenModeTask();
     normalModeTask.scheduleTask();
   }
 
@@ -51,7 +50,7 @@ public class ReadyController {
 
   /** Prepares the ready screen for hidden mode */
   private void hiddenReady() {
-    hiddenModeTask = new HiddenModeTask();
+    hiddenModeTask = new NormalOrHiddenModeTask();
     hiddenModeTask.scheduleTask();
   }
 
@@ -224,11 +223,11 @@ public class ReadyController {
     }
   }
 
-  public NormalModeTask getNormalModeTask() {
+  public NormalOrHiddenModeTask getNormalModeTask() {
     return normalModeTask;
   }
 
-  public HiddenModeTask getHiddenModeTask() {
+  public NormalOrHiddenModeTask getHiddenModeTask() {
     return hiddenModeTask;
   }
 

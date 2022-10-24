@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import javafx.application.Platform;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.controllers.CanvasController;
+import nz.ac.auckland.se206.controllers.ReadyController;
 import nz.ac.auckland.se206.controllers.ResultsController;
 
 /** Handles the clock and time limit functionality. */
@@ -17,6 +18,7 @@ public class NormalOrHiddenModeTask extends TimerTask {
   private final Timer timer;
   private final CanvasController canvasController;
   private final ResultsController resultsController;
+  private final ReadyController readyController;
   private final JsonParser jsonParser;
 
   /** Constructs the NormalModeTask object. */
@@ -24,6 +26,7 @@ public class NormalOrHiddenModeTask extends TimerTask {
     canvasController = (CanvasController) App.getController("canvas");
     startTime = System.currentTimeMillis(); // Get the current time in milliseconds.
     resultsController = (ResultsController) App.getController("results");
+    readyController = (ReadyController) App.getController("ready");
     jsonParser = App.getJsonParser();
     timer = new Timer();
   }
@@ -44,7 +47,8 @@ public class NormalOrHiddenModeTask extends TimerTask {
     if (timeElapsed == timeLimit) { // If time runs out, move to results scene.
       App.getSoundManager().playGameLoss();
       timer.cancel();
-      resultsController.setResultLabel("You ran out of time.");
+      resultsController.setResultLabel(
+          "You ran out of time to draw: \"" + readyController.getPrompt() + "\"");
       Platform.runLater(resultsController::setSketchImage);
       jsonParser.incrementLosses(App.getCurrentUser());
       jsonParser.resetWinStreak(App.getCurrentUser());
@@ -69,7 +73,11 @@ public class NormalOrHiddenModeTask extends TimerTask {
                 timer.cancel();
                 // If so, move to results scene.
                 resultsController.setResultLabel(
-                    "Good job! You finished in " + timeElapsed + " seconds!");
+                    "Good job! You drew: \""
+                        + readyController.getPrompt()
+                        + "\" in "
+                        + timeElapsed
+                        + " seconds!");
                 resultsController.setSketchImage();
                 jsonParser.incrementWins(App.getCurrentUser());
                 final long time = timeElapsed;

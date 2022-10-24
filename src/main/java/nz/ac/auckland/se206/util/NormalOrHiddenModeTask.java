@@ -69,7 +69,7 @@ public class NormalOrHiddenModeTask extends TimerTask {
             canvasController.setTimerLabel(
                 String.valueOf(((long) (timeLimit - 1) - timeElapsed) % timeLimit));
             try {
-              // Set the prediction list
+              // Get the predictions as a string list to parse
               List<String> stringPredictions = new ArrayList<>();
               List<Classifications.Classification> predictions =
                   canvasController
@@ -79,21 +79,19 @@ public class NormalOrHiddenModeTask extends TimerTask {
               for (Classifications.Classification prediction : predictions) {
                 stringPredictions.add(prediction.getClassName());
               }
-              List<String> topTen = stringPredictions.subList(0, 10);
-              List<String> tenToThirty = stringPredictions.subList(10, 100);
 
-              prevWordPos = wordPos;
+              List<String> topTen = stringPredictions.subList(0, 10); // Get the top 10 predictions
+              prevWordPos = wordPos; // Store the new and old word positions
               wordPos = stringPredictions.indexOf(readyController.getPrompt());
 
+              // Run every 3 seconds if word is not in top 10
               if (!topTen.contains(readyController.getPrompt())
                   && prevWordPos != 100
                   && timeElapsed % 3 == 0) {
-                if (wordPos < prevWordPos) {
-                  tts.speak("Getting closer");
-                  System.out.println("Getting closer");
-                } else if (wordPos > prevWordPos) {
-                  tts.speak("You're going the wrong way");
-                  System.out.println("You're going the wrong way");
+                if (wordPos < prevWordPos) { // If the word has moved up in the list
+                  new Thread(() -> tts.speak("You are getting closer")).start();
+                } else if (wordPos > prevWordPos) { // If the word has moved down in the list
+                  new Thread(() -> tts.speak("You are getting further away")).start();
                 }
               }
               canvasController.setPredictionList(printPredictions(predictions.subList(0, 10)));

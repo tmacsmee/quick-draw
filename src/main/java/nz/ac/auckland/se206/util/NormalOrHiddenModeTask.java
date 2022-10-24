@@ -11,7 +11,7 @@ import nz.ac.auckland.se206.controllers.CanvasController;
 import nz.ac.auckland.se206.controllers.ResultsController;
 
 /** Handles the clock and time limit functionality. */
-public class NormalModeTask extends TimerTask {
+public class NormalOrHiddenModeTask extends TimerTask {
   private final long startTime;
   private long timeElapsed;
   private final Timer timer;
@@ -20,7 +20,7 @@ public class NormalModeTask extends TimerTask {
   private final JsonParser jsonParser;
 
   /** Constructs the NormalModeTask object. */
-  public NormalModeTask() {
+  public NormalOrHiddenModeTask() {
     canvasController = (CanvasController) App.getController("canvas");
     startTime = System.currentTimeMillis(); // Get the current time in milliseconds.
     resultsController = (ResultsController) App.getController("results");
